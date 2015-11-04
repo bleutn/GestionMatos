@@ -1,0 +1,13 @@
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\bin\Debug\GestionMatos.exe.config
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\bin\Debug\GestionMatos.exe
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\bin\Debug\GestionMatos.pdb
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\obj\Debug\GestionMatos.csprojResolveAssemblyReference.cache
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\obj\Debug\MainWindow.baml
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\obj\Debug\MainWindow.g.cs
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\obj\Debug\App.g.cs
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\obj\Debug\GestionMatos_MarkupCompile.cache
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\obj\Debug\GestionMatos.g.resources
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\obj\Debug\GestionMatos.Properties.Resources.resources
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\obj\Debug\GestionMatos.csproj.GenerateResource.Cache
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\obj\Debug\GestionMatos.exe
+c:\users\bl3ut3n\documents\visual studio 2013\Projects\GestionMatos\GestionMatos\obj\Debug\GestionMatos.pdb
