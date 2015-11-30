@@ -1,0 +1,1 @@
+INSERT INTO [dbo].[Site]([nom_Site],[Adresse]) VALUES ('Site de stockage 1', 'Adresse de stockage 1')
