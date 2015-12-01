@@ -28,18 +28,3 @@ C:\Users\GARRY\Documents\Visual Studio 2012\Projects\GestionMatos\06 - Code\Pres
 C:\Users\GARRY\Documents\Visual Studio 2012\Projects\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.Properties.Resources.resources
 C:\Users\GARRY\Documents\Visual Studio 2012\Projects\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControl1.resources
 C:\Users\GARRY\Documents\Visual Studio 2012\Projects\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.csproj.GenerateResource.Cache
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\bin\Debug\GestionMatosApplication.exe.config
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.exe
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.pdb
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\bin\Debug\GestionMatosApplication.exe
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\bin\Debug\GestionMatosApplication.pdb
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.csprojResolveAssemblyReference.cache
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormHomepage.resources
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddBatiment.resources
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddClient.resources
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddMateriel.resources
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddSite.resources
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddTypeMateriel.resources
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.Properties.Resources.resources
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControl1.resources
-C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.csproj.GenerateResource.Cache
