@@ -16,6 +16,14 @@ namespace GestionMatosApplication
 {
     public partial class FormHomepage : Form
     {
+		private GestionMatosDataSet.ClientDataTable m_tblClient = new GestionMatosDataSet.ClientDataTable();
+		private GestionMatosDataSet.EtageDataTable m_tblEtage = new GestionMatosDataSet.EtageDataTable();
+		private GestionMatosDataSetTableAdapters.ClientTableAdapter m_adapterClient = new GestionMatosDataSetTableAdapters.ClientTableAdapter();
+		private GestionMatosDataSetTableAdapters.EtageTableAdapter m_adapterEtage = new GestionMatosDataSetTableAdapters.EtageTableAdapter();
+		private GestionMatosDataSet.Type_MaterielDataTable m_tblMaterielType = new GestionMatosDataSet.Type_MaterielDataTable();
+		private GestionMatosDataSetTableAdapters.Type_MaterielTableAdapter m_adapterMaterielType = new GestionMatosDataSetTableAdapters.Type_MaterielTableAdapter();
+
+
         public FormHomepage()
         {
             InitializeComponent();
@@ -118,9 +126,11 @@ namespace GestionMatosApplication
 
         private void Form1_Load(object sender, EventArgs e)
         {
+			// TODO: This line of code loads data into the 'gestionMatosDataSet2.Materiel' table. You can move, or remove it, as needed.
+			this.materielTableAdapter2.Fill(this.gestionMatosDataSet2.Materiel);
 			// TODO: This line of code loads data into the 'gestionMatosDataSet11.Materiel' table. You can move, or remove it, as needed.
-			this.materielTableAdapter.Fill(this.gestionMatosDataSet11.Materiel);
             WindowState = FormWindowState.Maximized;
+			
         }
 
         private void ajouterToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -167,5 +177,41 @@ namespace GestionMatosApplication
             FormAddMateriel materiel = new FormAddMateriel();
             materiel.Show();
         }
+
+		private void materielBindingSource_CurrentChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void fillByToolStripButton_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				this.materielTableAdapter1.FillBy(this.gestionMatosDataSet1.Materiel);
+			}
+			catch (System.Exception ex)
+			{
+				System.Windows.Forms.MessageBox.Show(ex.Message);
+			}
+
+		}
+
+		private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+		{
+
+		}
+
+		private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
+		{
+			string typeMaterialName;
+			string clientName;
+			string etageStockage;
+
+			string cellValue = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].FormattedValue.ToString();
+			if (cellValue.Contains('G') || cellValue.Contains('g'))
+			{
+				//dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "abc";
+			}
+		}
     }
 }

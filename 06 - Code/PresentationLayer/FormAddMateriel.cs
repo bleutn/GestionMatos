@@ -89,6 +89,90 @@ namespace GestionMatosApplication
 			}
 		}
 
+		private void FillBatiment<A, T, Row, Control>(A adapter, T table, List<ListItem> list, Control control, string column1,
+			string column2)
+		{
+			MethodInfo methodInfo = typeof(A).GetMethod("Fill");
+			if (methodInfo != null)
+			{
+				object[] data = new object[1];
+				data[0] = table;
+				methodInfo.Invoke((object)adapter, data);
+
+				PropertyInfo rowsProperty = typeof(T).GetProperty("Rows");
+				DataRowCollection rows = rowsProperty.GetValue(table) as DataRowCollection;
+				foreach (Row row in rows)
+				{
+					PropertyInfo name = typeof(Row).GetProperty(column1);
+					PropertyInfo id = typeof(Row).GetProperty(column2);
+					list.Add(new ListItem("Batiment n°" + Convert.ToInt32(name.GetValue(row)),
+						(int)id.GetValue(row)));
+				}
+
+				PropertyInfo dataSource = typeof(Control).GetProperty("DataSource");
+				if (dataSource != null)
+				{
+					dataSource.SetValue(control, list);
+				}
+			}
+		}
+
+		private void FillEtage<A, T, Row, Control>(A adapter, T table, List<ListItem> list, Control control, string column1,
+			string column2)
+		{
+			MethodInfo methodInfo = typeof(A).GetMethod("Fill");
+			if (methodInfo != null)
+			{
+				object[] data = new object[1];
+				data[0] = table;
+				methodInfo.Invoke((object)adapter, data);
+
+				PropertyInfo rowsProperty = typeof(T).GetProperty("Rows");
+				DataRowCollection rows = rowsProperty.GetValue(table) as DataRowCollection;
+				foreach (Row row in rows)
+				{
+					PropertyInfo name = typeof(Row).GetProperty(column1);
+					PropertyInfo id = typeof(Row).GetProperty(column2);
+					list.Add(new ListItem("Etage n°" + Convert.ToInt32(name.GetValue(row)),
+						(int)id.GetValue(row)));
+				}
+
+				PropertyInfo dataSource = typeof(Control).GetProperty("DataSource");
+				if (dataSource != null)
+				{
+					dataSource.SetValue(control, list);
+				}
+			}
+		}
+
+		private void FillSalle<A, T, Row, Control>(A adapter, T table, List<ListItem> list, Control control, string column1,
+	string column2)
+		{
+			MethodInfo methodInfo = typeof(A).GetMethod("Fill");
+			if (methodInfo != null)
+			{
+				object[] data = new object[1];
+				data[0] = table;
+				methodInfo.Invoke((object)adapter, data);
+
+				PropertyInfo rowsProperty = typeof(T).GetProperty("Rows");
+				DataRowCollection rows = rowsProperty.GetValue(table) as DataRowCollection;
+				foreach (Row row in rows)
+				{
+					PropertyInfo name = typeof(Row).GetProperty(column1);
+					PropertyInfo id = typeof(Row).GetProperty(column2);
+					list.Add(new ListItem("Salle n°" + Convert.ToInt32(name.GetValue(row)),
+						(int)id.GetValue(row)));
+				}
+
+				PropertyInfo dataSource = typeof(Control).GetProperty("DataSource");
+				if (dataSource != null)
+				{
+					dataSource.SetValue(control, list);
+				}
+			}
+		}
+
 		private void FormAddMateriel_Load(object sender, EventArgs e)
 		{
 			try
@@ -102,7 +186,7 @@ namespace GestionMatosApplication
 								cmbClientName, 
 								"nom_Client", 
 								"id_Client");
-
+				
 				Fill<GestionMatosDataSetTableAdapters.Type_MaterielTableAdapter,
 					GestionMatosDataSet.Type_MaterielDataTable,
 					GestionMatosDataSet.Type_MaterielRow,
@@ -123,34 +207,34 @@ namespace GestionMatosApplication
 									"nom_Site",
 									"id_Site");
 
-				Fill<GestionMatosDataSetTableAdapters.BatimentTableAdapter,
+				FillBatiment<GestionMatosDataSetTableAdapters.BatimentTableAdapter,
 						GestionMatosDataSet.BatimentDataTable,
 						GestionMatosDataSet.BatimentRow,
 						ComboBox>(m_adapterBatiment,
 									m_tblBatiments,
 									m_batimentsList,
 									cmbBatiment,
-									"nom_Batiment",
+									"num_Batiment",
 									"id_Batiment");
 
-				Fill<GestionMatosDataSetTableAdapters.EtageTableAdapter,
+				FillEtage<GestionMatosDataSetTableAdapters.EtageTableAdapter,
 						GestionMatosDataSet.EtageDataTable,
 						GestionMatosDataSet.EtageRow,
 						ComboBox>(m_adapterEtage,
 									m_tblEtage,
 									m_etagesList,
 									cmbEtage,
-									"nom_Etage",
+									"num_Etage",
 									"id_Etage");
 
-				Fill<GestionMatosDataSetTableAdapters.SalleTableAdapter,
+				FillSalle<GestionMatosDataSetTableAdapters.SalleTableAdapter,
 						GestionMatosDataSet.SalleDataTable,
 						GestionMatosDataSet.SalleRow,
 						ComboBox>(m_adapterSalle,
 									m_tblSalle,
 									m_sallesList,
 									cmbSalle,
-									"nom_Salle",
+									"id_Salle",
 									"id_Salle");
 			}
 			catch (SqlException sqlex)
@@ -178,11 +262,6 @@ namespace GestionMatosApplication
 			FillMTBF();
         }
 
-        private void cmbEtage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAddClient_Click(object sender, EventArgs e)
         {
             FormAddClient clientWindow = new FormAddClient();
@@ -202,40 +281,23 @@ namespace GestionMatosApplication
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string materialName;
-            Guid materialSerial;
-            int client_id;
-            int etage_id;
-            int materialtype_id;
-            string description;
-            DateTime intervention;
-            int mtbf;
-
             try
             {
-                materialName = txbMaterialName.Text;
-				materialSerial = Guid.NewGuid();
-                client_id = ((ListItem)cmbClientName.SelectedItem).ID;
-                etage_id = ((ListItem)cmbSite.SelectedItem).ID;
-                materialtype_id = ((ListItem)cmbMaterialType.SelectedItem).ID;
-                description = txbDesc.Text;
-                mtbf = Convert.ToInt32(txbMTBF.Text);
+                m_materialName = txbMaterialName.Text;
+				m_materialSerial = Guid.NewGuid();
+                m_client_id = ((ListItem)cmbClientName.SelectedItem).ID;
+                m_etage_id = ((ListItem)cmbSite.SelectedItem).ID;
+                m_materialtype_id = ((ListItem)cmbMaterialType.SelectedItem).ID;
+                m_description = txbDesc.Text;
+                m_mtbf = Convert.ToInt32(txbMTBF.Text);
+				m_intervention = dateIntervention.Value;
 
-                GestionMatosDataSet.MaterielRow inserted_data = m_tblMaterial.NewMaterielRow();
-				inserted_data.id_Client = client_id;
-				inserted_data.id_Etage = etage_id;
-				inserted_data.id_type_Materiel = materialtype_id;
-				inserted_data.date_dernier_Intervention = dateIntervention.Value;
-				inserted_data.guid_Materiel = materialSerial.ToString();
-
-				m_tblMaterial.ImportRow(inserted_data);
-                m_tblMaterial.AcceptChanges();
-				m_adapterMaterials.Insert(1,
-					materialSerial.ToString(),
-					materialtype_id,
-					client_id,
-					etage_id,
-					dateIntervention.Value);
+				m_adapterMaterials.Insert(
+					m_materialSerial.ToString(),
+					m_materialtype_id,
+					m_client_id,
+					m_etage_id,
+					m_intervention);
 			}
             catch (SqlException sqlex)
             {
@@ -264,5 +326,20 @@ namespace GestionMatosApplication
         {
 
         }
+
+		private void cmbSite_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void cmbBatiment_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void cmbEtage_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

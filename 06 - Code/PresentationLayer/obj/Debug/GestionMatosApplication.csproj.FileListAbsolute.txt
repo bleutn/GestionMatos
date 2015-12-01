@@ -29,11 +29,8 @@ C:\Users\GARRY\Documents\Visual Studio 2012\Projects\GestionMatos\06 - Code\Pres
 C:\Users\GARRY\Documents\Visual Studio 2012\Projects\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControl1.resources
 C:\Users\GARRY\Documents\Visual Studio 2012\Projects\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.csproj.GenerateResource.Cache
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\bin\Debug\GestionMatosApplication.exe.config
-C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.exe
-C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.pdb
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\bin\Debug\GestionMatosApplication.exe
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\bin\Debug\GestionMatosApplication.pdb
-C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.csprojResolveAssemblyReference.cache
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormHomepage.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddBatiment.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddClient.resources
@@ -43,3 +40,6 @@ C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Deb
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.Properties.Resources.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControl1.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.csproj.GenerateResource.Cache
+C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.exe
+C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.pdb
+C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.csprojResolveAssemblyReference.cache

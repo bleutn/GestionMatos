@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnAddSalle = new System.Windows.Forms.Button();
+			this.cmbSalle = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.btnAddEtage = new System.Windows.Forms.Button();
+			this.cmbEtage = new System.Windows.Forms.ComboBox();
+			this.label12 = new System.Windows.Forms.Label();
+			this.btnAddBatiment = new System.Windows.Forms.Button();
+			this.cmbBatiment = new System.Windows.Forms.ComboBox();
+			this.lblBatiment = new System.Windows.Forms.Label();
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.label10 = new System.Windows.Forms.Label();
 			this.txbMTBF = new System.Windows.Forms.TextBox();
@@ -51,16 +60,10 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.cmbMaterialType = new System.Windows.Forms.ComboBox();
 			this.cmbClientName = new System.Windows.Forms.ComboBox();
-			this.btnAddBatiment = new System.Windows.Forms.Button();
-			this.cmbBatiment = new System.Windows.Forms.ComboBox();
-			this.lblBatiment = new System.Windows.Forms.Label();
-			this.btnAddEtage = new System.Windows.Forms.Button();
-			this.cmbEtage = new System.Windows.Forms.ComboBox();
-			this.label12 = new System.Windows.Forms.Label();
-			this.btnAddSalle = new System.Windows.Forms.Button();
-			this.cmbSalle = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -99,9 +102,92 @@
 			this.panel1.Controls.Add(this.cmbClientName);
 			this.panel1.Location = new System.Drawing.Point(12, 27);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(577, 513);
+			this.panel1.Size = new System.Drawing.Size(577, 527);
 			this.panel1.TabIndex = 0;
 			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+			// 
+			// btnAddSalle
+			// 
+			this.btnAddSalle.Enabled = false;
+			this.btnAddSalle.Location = new System.Drawing.Point(437, 224);
+			this.btnAddSalle.Name = "btnAddSalle";
+			this.btnAddSalle.Size = new System.Drawing.Size(137, 23);
+			this.btnAddSalle.TabIndex = 33;
+			this.btnAddSalle.Text = "Ajout Salle";
+			this.btnAddSalle.UseVisualStyleBackColor = true;
+			// 
+			// cmbSalle
+			// 
+			this.cmbSalle.FormattingEnabled = true;
+			this.cmbSalle.Location = new System.Drawing.Point(121, 224);
+			this.cmbSalle.Name = "cmbSalle";
+			this.cmbSalle.Size = new System.Drawing.Size(310, 21);
+			this.cmbSalle.TabIndex = 32;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(4, 227);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(33, 13);
+			this.label4.TabIndex = 31;
+			this.label4.Text = "Salle:";
+			// 
+			// btnAddEtage
+			// 
+			this.btnAddEtage.Enabled = false;
+			this.btnAddEtage.Location = new System.Drawing.Point(437, 195);
+			this.btnAddEtage.Name = "btnAddEtage";
+			this.btnAddEtage.Size = new System.Drawing.Size(137, 23);
+			this.btnAddEtage.TabIndex = 30;
+			this.btnAddEtage.Text = "Ajout Etage";
+			this.btnAddEtage.UseVisualStyleBackColor = true;
+			// 
+			// cmbEtage
+			// 
+			this.cmbEtage.FormattingEnabled = true;
+			this.cmbEtage.Location = new System.Drawing.Point(121, 195);
+			this.cmbEtage.Name = "cmbEtage";
+			this.cmbEtage.Size = new System.Drawing.Size(310, 21);
+			this.cmbEtage.TabIndex = 29;
+			this.cmbEtage.SelectedIndexChanged += new System.EventHandler(this.cmbEtage_SelectedIndexChanged);
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(4, 198);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(38, 13);
+			this.label12.TabIndex = 28;
+			this.label12.Text = "Etage:";
+			// 
+			// btnAddBatiment
+			// 
+			this.btnAddBatiment.Enabled = false;
+			this.btnAddBatiment.Location = new System.Drawing.Point(437, 166);
+			this.btnAddBatiment.Name = "btnAddBatiment";
+			this.btnAddBatiment.Size = new System.Drawing.Size(137, 23);
+			this.btnAddBatiment.TabIndex = 27;
+			this.btnAddBatiment.Text = "Ajout Batiment";
+			this.btnAddBatiment.UseVisualStyleBackColor = true;
+			// 
+			// cmbBatiment
+			// 
+			this.cmbBatiment.FormattingEnabled = true;
+			this.cmbBatiment.Location = new System.Drawing.Point(121, 166);
+			this.cmbBatiment.Name = "cmbBatiment";
+			this.cmbBatiment.Size = new System.Drawing.Size(310, 21);
+			this.cmbBatiment.TabIndex = 26;
+			this.cmbBatiment.SelectedIndexChanged += new System.EventHandler(this.cmbBatiment_SelectedIndexChanged);
+			// 
+			// lblBatiment
+			// 
+			this.lblBatiment.AutoSize = true;
+			this.lblBatiment.Location = new System.Drawing.Point(4, 169);
+			this.lblBatiment.Name = "lblBatiment";
+			this.lblBatiment.Size = new System.Drawing.Size(51, 13);
+			this.lblBatiment.TabIndex = 25;
+			this.lblBatiment.Text = "Batiment:";
 			// 
 			// dateTimePicker1
 			// 
@@ -172,7 +258,7 @@
 			// 
 			// btnAdd
 			// 
-			this.btnAdd.Location = new System.Drawing.Point(417, 487);
+			this.btnAdd.Location = new System.Drawing.Point(418, 501);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(75, 23);
 			this.btnAdd.TabIndex = 13;
@@ -182,7 +268,7 @@
 			// 
 			// btnCancel
 			// 
-			this.btnCancel.Location = new System.Drawing.Point(498, 487);
+			this.btnCancel.Location = new System.Drawing.Point(499, 501);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
 			this.btnCancel.TabIndex = 12;
@@ -224,7 +310,7 @@
 			this.cmbSite.Name = "cmbSite";
 			this.cmbSite.Size = new System.Drawing.Size(310, 21);
 			this.cmbSite.TabIndex = 8;
-			this.cmbSite.SelectedIndexChanged += new System.EventHandler(this.cmbEtage_SelectedIndexChanged);
+			this.cmbSite.SelectedIndexChanged += new System.EventHandler(this.cmbSite_SelectedIndexChanged);
 			// 
 			// btnAddMaterialType
 			// 
@@ -304,86 +390,21 @@
 			this.cmbClientName.TabIndex = 0;
 			this.cmbClientName.SelectedIndexChanged += new System.EventHandler(this.cmbClientName_SelectedIndexChanged);
 			// 
-			// btnAddBatiment
+			// menuStrip1
 			// 
-			this.btnAddBatiment.Enabled = false;
-			this.btnAddBatiment.Location = new System.Drawing.Point(437, 166);
-			this.btnAddBatiment.Name = "btnAddBatiment";
-			this.btnAddBatiment.Size = new System.Drawing.Size(137, 23);
-			this.btnAddBatiment.TabIndex = 27;
-			this.btnAddBatiment.Text = "Ajout Batiment";
-			this.btnAddBatiment.UseVisualStyleBackColor = true;
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(598, 24);
+			this.menuStrip1.TabIndex = 1;
+			this.menuStrip1.Text = "menuStrip1";
 			// 
-			// cmbBatiment
+			// testToolStripMenuItem
 			// 
-			this.cmbBatiment.FormattingEnabled = true;
-			this.cmbBatiment.Location = new System.Drawing.Point(121, 166);
-			this.cmbBatiment.Name = "cmbBatiment";
-			this.cmbBatiment.Size = new System.Drawing.Size(310, 21);
-			this.cmbBatiment.TabIndex = 26;
-			// 
-			// lblBatiment
-			// 
-			this.lblBatiment.AutoSize = true;
-			this.lblBatiment.Location = new System.Drawing.Point(4, 169);
-			this.lblBatiment.Name = "lblBatiment";
-			this.lblBatiment.Size = new System.Drawing.Size(51, 13);
-			this.lblBatiment.TabIndex = 25;
-			this.lblBatiment.Text = "Batiment:";
-			// 
-			// btnAddEtage
-			// 
-			this.btnAddEtage.Enabled = false;
-			this.btnAddEtage.Location = new System.Drawing.Point(437, 195);
-			this.btnAddEtage.Name = "btnAddEtage";
-			this.btnAddEtage.Size = new System.Drawing.Size(137, 23);
-			this.btnAddEtage.TabIndex = 30;
-			this.btnAddEtage.Text = "Ajout Etage";
-			this.btnAddEtage.UseVisualStyleBackColor = true;
-			// 
-			// cmbEtage
-			// 
-			this.cmbEtage.FormattingEnabled = true;
-			this.cmbEtage.Location = new System.Drawing.Point(121, 195);
-			this.cmbEtage.Name = "cmbEtage";
-			this.cmbEtage.Size = new System.Drawing.Size(310, 21);
-			this.cmbEtage.TabIndex = 29;
-			// 
-			// label12
-			// 
-			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(4, 198);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(38, 13);
-			this.label12.TabIndex = 28;
-			this.label12.Text = "Etage:";
-			// 
-			// btnAddSalle
-			// 
-			this.btnAddSalle.Enabled = false;
-			this.btnAddSalle.Location = new System.Drawing.Point(437, 224);
-			this.btnAddSalle.Name = "btnAddSalle";
-			this.btnAddSalle.Size = new System.Drawing.Size(137, 23);
-			this.btnAddSalle.TabIndex = 33;
-			this.btnAddSalle.Text = "Ajout Salle";
-			this.btnAddSalle.UseVisualStyleBackColor = true;
-			// 
-			// cmbSalle
-			// 
-			this.cmbSalle.FormattingEnabled = true;
-			this.cmbSalle.Location = new System.Drawing.Point(121, 224);
-			this.cmbSalle.Name = "cmbSalle";
-			this.cmbSalle.Size = new System.Drawing.Size(310, 21);
-			this.cmbSalle.TabIndex = 32;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(4, 227);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(33, 13);
-			this.label4.TabIndex = 31;
-			this.label4.Text = "Salle:";
+			this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+			this.testToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+			this.testToolStripMenuItem.Text = "Test";
 			// 
 			// FormAddMateriel
 			// 
@@ -391,11 +412,15 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(598, 566);
 			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.menuStrip1);
+			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "FormAddMateriel";
 			this.Text = "Ajout de Matériel";
 			this.Load += new System.EventHandler(this.FormAddMateriel_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -435,5 +460,7 @@
         private System.Windows.Forms.Button btnAddSalle;
         private System.Windows.Forms.ComboBox cmbSalle;
         private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     }
 }

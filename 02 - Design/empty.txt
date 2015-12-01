@@ -1,0 +1,6 @@
+Numéro de Matériel
+Numéro de Série
+Type de matériel
+Client associé
+Etage de stockage
+Date d'intervention

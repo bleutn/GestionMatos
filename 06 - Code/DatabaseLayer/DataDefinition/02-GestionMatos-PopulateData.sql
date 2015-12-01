@@ -1,6 +1,4 @@
-﻿/* Type de matériels */
-
-INSERT INTO [dbo].[Type_Materiel] ([nom_Type_Materiel],[MTBF])VALUES ('Appareil informatique‎', 1462)
+﻿INSERT INTO [dbo].[Type_Materiel] ([nom_Type_Materiel],[MTBF])VALUES ('Appareil informatique‎', 1462)
 INSERT INTO [dbo].[Type_Materiel] ([nom_Type_Materiel],[MTBF])VALUES ('Baladeur numérique‎', 108)
 INSERT INTO [dbo].[Type_Materiel] ([nom_Type_Materiel],[MTBF])VALUES ('Bus informatique', 3166)
 INSERT INTO [dbo].[Type_Materiel] ([nom_Type_Materiel],[MTBF])VALUES ('Carte d''extension', 2081)
@@ -131,14 +129,13 @@ INSERT INTO [dbo].[Type_Materiel] ([nom_Type_Materiel],[MTBF])VALUES ('XS (EVS)'
 INSERT INTO [dbo].[Type_Materiel] ([nom_Type_Materiel],[MTBF])VALUES ('XT(2)+', 3500)
 INSERT INTO [dbo].[Type_Materiel] ([nom_Type_Materiel],[MTBF])VALUES ('XT3', 2069)
 
-/* Sites */
+INSERT INTO [dbo].[Etage]([id_Etage], [num_Etage],[id_Batiment])VALUES (1, 1, 2)
+
 INSERT INTO [dbo].[Site]([nom_Site],[Adresse]) VALUES ('Site de stockage 1', 'Adresse de stockage 1')
 
-/* Batiments */
 INSERT INTO [dbo].[Batiment]([num_Batiment],[id_Site],[id_Client])VALUES(1,1,1)
 
-/* Clients */
 INSERT INTO [dbo].[Client]([nom_Client])VALUES('Client de test 1')
 
-/* Etages */
-INSERT INTO [dbo].[Etage]([num_Etage],[id_Batiment])VALUES (1, 1)
+INSERT INTO [dbo].[Salle]([id_Batiment])VALUES(2)
+
