@@ -167,5 +167,22 @@ namespace GestionMatosApplication
             FormAddMateriel materiel = new FormAddMateriel();
             materiel.Show();
         }
+
+        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void créerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var myForm = new FormAddClient();
+            myForm.Show();
+        }
+
+        private void créerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var myForm = new FormAddSite();
+            myForm.Show();
+        }
     }
 }
