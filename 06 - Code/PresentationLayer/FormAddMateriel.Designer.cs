@@ -118,6 +118,7 @@
 			// 
 			// cmbSalle
 			// 
+			this.cmbSalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbSalle.FormattingEnabled = true;
 			this.cmbSalle.Location = new System.Drawing.Point(121, 224);
 			this.cmbSalle.Name = "cmbSalle";
@@ -145,6 +146,7 @@
 			// 
 			// cmbEtage
 			// 
+			this.cmbEtage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbEtage.FormattingEnabled = true;
 			this.cmbEtage.Location = new System.Drawing.Point(121, 195);
 			this.cmbEtage.Name = "cmbEtage";
@@ -173,6 +175,7 @@
 			// 
 			// cmbBatiment
 			// 
+			this.cmbBatiment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbBatiment.FormattingEnabled = true;
 			this.cmbBatiment.Location = new System.Drawing.Point(121, 166);
 			this.cmbBatiment.Name = "cmbBatiment";
@@ -305,6 +308,7 @@
 			// 
 			// cmbSite
 			// 
+			this.cmbSite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbSite.FormattingEnabled = true;
 			this.cmbSite.Location = new System.Drawing.Point(121, 137);
 			this.cmbSite.Name = "cmbSite";
@@ -373,6 +377,7 @@
 			// 
 			// cmbMaterialType
 			// 
+			this.cmbMaterialType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbMaterialType.FormattingEnabled = true;
 			this.cmbMaterialType.Location = new System.Drawing.Point(121, 109);
 			this.cmbMaterialType.Name = "cmbMaterialType";
@@ -383,6 +388,7 @@
 			// 
 			// cmbClientName
 			// 
+			this.cmbClientName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbClientName.FormattingEnabled = true;
 			this.cmbClientName.Location = new System.Drawing.Point(121, 79);
 			this.cmbClientName.Name = "cmbClientName";

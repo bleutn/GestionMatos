@@ -92,11 +92,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GestionMatosDataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="GestionMatosDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GestionMatosDataSet2.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ListItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -157,17 +152,6 @@
     </None>
     <None Include="GestionMatosDataSet1.xss">
       <DependentUpon>GestionMatosDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="GestionMatosDataSet2.xsc">
-      <DependentUpon>GestionMatosDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="GestionMatosDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GestionMatosDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GestionMatosDataSet2.xss">
-      <DependentUpon>GestionMatosDataSet2.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

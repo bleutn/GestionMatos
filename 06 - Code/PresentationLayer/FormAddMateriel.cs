@@ -9,6 +9,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GestionMatosApplication.GestionMatosDataSetTableAdapters;
+using GestionMatosApplication;
 
 namespace GestionMatosApplication
 {
@@ -22,13 +24,13 @@ namespace GestionMatosApplication
 		private GestionMatosDataSet.SalleDataTable m_tblSalle = new GestionMatosDataSet.SalleDataTable();
 		private GestionMatosDataSet.MaterielDataTable m_tblMaterial = new GestionMatosDataSet.MaterielDataTable();
 
-		private GestionMatosDataSetTableAdapters.ClientTableAdapter m_adapterClient = new GestionMatosDataSetTableAdapters.ClientTableAdapter();
-		private GestionMatosDataSetTableAdapters.Type_MaterielTableAdapter m_adapterMaterielType = new GestionMatosDataSetTableAdapters.Type_MaterielTableAdapter();
-		private GestionMatosDataSetTableAdapters.SiteTableAdapter m_adapterSite = new GestionMatosDataSetTableAdapters.SiteTableAdapter();
-		private GestionMatosDataSetTableAdapters.BatimentTableAdapter m_adapterBatiment = new GestionMatosDataSetTableAdapters.BatimentTableAdapter();
-		private GestionMatosDataSetTableAdapters.SalleTableAdapter m_adapterSalle = new GestionMatosDataSetTableAdapters.SalleTableAdapter();
-		private GestionMatosDataSetTableAdapters.EtageTableAdapter m_adapterEtage = new GestionMatosDataSetTableAdapters.EtageTableAdapter();
-		private GestionMatosDataSetTableAdapters.MaterielTableAdapter m_adapterMaterials = new GestionMatosDataSetTableAdapters.MaterielTableAdapter();
+		private ClientTableAdapter m_adapterClient = new ClientTableAdapter();
+		private Type_MaterielTableAdapter m_adapterMaterielType = new Type_MaterielTableAdapter();
+		private SiteTableAdapter m_adapterSite = new SiteTableAdapter();
+		private BatimentTableAdapter m_adapterBatiment = new BatimentTableAdapter();
+		private SalleTableAdapter m_adapterSalle = new SalleTableAdapter();
+		private EtageTableAdapter m_adapterEtage = new EtageTableAdapter();
+		private MaterielTableAdapter m_adapterMaterials = new MaterielTableAdapter();
 
 		private List<ListItem> m_clientsList        = new List<ListItem>();
 		private List<ListItem> m_materialtypesList = new List<ListItem>();
@@ -37,14 +39,23 @@ namespace GestionMatosApplication
 		private List<ListItem> m_sallesList = new List<ListItem>();
 		private List<ListItem> m_etagesList = new List<ListItem>();
 
-        string      m_materialName;
-        Guid        m_materialSerial;
-        int         m_client_id;
-        int         m_etage_id;
-        int         m_materialtype_id;
-        string      m_description;
-        DateTime    m_intervention;
-        int         m_mtbf;
+		public bool modifying = false;
+
+        private string m_materialName;
+        private Guid m_materialSerial;
+        private int m_client_id;
+        private int m_etage_id;
+        private int m_materialtype_id;
+        private string  m_description;
+        private DateTime  m_intervention;
+        private int m_mtbf;
+
+		private int m_selectedSiteID = -1;
+		private int m_selectedBatimentID = -1; 
+		private int m_selectedEtageID = -1;
+		private int m_selectedSalleID = -1;
+		private int m_selectedClientID = -1;
+		private int m_selectedTypeMtlID = -1;
 
 		public FormAddMateriel()
 		{
@@ -52,8 +63,8 @@ namespace GestionMatosApplication
 		}
 
         private void FillMTBF()
-        { 
-            if (cmbMaterialType.SelectedIndex != -1)
+        {
+			if (cmbMaterialType.SelectedIndex != -1 && m_materialtypesList.Count > cmbMaterialType.SelectedIndex)
             {
 				int materialTypeIndex = m_materialtypesList[cmbMaterialType.SelectedIndex].ID;
 				m_mtbf = m_tblMaterielType.FindByid_Type_Materiel(materialTypeIndex).MTBF;
@@ -62,51 +73,54 @@ namespace GestionMatosApplication
 
         }
 
-		private void Fill<A, T, Row, Control>(A adapter, T table, List<ListItem> list, Control control, string column1,
-			string column2)
+		private enum Item
 		{
+			CLIENT = 0,
+			SITE,
+			BATIMENT,
+			ETAGE,
+			SALLE,
+			MATERIELTYPE
+		}
+
+		private void FillTable<A, T>(A adapter, T table)
+		{ 
 			MethodInfo methodInfo = typeof(A).GetMethod("Fill");
 			if (methodInfo != null)
 			{
 				object[] data = new object[1];
 				data[0] = table;
 				methodInfo.Invoke((object)adapter, data);
-
-				PropertyInfo rowsProperty = typeof(T).GetProperty("Rows");
-				DataRowCollection rows = rowsProperty.GetValue(table) as DataRowCollection;
-				foreach (Row row in rows)
-				{
-					PropertyInfo name = typeof(Row).GetProperty(column1);
-					PropertyInfo id = typeof(Row).GetProperty(column2);
-					list.Add(new ListItem((string)name.GetValue(row), (int)id.GetValue(row)));
-				}
-
-				PropertyInfo dataSource = typeof(Control).GetProperty("DataSource");
-				if (dataSource != null)
-				{
-					dataSource.SetValue(control,list);
-				}
 			}
 		}
 
-		private void FillBatiment<A, T, Row, Control>(A adapter, T table, List<ListItem> list, Control control, string column1,
-			string column2)
-		{
-			MethodInfo methodInfo = typeof(A).GetMethod("Fill");
-			if (methodInfo != null)
+		private void FillListItem<T, Row, Control>(T table, List<ListItem> list, Control control, string column1,
+			string column2, Item item)
+		{ 
+			PropertyInfo rowsProperty = typeof(T).GetProperty("Rows");
+			DataRowCollection rows = rowsProperty.GetValue(table) as DataRowCollection;
+			if (rows.Count > 0)
 			{
-				object[] data = new object[1];
-				data[0] = table;
-				methodInfo.Invoke((object)adapter, data);
-
-				PropertyInfo rowsProperty = typeof(T).GetProperty("Rows");
-				DataRowCollection rows = rowsProperty.GetValue(table) as DataRowCollection;
 				foreach (Row row in rows)
 				{
 					PropertyInfo name = typeof(Row).GetProperty(column1);
 					PropertyInfo id = typeof(Row).GetProperty(column2);
-					list.Add(new ListItem("Batiment n°" + Convert.ToInt32(name.GetValue(row)),
-						(int)id.GetValue(row)));
+					switch (item)
+					{
+						case Item.BATIMENT:
+							list.Add(new ListItem("Batiment n°" + Convert.ToInt32(name.GetValue(row)), (int)id.GetValue(row)));
+							break;
+						case Item.ETAGE:
+							list.Add(new ListItem("Etage n°" + Convert.ToInt32(name.GetValue(row)), (int)id.GetValue(row)));
+							break;
+						case Item.SALLE:
+							list.Add(new ListItem("Salle n°" + Convert.ToInt32(name.GetValue(row)), (int)id.GetValue(row)));
+							break;
+						default:
+							list.Add(new ListItem((string)name.GetValue(row), (int)id.GetValue(row)));
+							break;
+					}
+
 				}
 
 				PropertyInfo dataSource = typeof(Control).GetProperty("DataSource");
@@ -117,125 +131,198 @@ namespace GestionMatosApplication
 			}
 		}
 
-		private void FillEtage<A, T, Row, Control>(A adapter, T table, List<ListItem> list, Control control, string column1,
-			string column2)
+		private void FillListItemCollection<Row, Control>(EnumerableRowCollection rows, List<ListItem> list, Control control, string column1, string column2, Item item)
 		{
-			MethodInfo methodInfo = typeof(A).GetMethod("Fill");
-			if (methodInfo != null)
+			foreach (Row row in rows)
 			{
-				object[] data = new object[1];
-				data[0] = table;
-				methodInfo.Invoke((object)adapter, data);
-
-				PropertyInfo rowsProperty = typeof(T).GetProperty("Rows");
-				DataRowCollection rows = rowsProperty.GetValue(table) as DataRowCollection;
-				foreach (Row row in rows)
+				PropertyInfo name = typeof(Row).GetProperty(column1);
+				PropertyInfo id = typeof(Row).GetProperty(column2);
+				switch (item)
 				{
-					PropertyInfo name = typeof(Row).GetProperty(column1);
-					PropertyInfo id = typeof(Row).GetProperty(column2);
-					list.Add(new ListItem("Etage n°" + Convert.ToInt32(name.GetValue(row)),
-						(int)id.GetValue(row)));
+					case Item.BATIMENT:
+						list.Add(new ListItem("Batiment n°" + Convert.ToInt32(name.GetValue(row)), (int)id.GetValue(row)));
+						break;
+					case Item.ETAGE:
+						list.Add(new ListItem("Etage n°" + Convert.ToInt32(name.GetValue(row)), (int)id.GetValue(row)));
+						break;
+					case Item.SALLE:
+						list.Add(new ListItem("Salle n°" + Convert.ToInt32(name.GetValue(row)), (int)id.GetValue(row)));
+						break;
+					default:
+						list.Add(new ListItem((string)name.GetValue(row), (int)id.GetValue(row)));
+						break;
 				}
 
-				PropertyInfo dataSource = typeof(Control).GetProperty("DataSource");
-				if (dataSource != null)
-				{
-					dataSource.SetValue(control, list);
-				}
+			}
+
+			PropertyInfo dataSource = typeof(Control).GetProperty("DataSource");
+			if (dataSource != null)
+			{
+				dataSource.SetValue(control, list);
 			}
 		}
 
-		private void FillSalle<A, T, Row, Control>(A adapter, T table, List<ListItem> list, Control control, string column1,
-	string column2)
+		private void FillSelectedIndex<Control>(List<ListItem> list, Control control, int index)
 		{
-			MethodInfo methodInfo = typeof(A).GetMethod("Fill");
-			if (methodInfo != null)
+			PropertyInfo selectIdxProperty = typeof(Control).GetProperty("SelectedIndex");
+			if (selectIdxProperty != null)
 			{
-				object[] data = new object[1];
-				data[0] = table;
-				methodInfo.Invoke((object)adapter, data);
-
-				PropertyInfo rowsProperty = typeof(T).GetProperty("Rows");
-				DataRowCollection rows = rowsProperty.GetValue(table) as DataRowCollection;
-				foreach (Row row in rows)
-				{
-					PropertyInfo name = typeof(Row).GetProperty(column1);
-					PropertyInfo id = typeof(Row).GetProperty(column2);
-					list.Add(new ListItem("Salle n°" + Convert.ToInt32(name.GetValue(row)),
-						(int)id.GetValue(row)));
-				}
-
-				PropertyInfo dataSource = typeof(Control).GetProperty("DataSource");
-				if (dataSource != null)
-				{
-					dataSource.SetValue(control, list);
-				}
+				index = list[(int)selectIdxProperty.GetValue(control)].ID;
 			}
+		}
+
+		protected void FillTables()
+		{
+			//fetch all entities data
+			FillTable<ClientTableAdapter, GestionMatosDataSet.ClientDataTable>(m_adapterClient, m_tblClient);
+			FillTable<Type_MaterielTableAdapter, GestionMatosDataSet.Type_MaterielDataTable>(m_adapterMaterielType, m_tblMaterielType);
+			FillTable<SiteTableAdapter, GestionMatosDataSet.SiteDataTable>(m_adapterSite, m_tblSites);
+			FillTable<BatimentTableAdapter, GestionMatosDataSet.BatimentDataTable>(m_adapterBatiment, m_tblBatiments);
+			FillTable<EtageTableAdapter, GestionMatosDataSet.EtageDataTable>(m_adapterEtage, m_tblEtage);
+			FillTable<SalleTableAdapter, GestionMatosDataSet.SalleDataTable>(m_adapterSalle, m_tblSalle);
+		}
+
+		protected void SelectClient()
+		{
+			m_selectedClientID = m_clientsList.Count > cmbClientName.SelectedIndex ? 
+				m_clientsList[cmbClientName.SelectedIndex].ID : -1;
+		}
+
+		protected void SelectMtlType()
+		{
+			m_selectedTypeMtlID = m_materialtypesList.Count > cmbMaterialType.SelectedIndex ? 
+				m_materialtypesList[cmbMaterialType.SelectedIndex].ID : -1; 
+		}
+
+		protected void SelectBuilding()
+		{
+			m_selectedBatimentID = m_batimentsList.Count > cmbBatiment.SelectedIndex ?
+				m_batimentsList[cmbBatiment.SelectedIndex].ID : -1;
+		}
+
+		protected void SelectSite()
+		{
+			m_selectedSiteID = m_sitesList.Count >cmbSite.SelectedIndex ?
+				m_sitesList[cmbSite.SelectedIndex].ID : -1;
+		}
+
+		protected void SelectFloor()
+		{
+			m_selectedEtageID = m_etagesList.Count > cmbEtage.SelectedIndex ?
+				m_etagesList[cmbEtage.SelectedIndex].ID : -1;
+		}
+
+		protected void SelectRoom()
+		{
+			m_selectedSalleID = m_sallesList.Count > cmbSalle.SelectedIndex? 
+				m_sallesList[cmbSalle.SelectedIndex].ID : -1;
+		}
+
+		protected void FetchClient()
+		{
+			m_clientsList.Clear();
+			m_clientsList = new List<ListItem>();
+			foreach (GestionMatosDataSet.ClientRow row in m_tblClient.Rows)
+			{
+				m_clientsList.Add(new ListItem(row.nom_Client, row.id_Client));
+			}
+			cmbClientName.DataSource = m_clientsList;
+			cmbClientName.SelectedIndex = 0;
+			m_selectedClientID = m_clientsList[cmbClientName.SelectedIndex].ID;
+		}
+
+		protected void FetchMaterialTypes()
+		{
+			FillListItem<GestionMatosDataSet.Type_MaterielDataTable, GestionMatosDataSet.Type_MaterielRow, ComboBox>(m_tblMaterielType, m_materialtypesList, cmbMaterialType, "nom_Type_Materiel", "id_Type_Materiel", Item.MATERIELTYPE);
+			cmbMaterialType.SelectedIndex = 0;
+			SelectMtlType();
+		}
+
+		protected void FetchBuildings()
+		{
+			m_batimentsList.Clear();
+			m_batimentsList = new List<ListItem>();
+			EnumerableRowCollection batimentRows = m_tblBatiments.Where(e => e.id_Site == m_selectedSiteID);
+			foreach (GestionMatosDataSet.BatimentRow row in batimentRows)
+			{
+				m_batimentsList.Add(new ListItem("Batiment n°" + Convert.ToInt32(row.num_Batiment), row.id_Batiment));
+			}
+			cmbBatiment.DataSource = m_batimentsList;
+			cmbBatiment.SelectedIndex = 0;
+			m_selectedBatimentID = m_batimentsList[cmbBatiment.SelectedIndex].ID;
+		}
+
+		protected void FetchSite()
+		{
+			m_sitesList.Clear();
+			m_sitesList = new List<ListItem>();
+			EnumerableRowCollection sitesByClientID = m_tblBatiments.Where(b => b.id_Client == m_selectedClientID);
+
+			foreach (GestionMatosDataSet.BatimentRow row in sitesByClientID)
+			{
+				GestionMatosDataSet.SiteRow siteRow = m_tblSites.Where(s => s.id_Site == row.id_Site).Single();
+				m_sitesList.Add(new ListItem(siteRow.nom_Site, siteRow.id_Site));
+			}
+			m_sitesList.GroupBy(s => s.ID);
+			cmbSite.DataSource = m_sitesList;
+			cmbSite.SelectedIndex = 0;
+			m_selectedSiteID = m_sitesList[cmbSite.SelectedIndex].ID;
+		}
+
+		protected void FetchFloors()
+		{
+			m_etagesList.Clear();
+			m_etagesList = new List<ListItem>();
+			EnumerableRowCollection etageRows = m_tblEtage.Where(e => e.id_Batiment == m_selectedBatimentID);
+			foreach (GestionMatosDataSet.EtageRow row in etageRows)
+			{
+				m_etagesList.Add(new ListItem("Etage n°" + Convert.ToInt32(row.num_Etage), row.id_Etage));
+			}
+			cmbEtage.DataSource = m_etagesList;
+			cmbEtage.SelectedIndex = 0;
+			m_selectedEtageID = m_etagesList[cmbEtage.SelectedIndex].ID;
+		}
+
+		protected void FetchRooms()
+		{
+			m_sallesList.Clear();
+			m_sallesList = new List<ListItem>();
+			EnumerableRowCollection salleRows = m_tblSalle.Where(e => e.id_Etage == m_selectedEtageID);
+			foreach (GestionMatosDataSet.SalleRow row in salleRows)
+			{
+				m_sallesList.Add(new ListItem(row.nom_Salle, row.id_Salle));
+			}
+			cmbSalle.DataSource = m_sallesList;
+			cmbSalle.SelectedIndex = 0;
+			m_selectedSalleID = m_sallesList[cmbSalle.SelectedIndex].ID;
+		}
+
+		protected void FillAddingIHM()
+		{
+			FillTables();
+			FetchMaterialTypes();
+			FetchClient();
+		}
+		
+		protected void FillModifyingIHM()
+		{ 
+			
 		}
 
 		private void FormAddMateriel_Load(object sender, EventArgs e)
 		{
 			try
 			{
-				Fill<GestionMatosDataSetTableAdapters.ClientTableAdapter,
-					GestionMatosDataSet.ClientDataTable, 
-					GestionMatosDataSet.ClientRow, 
-					ComboBox>(m_adapterClient,
-								m_tblClient, 
-								m_clientsList, 
-								cmbClientName, 
-								"nom_Client", 
-								"id_Client");
+				if (modifying)
+				{
+					FillModifyingIHM();
+				}
+				else
+				{
+					FillAddingIHM();
+				}
+
 				
-				Fill<GestionMatosDataSetTableAdapters.Type_MaterielTableAdapter,
-					GestionMatosDataSet.Type_MaterielDataTable,
-					GestionMatosDataSet.Type_MaterielRow,
-					ComboBox>(m_adapterMaterielType,
-								m_tblMaterielType,
-								m_materialtypesList,
-								cmbMaterialType,
-								"nom_Type_Materiel",
-								"id_Type_Materiel");
-
-				Fill<GestionMatosDataSetTableAdapters.SiteTableAdapter,
-						GestionMatosDataSet.SiteDataTable,
-						GestionMatosDataSet.SiteRow,
-						ComboBox>(m_adapterSite,
-									m_tblSites,
-									m_sitesList,
-									cmbSite,
-									"nom_Site",
-									"id_Site");
-
-				FillBatiment<GestionMatosDataSetTableAdapters.BatimentTableAdapter,
-						GestionMatosDataSet.BatimentDataTable,
-						GestionMatosDataSet.BatimentRow,
-						ComboBox>(m_adapterBatiment,
-									m_tblBatiments,
-									m_batimentsList,
-									cmbBatiment,
-									"num_Batiment",
-									"id_Batiment");
-
-				FillEtage<GestionMatosDataSetTableAdapters.EtageTableAdapter,
-						GestionMatosDataSet.EtageDataTable,
-						GestionMatosDataSet.EtageRow,
-						ComboBox>(m_adapterEtage,
-									m_tblEtage,
-									m_etagesList,
-									cmbEtage,
-									"num_Etage",
-									"id_Etage");
-
-				FillSalle<GestionMatosDataSetTableAdapters.SalleTableAdapter,
-						GestionMatosDataSet.SalleDataTable,
-						GestionMatosDataSet.SalleRow,
-						ComboBox>(m_adapterSalle,
-									m_tblSalle,
-									m_sallesList,
-									cmbSalle,
-									"id_Salle",
-									"id_Salle");
 			}
 			catch (SqlException sqlex)
 			{
@@ -249,7 +336,8 @@ namespace GestionMatosApplication
 
         private void cmbClientName_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+			m_selectedClientID = ((ListItem)cmbClientName.SelectedItem).ID;
+			FetchSite();
         }
 
         private void cmbMaterialType_SelectedValueChanged(object sender, EventArgs e)
@@ -298,6 +386,8 @@ namespace GestionMatosApplication
 					m_client_id,
 					m_etage_id,
 					m_intervention);
+
+				Close();
 			}
             catch (SqlException sqlex)
             {
@@ -329,17 +419,20 @@ namespace GestionMatosApplication
 
 		private void cmbSite_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
+			m_selectedSiteID = ((ListItem)cmbSite.SelectedItem).ID;
+			FetchBuildings();
 		}
 
 		private void cmbBatiment_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
+			m_selectedBatimentID = ((ListItem)cmbBatiment.SelectedItem).ID;
+			FetchFloors();
 		}
 
 		private void cmbEtage_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
+			m_selectedEtageID = ((ListItem)cmbEtage.SelectedItem).ID;
+			FetchRooms();
 		}
 	}
 }

@@ -82,24 +82,19 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.Interventions = new System.Windows.Forms.TabPage();
 			this.Sites = new System.Windows.Forms.TabPage();
-			this.gestionMatosDataSet11 = new GestionMatosApplication.GestionMatosDataSet1();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.materielTableAdapter = new GestionMatosApplication.GestionMatosDataSet1TableAdapters.MaterielTableAdapter();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.materielTableAdapter1 = new GestionMatosApplication.GestionMatosDataSetTableAdapters.MaterielTableAdapter();
 			this.tableAdapterManager = new GestionMatosApplication.GestionMatosDataSetTableAdapters.TableAdapterManager();
-			this.materielBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.gestionMatosDataSet1 = new GestionMatosApplication.GestionMatosDataSet();
 			this.gestionMatosDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.gestionMatosDataSet11BindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.gestionMatosDataSet2 = new GestionMatosApplication.GestionMatosDataSet2();
-			this.materielBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-			this.materielTableAdapter2 = new GestionMatosApplication.GestionMatosDataSet2TableAdapters.MaterielTableAdapter();
+			this.gestionMatosDataSet11 = new GestionMatosApplication.GestionMatosDataSet1();
+			this.getMaterialsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.getMaterialsTableAdapter = new GestionMatosApplication.GestionMatosDataSet1TableAdapters.GetMaterialsTableAdapter();
 			this.idMaterielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.guidMaterielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.idtypeMaterielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.idClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.nomClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.idEtageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.idtypeMaterialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.datedernierInterventionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.GestionMatosDataSetBindingSource)).BeginInit();
@@ -108,14 +103,11 @@
 			this.Client.SuspendLayout();
 			this.Materiel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet11)).BeginInit();
 			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.materielBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1BindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet11BindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.materielBindingSource1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet11)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.getMaterialsBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -419,30 +411,33 @@
 			this.add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.add.Location = new System.Drawing.Point(0, 56);
 			this.add.Name = "add";
-			this.add.Size = new System.Drawing.Size(109, 31);
+			this.add.Size = new System.Drawing.Size(109, 20);
 			this.add.TabIndex = 3;
 			this.add.Text = "Ajouter";
 			this.add.UseVisualStyleBackColor = true;
+			this.add.Click += new System.EventHandler(this.add_Click_1);
 			// 
 			// delete
 			// 
 			this.delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.delete.Location = new System.Drawing.Point(0, 130);
+			this.delete.Location = new System.Drawing.Point(0, 108);
 			this.delete.Name = "delete";
-			this.delete.Size = new System.Drawing.Size(109, 31);
+			this.delete.Size = new System.Drawing.Size(109, 20);
 			this.delete.TabIndex = 5;
 			this.delete.Text = "Supprimer";
 			this.delete.UseVisualStyleBackColor = true;
+			this.delete.Click += new System.EventHandler(this.delete_Click);
 			// 
 			// update
 			// 
 			this.update.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.update.Location = new System.Drawing.Point(0, 93);
+			this.update.Location = new System.Drawing.Point(0, 82);
 			this.update.Name = "update";
-			this.update.Size = new System.Drawing.Size(109, 31);
+			this.update.Size = new System.Drawing.Size(109, 20);
 			this.update.TabIndex = 4;
 			this.update.Text = "Modifier";
 			this.update.UseVisualStyleBackColor = true;
+			this.update.Click += new System.EventHandler(this.update_Click);
 			// 
 			// label2
 			// 
@@ -521,19 +516,19 @@
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idMaterielDataGridViewTextBoxColumn,
             this.guidMaterielDataGridViewTextBoxColumn,
-            this.idtypeMaterielDataGridViewTextBoxColumn,
-            this.idClientDataGridViewTextBoxColumn,
+            this.nomClientDataGridViewTextBoxColumn,
             this.idEtageDataGridViewTextBoxColumn,
+            this.idtypeMaterialDataGridViewTextBoxColumn,
             this.datedernierInterventionDataGridViewTextBoxColumn});
-			this.dataGridView1.DataSource = this.materielBindingSource1;
+			this.dataGridView1.DataSource = this.getMaterialsBindingSource;
 			this.dataGridView1.Location = new System.Drawing.Point(3, 34);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.RowHeadersWidth = 4;
 			this.dataGridView1.Size = new System.Drawing.Size(683, 417);
 			this.dataGridView1.TabIndex = 7;
 			this.dataGridView1.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValidated);
 			this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+			this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
 			// 
 			// label3
 			// 
@@ -564,11 +559,6 @@
 			this.Sites.Text = "Sites";
 			this.Sites.UseVisualStyleBackColor = true;
 			// 
-			// gestionMatosDataSet11
-			// 
-			this.gestionMatosDataSet11.DataSetName = "GestionMatosDataSet1";
-			this.gestionMatosDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
 			// panel1
 			// 
 			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -581,10 +571,6 @@
 			this.panel1.Size = new System.Drawing.Size(716, 525);
 			this.panel1.TabIndex = 9;
 			// 
-			// materielTableAdapter
-			// 
-			this.materielTableAdapter.ClearBeforeFill = true;
-			// 
 			// tabPage1
 			// 
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -595,10 +581,6 @@
 			this.tabPage1.Text = "Site de Stockage";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
-			// materielTableAdapter1
-			// 
-			this.materielTableAdapter1.ClearBeforeFill = true;
-			// 
 			// tableAdapterManager
 			// 
 			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
@@ -606,17 +588,10 @@
 			this.tableAdapterManager.ClientTableAdapter = null;
 			this.tableAdapterManager.EtageTableAdapter = null;
 			this.tableAdapterManager.InterventionTableAdapter = null;
-			this.tableAdapterManager.MaterielTableAdapter = this.materielTableAdapter1;
 			this.tableAdapterManager.SalleTableAdapter = null;
 			this.tableAdapterManager.SiteTableAdapter = null;
 			this.tableAdapterManager.Type_MaterielTableAdapter = null;
 			this.tableAdapterManager.UpdateOrder = GestionMatosApplication.GestionMatosDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-			// 
-			// materielBindingSource
-			// 
-			this.materielBindingSource.DataMember = "Materiel";
-			this.materielBindingSource.DataSource = this.gestionMatosDataSet1;
-			this.materielBindingSource.CurrentChanged += new System.EventHandler(this.materielBindingSource_CurrentChanged);
 			// 
 			// gestionMatosDataSet1
 			// 
@@ -628,24 +603,19 @@
 			this.gestionMatosDataSet1BindingSource.DataSource = this.gestionMatosDataSet1;
 			this.gestionMatosDataSet1BindingSource.Position = 0;
 			// 
-			// gestionMatosDataSet11BindingSource
+			// gestionMatosDataSet11
 			// 
-			this.gestionMatosDataSet11BindingSource.DataSource = this.gestionMatosDataSet11;
-			this.gestionMatosDataSet11BindingSource.Position = 0;
+			this.gestionMatosDataSet11.DataSetName = "GestionMatosDataSet1";
+			this.gestionMatosDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
-			// gestionMatosDataSet2
+			// getMaterialsBindingSource
 			// 
-			this.gestionMatosDataSet2.DataSetName = "GestionMatosDataSet2";
-			this.gestionMatosDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			this.getMaterialsBindingSource.DataMember = "GetMaterials";
+			this.getMaterialsBindingSource.DataSource = this.gestionMatosDataSet11;
 			// 
-			// materielBindingSource1
+			// getMaterialsTableAdapter
 			// 
-			this.materielBindingSource1.DataMember = "Materiel";
-			this.materielBindingSource1.DataSource = this.gestionMatosDataSet2;
-			// 
-			// materielTableAdapter2
-			// 
-			this.materielTableAdapter2.ClearBeforeFill = true;
+			this.getMaterialsTableAdapter.ClearBeforeFill = true;
 			// 
 			// idMaterielDataGridViewTextBoxColumn
 			// 
@@ -661,19 +631,12 @@
 			this.guidMaterielDataGridViewTextBoxColumn.Name = "guidMaterielDataGridViewTextBoxColumn";
 			this.guidMaterielDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
-			// idtypeMaterielDataGridViewTextBoxColumn
+			// nomClientDataGridViewTextBoxColumn
 			// 
-			this.idtypeMaterielDataGridViewTextBoxColumn.DataPropertyName = "id_type_Materiel";
-			this.idtypeMaterielDataGridViewTextBoxColumn.HeaderText = "Type de matériel";
-			this.idtypeMaterielDataGridViewTextBoxColumn.Name = "idtypeMaterielDataGridViewTextBoxColumn";
-			this.idtypeMaterielDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// idClientDataGridViewTextBoxColumn
-			// 
-			this.idClientDataGridViewTextBoxColumn.DataPropertyName = "id_Client";
-			this.idClientDataGridViewTextBoxColumn.HeaderText = "Client associé";
-			this.idClientDataGridViewTextBoxColumn.Name = "idClientDataGridViewTextBoxColumn";
-			this.idClientDataGridViewTextBoxColumn.ReadOnly = true;
+			this.nomClientDataGridViewTextBoxColumn.DataPropertyName = "nom_Client";
+			this.nomClientDataGridViewTextBoxColumn.HeaderText = "Client associé";
+			this.nomClientDataGridViewTextBoxColumn.Name = "nomClientDataGridViewTextBoxColumn";
+			this.nomClientDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
 			// idEtageDataGridViewTextBoxColumn
 			// 
@@ -681,6 +644,13 @@
 			this.idEtageDataGridViewTextBoxColumn.HeaderText = "Etage de stockage";
 			this.idEtageDataGridViewTextBoxColumn.Name = "idEtageDataGridViewTextBoxColumn";
 			this.idEtageDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// idtypeMaterialDataGridViewTextBoxColumn
+			// 
+			this.idtypeMaterialDataGridViewTextBoxColumn.DataPropertyName = "id_type_Material";
+			this.idtypeMaterialDataGridViewTextBoxColumn.HeaderText = "Type de matériel";
+			this.idtypeMaterialDataGridViewTextBoxColumn.Name = "idtypeMaterialDataGridViewTextBoxColumn";
+			this.idtypeMaterialDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
 			// datedernierInterventionDataGridViewTextBoxColumn
 			// 
@@ -711,15 +681,12 @@
 			this.Materiel.ResumeLayout(false);
 			this.Materiel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet11)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.materielBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1BindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet11BindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.materielBindingSource1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet11)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.getMaterialsBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -782,23 +749,22 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.BindingSource gestionMatosDataSet1BindingSource;
 		private GestionMatosDataSet gestionMatosDataSet1;
-		private GestionMatosDataSet1 gestionMatosDataSet11;
-		private System.Windows.Forms.BindingSource materielBindingSource;
-		private GestionMatosDataSet1TableAdapters.MaterielTableAdapter materielTableAdapter;
 		private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage Sites;
-        private System.Windows.Forms.TabPage tabPage1;
-		private GestionMatosDataSetTableAdapters.MaterielTableAdapter materielTableAdapter1;
+		private System.Windows.Forms.TabPage tabPage1;
 		private GestionMatosDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-		private System.Windows.Forms.BindingSource gestionMatosDataSet11BindingSource;
-		private GestionMatosDataSet2 gestionMatosDataSet2;
-		private System.Windows.Forms.BindingSource materielBindingSource1;
-		private GestionMatosDataSet2TableAdapters.MaterielTableAdapter materielTableAdapter2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn column1DataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn column2DataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn column3DataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn column4DataGridViewTextBoxColumn;
+		private GestionMatosDataSet1 gestionMatosDataSet11;
+		private System.Windows.Forms.BindingSource getMaterialsBindingSource;
+		private GestionMatosDataSet1TableAdapters.GetMaterialsTableAdapter getMaterialsTableAdapter;
 		private System.Windows.Forms.DataGridViewTextBoxColumn idMaterielDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn guidMaterielDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn idtypeMaterielDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn idClientDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn nomClientDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn idEtageDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn idtypeMaterialDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn datedernierInterventionDataGridViewTextBoxColumn;
     }
 }

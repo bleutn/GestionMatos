@@ -126,9 +126,8 @@ namespace GestionMatosApplication
 
         private void Form1_Load(object sender, EventArgs e)
         {
-			// TODO: This line of code loads data into the 'gestionMatosDataSet2.Materiel' table. You can move, or remove it, as needed.
-			this.materielTableAdapter2.Fill(this.gestionMatosDataSet2.Materiel);
-			// TODO: This line of code loads data into the 'gestionMatosDataSet11.Materiel' table. You can move, or remove it, as needed.
+			// TODO: This line of code loads data into the 'gestionMatosDataSet11.GetMaterials' table. You can move, or remove it, as needed.
+			this.getMaterialsTableAdapter.Fill(this.gestionMatosDataSet11.GetMaterials);
             WindowState = FormWindowState.Maximized;
 			
         }
@@ -187,7 +186,6 @@ namespace GestionMatosApplication
 		{
 			try
 			{
-				this.materielTableAdapter1.FillBy(this.gestionMatosDataSet1.Materiel);
 			}
 			catch (System.Exception ex)
 			{
@@ -203,15 +201,53 @@ namespace GestionMatosApplication
 
 		private void dataGridView1_CellValidated(object sender, DataGridViewCellEventArgs e)
 		{
-			string typeMaterialName;
-			string clientName;
-			string etageStockage;
+			//DataRowView dataRowView = dataGridView1.Rows[e.RowIndex].DataBoundItem as DataRowView;
+			//GestionMatosDataSet2.MaterielRow materialRow = dataRowView.Row as GestionMatosDataSet2.MaterielRow;
+			//if (materialRow != null)
+			//{
+			//	m_adapterClient.Fill(m_tblClient);
+			//	m_adapterEtage.Fill(m_tblEtage);
+			//	m_adapterMaterielType.Fill(m_tblMaterielType);
+			//	int clientID = (int)materialRow["id_Client"];
+			//	int etageID = (int)materialRow["id_Etage"];
+			//	int typeMaterialID = (int)materialRow["id_type_Materiel"];
+			//	GestionMatosDataSet.ClientRow clientData = m_tblClient.Where(item => item.id_Client == clientID).Single() as GestionMatosDataSet.ClientRow;
+			//	GestionMatosDataSet.Type_MaterielRow typeMtlData = m_tblMaterielType.Where(item => item.id_Type_Materiel == typeMaterialID).Single() as GestionMatosDataSet.Type_MaterielRow;
+			//	GestionMatosDataSet.EtageRow etageData = m_tblEtage.Where(item => item.id_Etage == etageID).Single() as GestionMatosDataSet.EtageRow;
+			//	dataGridView1.Rows[e.RowIndex].Cells["idClientDataGridViewTextBoxColumn"].ValueType = "".GetType();
+			//	dataGridView1.Rows[e.RowIndex].Cells["idClientDataGridViewTextBoxColumn"].Value = clientData.nom_Client;
+			//	dataGridView1.Rows[e.RowIndex].Cells["idEtageDataGridViewTextBoxColumn"].Value = "Etage n°" + etageData.num_Etage.ToString();
+			//	dataGridView1.Rows[e.RowIndex].Cells["idtypeMaterielDataGridViewTextBoxColumn"].Value = typeMtlData.nom_Type_Materiel;
+			//}
+		}
 
-			string cellValue = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].FormattedValue.ToString();
-			if (cellValue.Contains('G') || cellValue.Contains('g'))
-			{
-				//dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "abc";
-			}
+		private void getMaterialsBindingSource_CurrentChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void add_Click_1(object sender, EventArgs e)
+		{
+			FormAddMateriel materiel = new FormAddMateriel();
+			materiel.Show();
+			materiel.modifying = false;
+		}
+
+		private void update_Click(object sender, EventArgs e)
+		{
+			FormAddMateriel materiel = new FormAddMateriel();
+			materiel.Show();
+			materiel.modifying = true;
+		}
+
+		private void delete_Click(object sender, EventArgs e)
+		{
+
 		}
     }
 }
