@@ -61,3 +61,7 @@ C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\De
 C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.ClientUserControl.resources
 C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddEtage.resources
 C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddSalle.resources
+C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddEtage.resources
+C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddSalle.resources
+C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormUpdateMateriel.resources
+C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControlMaterial.resources

@@ -26,10 +26,10 @@ namespace GestionMatosApplication
 		private GestionMatosDataSet.MaterielDataTable m_tblMaterial = new GestionMatosDataSet.MaterielDataTable();
 		private MaterielTableAdapter m_adapterMaterials = new MaterielTableAdapter();
 
-        private GestionMatosDataSetTableAdapters.BatimentTableAdapter m_adapterBatiment = new GestionMatosDataSetTableAdapters.BatimentTableAdapter();
-        private GestionMatosDataSet.BatimentDataTable m_tblBatiment = new GestionMatosDataSet.BatimentDataTable();
-        private GestionMatosDataSetTableAdapters.SiteTableAdapter m_adapterSite = new GestionMatosDataSetTableAdapters.SiteTableAdapter();
-        private GestionMatosDataSet.SiteDataTable m_tblSite = new GestionMatosDataSet.SiteDataTable();
+		private bool addingMaterial = false;
+		private bool updatingMaterial = false;
+
+		private GestionMatosDataSet1.GetMaterialsRow m_selectedMaterial;
 
         public FormHomepage()
         {
@@ -68,7 +68,7 @@ namespace GestionMatosApplication
             try
             {
 
-                /*objListItem = (ListBox)listClients.SelectedItem;
+                objListItem = (ListBox)listClients.SelectedItem;
                 if (objListItem == null)
                     return;
 
@@ -133,12 +133,6 @@ namespace GestionMatosApplication
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'select_client.Site' table. You can move, or remove it, as needed.
-            this.siteTableAdapter.Fill(this.select_client.Site);
-            // TODO: This line of code loads data into the 'select_client.Batiment' table. You can move, or remove it, as needed.
-            this.batimentTableAdapter.Fill(this.select_client.Batiment);
-            // TODO: This line of code loads data into the 'select_client.Client' table. You can move, or remove it, as needed.
-            this.clientTableAdapter.Fill(this.select_client.Client);
 			// TODO: This line of code loads data into the 'gestionMatosDataSet1.GetMaterials' table. You can move, or remove it, as needed.
 			this.getMaterialsTableAdapter.Fill(this.gestionMatosDataSet1.GetMaterials);
 			// TODO: This line of code loads data into the 'gestionMatosDataSet2.GetMaterials' table. You can move, or remove it, as needed.
@@ -246,16 +240,25 @@ namespace GestionMatosApplication
 
 		private void add_Click_1(object sender, EventArgs e)
 		{
-			FormAddMateriel materiel = new FormAddMateriel(this);
-			materiel.Show();
-			materiel.modifying = false;
+			if (!addingMaterial && !updatingMaterial)
+			{
+				FormAddMateriel materiel = new FormAddMateriel(this);
+				materiel.Show();
+				materiel.modifying = false;
+				addingMaterial = true;
+			}
+
 		}
 
 		private void update_Click(object sender, EventArgs e)
 		{
-			FormAddMateriel materiel = new FormAddMateriel(this);
-			materiel.Show();
-			materiel.modifying = true;
+			if (!updatingMaterial)
+			{
+				FormUpdateMateriel materiel = new FormUpdateMateriel(this);
+				materiel.Show();
+				materiel.modifying = true;
+				updatingMaterial = true;
+			}
 		}
 
 		private void delete_Click(object sender, EventArgs e)
@@ -271,21 +274,11 @@ namespace GestionMatosApplication
 
 		private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
 		{
+			GestionMatosDataSet1.GetMaterialsRow materialData = dataGridView1.Rows[e.RowIndex].DataBoundItem as GestionMatosDataSet1.GetMaterialsRow;
+			if (e.ColumnIndex == 0 && materialData != null)
+			{
+				m_selectedMaterial = materialData;
+			}
 		}
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Select_client.ClientRow clientData = (Select_client.ClientRow)dataGridView1.Rows[e.RowIndex].DataBoundItem;
-            if (clientData != null)
-            {
-                m_adapterBatiment.Fill(m_tblBatiment);
-                //clientData.id_Client = m_tblBatiment.id_ClientColumn.
-            }
-        }
     }
 }

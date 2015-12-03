@@ -105,6 +105,9 @@
     <Compile Include="FormAddClient.Designer.cs">
       <DependentUpon>FormAddClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUpdateMateriel.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GestionMatosDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,7 +147,9 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ClientUserControl.resx" />
+    <Compile Include="UserControlMaterial.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <EmbeddedResource Include="FormAddEtage.resx" />
     <EmbeddedResource Include="FormAddSalle.resx" />
     <EmbeddedResource Include="FormHomepage.resx">
@@ -165,6 +170,9 @@
     <EmbeddedResource Include="FormAddTypeMateriel.resx">
       <DependentUpon>FormAddTypeMateriel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdateMateriel.resx">
+      <DependentUpon>FormUpdateMateriel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -176,6 +184,9 @@
     </Compile>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlMaterial.resx">
+      <DependentUpon>UserControlMaterial.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Client.xsc">
       <DependentUpon>Client.xsd</DependentUpon>
