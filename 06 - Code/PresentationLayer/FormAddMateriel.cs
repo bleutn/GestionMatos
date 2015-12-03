@@ -71,19 +71,9 @@ namespace GestionMatosApplication
 				int materialTypeIndex = m_materialtypesList[cmbMaterialType.SelectedIndex].ID;
 				m_mtbf = m_tblMaterielType.FindByid_Type_Materiel(materialTypeIndex).MTBF;
 				txbMTBF.Text = m_mtbf.ToString();
-
-				FillLimitInterventionDate();
             }
 
         }
-
-		private void FillLimitInterventionDate()
-		{
-			dateLimitIntervention.Value = DateTime.Today.AddDays((double)m_mtbf);
-			dateLimitIntervention.Enabled = false;
-			dateIntervention.MaxDate = dateLimitIntervention.Value;
-			dateIntervention.MinDate = DateTime.Today;
-		}
 
 		private enum Item
 		{
@@ -210,7 +200,6 @@ namespace GestionMatosApplication
 				return;
 			}
 			m_selectedClientID = -1;
-			cmbClientName.DataSource = null;
 		}
 
 		protected void FetchMaterialTypes()
@@ -229,7 +218,6 @@ namespace GestionMatosApplication
 				return;
 			}
 			m_selectedTypeMtlID = -1;
-			cmbMaterialType.DataSource = null;
 		}
 
 		protected void FetchBuildings()
@@ -252,34 +240,6 @@ namespace GestionMatosApplication
 				}
 				m_selectedBatimentID = -1;
 			}
-			ClearBuildings();
-		}
-
-		protected void ClearSite()
-		{
-			cmbSite.DataSource = null;
-			cmbSite.Items.Clear(); 
-			ClearBuildings();
-		}
-
-		protected void ClearBuildings()
-		{
-			cmbBatiment.DataSource = null;
-			cmbBatiment.Items.Clear(); 
-			ClearFloors();
-		}
-
-		protected void ClearFloors()
-		{
-			cmbEtage.DataSource = null;
-			cmbEtage.Items.Clear(); 
-			ClearRooms();
-		}
-
-		protected void ClearRooms()
-		{
-			cmbSalle.DataSource = null;
-			cmbSalle.Items.Clear(); 
 		}
 
 		protected void FetchSite()
@@ -304,7 +264,6 @@ namespace GestionMatosApplication
 					return;
 				}
 				m_selectedSiteID = -1;
-				ClearSite();
 			}
 		}
 
@@ -327,7 +286,6 @@ namespace GestionMatosApplication
 					return;
 				}
 				m_selectedEtageID = -1;
-				ClearFloors();
 			}
 		}
 
@@ -350,7 +308,6 @@ namespace GestionMatosApplication
 					return;
 				}
 				m_selectedSalleID = -1;
-				ClearRooms();
 			}
 		}
 
@@ -434,90 +391,38 @@ namespace GestionMatosApplication
 
         }
 
-		private bool ValidateMaterial()
-		{
-			bool CanValidate = true;
-			string warningCaption = "Warning: ajout de matériel";
-			string warningMsg = "";
-
-			if (txbMaterialName.Text == null || txbMaterialName.Text == "")
-			{
-				CanValidate = false;
-				warningMsg = "Le nom de matériel est non valide";
-			}
-			else if (cmbClientName.Items.Count > 0 && cmbClientName.SelectedIndex == -1)
-			{
-				CanValidate = false;
-				warningMsg = "Selectionner un client valide";
-			}
-			else if (cmbMaterialType.SelectedIndex == -1)
-			{
-				CanValidate = false;
-				warningMsg = "Selectionner un type de matériel";
-			}
-			else if (cmbSite.SelectedIndex == -1)
-			{
-				CanValidate = false;
-				warningMsg = "Aucun site sélectionné - sélectionner un client associé à un site";
-			}
-			else if (m_selectedBatimentID == -1)
-			{
-				CanValidate = false;
-				warningMsg = "Aucun batiment sélectionné - sélectionner un site associé à un batiment";
-			}
-			else if (m_selectedEtageID == -1)
-			{
-				CanValidate = false;
-				warningMsg = "Aucun étage sélectionné - sélectionner un batiment associé à un étage";
-			}
-			else if (m_selectedSalleID == -1)
-			{
-				CanValidate = false;
-				warningMsg = "Aucun salle sélectionnée - sélectionner un étage associé à une salle"; ;
-			}
-			
-			if (!CanValidate)
-			{
-				MessageBox.Show(warningMsg, warningCaption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-			}
-			return CanValidate;
-		}
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-				if (ValidateMaterial())
+                m_materialName = txbMaterialName.Text;
+				m_materialSerial = Guid.NewGuid();
+                m_client_id = ((ListItem)cmbClientName.SelectedItem).ID;
+                m_etage_id = ((ListItem)cmbSite.SelectedItem).ID;
+                m_materialtype_id = ((ListItem)cmbMaterialType.SelectedItem).ID;
+                m_description = txbDesc.Text;
+                m_mtbf = Convert.ToInt32(txbMTBF.Text);
+				m_intervention = dateIntervention.Value;
+				m_description = txbDesc.Text;
+
+				m_adapterMaterials.Insert(
+					m_materialName,
+					m_materialSerial.ToString(),
+					m_materialtype_id,
+					m_client_id,
+					m_selectedSiteID,
+					m_selectedBatimentID,
+					m_selectedEtageID,
+					m_selectedSalleID,
+					m_intervention,
+					m_description);
+
+				if (s_formHomepage != null)
 				{
-					m_materialName = txbMaterialName.Text;
-					m_materialSerial = Guid.NewGuid();
-					m_client_id = ((ListItem)cmbClientName.SelectedItem).ID;
-					m_etage_id = ((ListItem)cmbSite.SelectedItem).ID;
-					m_materialtype_id = ((ListItem)cmbMaterialType.SelectedItem).ID;
-					m_description = txbDesc.Text;
-					m_mtbf = Convert.ToInt32(txbMTBF.Text);
-					m_intervention = dateIntervention.Value;
-					m_description = txbDesc.Text;
-
-					m_adapterMaterials.Insert(
-						m_materialName,
-						m_materialSerial.ToString(),
-						m_materialtype_id,
-						m_client_id,
-						m_selectedSiteID,
-						m_selectedBatimentID,
-						m_selectedEtageID,
-						m_selectedSalleID,
-						m_intervention,
-						m_description);
-
-					if (s_formHomepage != null)
-					{
-						s_formHomepage.RebindMaterials();
-					}
-
-					Close();
+					s_formHomepage.RebindMaterials();
 				}
+				Close();
+
 			}
             catch (SqlException sqlex)
             {
@@ -572,11 +477,6 @@ namespace GestionMatosApplication
 				m_selectedEtageID = ((ListItem)cmbEtage.SelectedItem).ID;
 				FetchRooms();
 			}
-		}
-
-		private void btnAddSalle_Click_1(object sender, EventArgs e)
-		{
-
 		}
 	}
 }

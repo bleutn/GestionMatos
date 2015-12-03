@@ -43,6 +43,3 @@ C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Deb
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.exe
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.pdb
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.csprojResolveAssemblyReference.cache
-C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControlAlert.resources
-C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControlMaterial.resources
-C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormUpdateMateriel.resources

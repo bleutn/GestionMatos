@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnAddSalle = new System.Windows.Forms.Button();
 			this.cmbSalle = new System.Windows.Forms.ComboBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.btnAddEtage = new System.Windows.Forms.Button();
@@ -37,7 +38,7 @@
 			this.btnAddBatiment = new System.Windows.Forms.Button();
 			this.cmbBatiment = new System.Windows.Forms.ComboBox();
 			this.lblBatiment = new System.Windows.Forms.Label();
-			this.dateLimitIntervention = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.label10 = new System.Windows.Forms.Label();
 			this.txbMTBF = new System.Windows.Forms.TextBox();
 			this.label9 = new System.Windows.Forms.Label();
@@ -61,9 +62,6 @@
 			this.cmbClientName = new System.Windows.Forms.ComboBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
-			this.btnAddSalle = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -72,8 +70,6 @@
 			// 
 			this.panel1.AutoSize = true;
 			this.panel1.Controls.Add(this.btnAddSalle);
-			this.panel1.Controls.Add(this.label11);
-			this.panel1.Controls.Add(this.label8);
 			this.panel1.Controls.Add(this.cmbSalle);
 			this.panel1.Controls.Add(this.label4);
 			this.panel1.Controls.Add(this.btnAddEtage);
@@ -82,7 +78,7 @@
 			this.panel1.Controls.Add(this.btnAddBatiment);
 			this.panel1.Controls.Add(this.cmbBatiment);
 			this.panel1.Controls.Add(this.lblBatiment);
-			this.panel1.Controls.Add(this.dateLimitIntervention);
+			this.panel1.Controls.Add(this.dateTimePicker1);
 			this.panel1.Controls.Add(this.label10);
 			this.panel1.Controls.Add(this.txbMTBF);
 			this.panel1.Controls.Add(this.label9);
@@ -110,6 +106,16 @@
 			this.panel1.TabIndex = 0;
 			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
 			// 
+			// btnAddSalle
+			// 
+			this.btnAddSalle.Enabled = false;
+			this.btnAddSalle.Location = new System.Drawing.Point(437, 224);
+			this.btnAddSalle.Name = "btnAddSalle";
+			this.btnAddSalle.Size = new System.Drawing.Size(137, 23);
+			this.btnAddSalle.TabIndex = 33;
+			this.btnAddSalle.Text = "Ajout Salle";
+			this.btnAddSalle.UseVisualStyleBackColor = true;
+			// 
 			// cmbSalle
 			// 
 			this.cmbSalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -130,6 +136,7 @@
 			// 
 			// btnAddEtage
 			// 
+			this.btnAddEtage.Enabled = false;
 			this.btnAddEtage.Location = new System.Drawing.Point(437, 195);
 			this.btnAddEtage.Name = "btnAddEtage";
 			this.btnAddEtage.Size = new System.Drawing.Size(137, 23);
@@ -158,6 +165,7 @@
 			// 
 			// btnAddBatiment
 			// 
+			this.btnAddBatiment.Enabled = false;
 			this.btnAddBatiment.Location = new System.Drawing.Point(437, 166);
 			this.btnAddBatiment.Name = "btnAddBatiment";
 			this.btnAddBatiment.Size = new System.Drawing.Size(137, 23);
@@ -184,21 +192,21 @@
 			this.lblBatiment.TabIndex = 25;
 			this.lblBatiment.Text = "Batiment:";
 			// 
-			// dateLimitIntervention
+			// dateTimePicker1
 			// 
-			this.dateLimitIntervention.Location = new System.Drawing.Point(121, 305);
-			this.dateLimitIntervention.Name = "dateLimitIntervention";
-			this.dateLimitIntervention.Size = new System.Drawing.Size(206, 20);
-			this.dateLimitIntervention.TabIndex = 24;
+			this.dateTimePicker1.Location = new System.Drawing.Point(121, 305);
+			this.dateTimePicker1.Name = "dateTimePicker1";
+			this.dateTimePicker1.Size = new System.Drawing.Size(206, 20);
+			this.dateTimePicker1.TabIndex = 24;
 			// 
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(4, 305);
+			this.label10.Location = new System.Drawing.Point(3, 305);
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(96, 13);
+			this.label10.Size = new System.Drawing.Size(113, 13);
 			this.label10.TabIndex = 23;
-			this.label10.Text = "Date d\'intervention";
+			this.label10.Text = "Date de fin de validité:";
 			// 
 			// txbMTBF
 			// 
@@ -249,6 +257,7 @@
 			this.txbDesc.Name = "txbDesc";
 			this.txbDesc.Size = new System.Drawing.Size(310, 117);
 			this.txbDesc.TabIndex = 14;
+			this.txbDesc.Text = "Description du matériel";
 			// 
 			// btnAdd
 			// 
@@ -275,9 +284,9 @@
 			this.label5.AutoSize = true;
 			this.label5.Location = new System.Drawing.Point(4, 277);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(96, 13);
+			this.label5.Size = new System.Drawing.Size(99, 13);
 			this.label5.TabIndex = 11;
-			this.label5.Text = "Date d\'intervention";
+			this.label5.Text = "Date d\'intervention:";
 			// 
 			// dateIntervention
 			// 
@@ -288,6 +297,7 @@
 			// 
 			// btnAddSite
 			// 
+			this.btnAddSite.Enabled = false;
 			this.btnAddSite.Location = new System.Drawing.Point(437, 137);
 			this.btnAddSite.Name = "btnAddSite";
 			this.btnAddSite.Size = new System.Drawing.Size(137, 23);
@@ -402,34 +412,6 @@
 			this.testToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
 			this.testToolStripMenuItem.Text = "Test";
 			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(4, 290);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(55, 13);
-			this.label8.TabIndex = 34;
-			this.label8.Text = "plannifiée:";
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(4, 318);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(33, 13);
-			this.label11.TabIndex = 35;
-			this.label11.Text = "limite:";
-			// 
-			// btnAddSalle
-			// 
-			this.btnAddSalle.Location = new System.Drawing.Point(437, 224);
-			this.btnAddSalle.Name = "btnAddSalle";
-			this.btnAddSalle.Size = new System.Drawing.Size(137, 23);
-			this.btnAddSalle.TabIndex = 36;
-			this.btnAddSalle.Text = "Ajout Salle";
-			this.btnAddSalle.UseVisualStyleBackColor = true;
-			this.btnAddSalle.Click += new System.EventHandler(this.btnAddSalle_Click_1);
-			// 
 			// FormAddMateriel
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,20 +455,18 @@
         private System.Windows.Forms.TextBox txbDesc;
 		private System.Windows.Forms.TextBox txbMTBF;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateLimitIntervention;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnAddEtage;
         private System.Windows.Forms.ComboBox cmbEtage;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnAddBatiment;
         private System.Windows.Forms.ComboBox cmbBatiment;
-		private System.Windows.Forms.Label lblBatiment;
+        private System.Windows.Forms.Label lblBatiment;
+        private System.Windows.Forms.Button btnAddSalle;
         private System.Windows.Forms.ComboBox cmbSalle;
         private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
-		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Button btnAddSalle;
     }
 }
