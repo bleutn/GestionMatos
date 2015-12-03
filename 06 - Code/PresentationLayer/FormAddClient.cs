@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,13 @@ namespace GestionMatosApplication
 {
     public partial class FormAddClient : Form
     {
+
+        private Client.ClientDataTable m_tblClient = new Client.ClientDataTable();
+        
+        private ClientTableAdapters.ClientTableAdapter m_adapterClient = new ClientTableAdapters.ClientTableAdapter();
+        
+
+        private string C_NomClient;
         public FormAddClient()
         {
             InitializeComponent();
@@ -49,16 +57,37 @@ namespace GestionMatosApplication
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        
+        private void ClientAddButton_Click(object sender, EventArgs e)
         {
-            var myForm = new FormAddSite();
-            myForm.Show();
+            try
+            {
+                C_NomClient = NomClientTextBox.Text;
+
+                m_adapterClient.Insert(
+                    C_NomClient.ToString());
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show(sqlex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            MessageBox.Show("Client bien ajouté !");
+            this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            var myForm = new FormAddBatiment();
-            myForm.Show();
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
+
     }
 }

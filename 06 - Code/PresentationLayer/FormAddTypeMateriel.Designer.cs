@@ -29,25 +29,74 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.MTBFTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TypeMatCancelButton = new System.Windows.Forms.Button();
+            this.TypeMatAddButton = new System.Windows.Forms.Button();
+            this.TypeMatTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.MTBFTextBox);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.TypeMatCancelButton);
+            this.panel1.Controls.Add(this.TypeMatAddButton);
+            this.panel1.Controls.Add(this.TypeMatTextBox);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(408, 172);
             this.panel1.TabIndex = 1;
+            // 
+            // MTBFTextBox
+            // 
+            this.MTBFTextBox.Location = new System.Drawing.Point(109, 84);
+            this.MTBFTextBox.Name = "MTBFTextBox";
+            this.MTBFTextBox.Size = new System.Drawing.Size(170, 20);
+            this.MTBFTextBox.TabIndex = 9;
+            this.MTBFTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "MTBF:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // TypeMatCancelButton
+            // 
+            this.TypeMatCancelButton.Location = new System.Drawing.Point(330, 146);
+            this.TypeMatCancelButton.Name = "TypeMatCancelButton";
+            this.TypeMatCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.TypeMatCancelButton.TabIndex = 7;
+            this.TypeMatCancelButton.Text = "Annuler";
+            this.TypeMatCancelButton.UseVisualStyleBackColor = true;
+            this.TypeMatCancelButton.Click += new System.EventHandler(this.TypeMatCancelButton_Click);
+            // 
+            // TypeMatAddButton
+            // 
+            this.TypeMatAddButton.Location = new System.Drawing.Point(253, 146);
+            this.TypeMatAddButton.Name = "TypeMatAddButton";
+            this.TypeMatAddButton.Size = new System.Drawing.Size(75, 23);
+            this.TypeMatAddButton.TabIndex = 6;
+            this.TypeMatAddButton.Text = "Ajouter";
+            this.TypeMatAddButton.UseVisualStyleBackColor = true;
+            this.TypeMatAddButton.Click += new System.EventHandler(this.TypeMatAddButton_Click);
+            // 
+            // TypeMatTextBox
+            // 
+            this.TypeMatTextBox.Location = new System.Drawing.Point(109, 55);
+            this.TypeMatTextBox.Name = "TypeMatTextBox";
+            this.TypeMatTextBox.Size = new System.Drawing.Size(170, 20);
+            this.TypeMatTextBox.TabIndex = 5;
             // 
             // label3
             // 
@@ -69,31 +118,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Nom du Type:";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(109, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(253, 146);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Ajouter";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(330, 146);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Annuler";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // FormAddTypeMateriel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,9 +137,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox TypeMatTextBox;
+        private System.Windows.Forms.Button TypeMatCancelButton;
+        private System.Windows.Forms.Button TypeMatAddButton;
+        private System.Windows.Forms.TextBox MTBFTextBox;
+        private System.Windows.Forms.Label label2;
 
     }
 }

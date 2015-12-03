@@ -10,24 +10,24 @@ using System.Windows.Forms;
 
 namespace GestionMatosApplication
 {
-    public partial class FormAddBatiment : Form
+    public partial class FormAddEtage : Form
     {
-        public FormAddBatiment()
+        public FormAddEtage()
         {
             InitializeComponent();
         }
 
-        private void FormAddBatiment_Load(object sender, EventArgs e)
+        private void FormAddEtage_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }

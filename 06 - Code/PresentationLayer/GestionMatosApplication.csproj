@@ -46,17 +46,40 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Client.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Client.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ClientUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ClientUserControl.Designer.cs">
+      <DependentUpon>ClientUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAddBatiment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormAddBatiment.Designer.cs">
       <DependentUpon>FormAddBatiment.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAddEtage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddEtage.Designer.cs">
+      <DependentUpon>FormAddEtage.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAddMateriel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormAddMateriel.Designer.cs">
       <DependentUpon>FormAddMateriel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddSalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddSalle.Designer.cs">
+      <DependentUpon>FormAddSalle.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAddSite.cs">
       <SubType>Form</SubType>
@@ -92,15 +115,38 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GestionMatosDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="GestionMatosDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionMatosDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ListItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Select_client.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Select_client.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Site.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TypeMaterial.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TypeMaterial.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ClientUserControl.resx" />
+    <EmbeddedResource Include="FormAddEtage.resx" />
+    <EmbeddedResource Include="FormAddSalle.resx" />
     <EmbeddedResource Include="FormHomepage.resx">
       <DependentUpon>FormHomepage.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +177,17 @@
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Client.xsc">
+      <DependentUpon>Client.xsd</DependentUpon>
+    </None>
+    <None Include="Client.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Client.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Client.xss">
+      <DependentUpon>Client.xsd</DependentUpon>
+    </None>
     <None Include="GestionMatosDataSet.xsc">
       <DependentUpon>GestionMatosDataSet.xsd</DependentUpon>
     </None>
@@ -153,6 +210,17 @@
     <None Include="GestionMatosDataSet1.xss">
       <DependentUpon>GestionMatosDataSet1.xsd</DependentUpon>
     </None>
+    <None Include="GestionMatosDataSet2.xsc">
+      <DependentUpon>GestionMatosDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="GestionMatosDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GestionMatosDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GestionMatosDataSet2.xss">
+      <DependentUpon>GestionMatosDataSet2.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -162,6 +230,39 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Select_client.xsc">
+      <DependentUpon>Select_client.xsd</DependentUpon>
+    </None>
+    <None Include="Select_client.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Select_client.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Select_client.xss">
+      <DependentUpon>Select_client.xsd</DependentUpon>
+    </None>
+    <None Include="Site.xsc">
+      <DependentUpon>Site.xsd</DependentUpon>
+    </None>
+    <None Include="Site.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Site.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Site.xss">
+      <DependentUpon>Site.xsd</DependentUpon>
+    </None>
+    <None Include="TypeMaterial.xsc">
+      <DependentUpon>TypeMaterial.xsd</DependentUpon>
+    </None>
+    <None Include="TypeMaterial.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TypeMaterial.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TypeMaterial.xss">
+      <DependentUpon>TypeMaterial.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

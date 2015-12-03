@@ -31,18 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.NomClientTextBox = new System.Windows.Forms.TextBox();
             this.siteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gestionMatosDataSet = new GestionMatosApplication.GestionMatosDataSet();
             this.siteTableAdapter = new GestionMatosApplication.GestionMatosDataSetTableAdapters.SiteTableAdapter();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.ClientAddButton = new System.Windows.Forms.Button();
             this.batimentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.batimentTableAdapter = new GestionMatosApplication.GestionMatosDataSetTableAdapters.BatimentTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.siteBindingSource)).BeginInit();
@@ -71,41 +65,12 @@
             this.label2.Text = "Nom de client:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label3
+            // NomClientTextBox
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 105);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Site";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 130);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Bâtiement";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(102, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 20);
-            this.textBox1.TabIndex = 5;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DataSource = this.siteBindingSource;
-            this.comboBox1.DisplayMember = "nom_Site";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(102, 102);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(190, 21);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.ValueMember = "id_Site";
+            this.NomClientTextBox.Location = new System.Drawing.Point(102, 76);
+            this.NomClientTextBox.Name = "NomClientTextBox";
+            this.NomClientTextBox.Size = new System.Drawing.Size(190, 20);
+            this.NomClientTextBox.TabIndex = 5;
             // 
             // siteBindingSource
             // 
@@ -121,44 +86,15 @@
             // 
             this.siteTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
+            // ClientAddButton
             // 
-            this.button1.Location = new System.Drawing.Point(179, 173);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Ajouter";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(325, 100);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Ajouter un site";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(325, 125);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 23);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Ajouter un bâtiment";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DataSource = this.batimentBindingSource;
-            this.comboBox2.DisplayMember = "num_Batiment";
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(102, 126);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(190, 21);
-            this.comboBox2.TabIndex = 12;
+            this.ClientAddButton.Location = new System.Drawing.Point(131, 138);
+            this.ClientAddButton.Name = "ClientAddButton";
+            this.ClientAddButton.Size = new System.Drawing.Size(75, 23);
+            this.ClientAddButton.TabIndex = 9;
+            this.ClientAddButton.Text = "Ajouter";
+            this.ClientAddButton.UseVisualStyleBackColor = true;
+            this.ClientAddButton.Click += new System.EventHandler(this.ClientAddButton_Click);
             // 
             // batimentBindingSource
             // 
@@ -173,15 +109,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 256);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(328, 184);
+            this.Controls.Add(this.ClientAddButton);
+            this.Controls.Add(this.NomClientTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FormAddClient";
@@ -199,18 +129,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox NomClientTextBox;
         private GestionMatosDataSet gestionMatosDataSet;
         private System.Windows.Forms.BindingSource siteBindingSource;
         private GestionMatosDataSetTableAdapters.SiteTableAdapter siteTableAdapter;
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button ClientAddButton;
         private System.Windows.Forms.BindingSource batimentBindingSource;
         private GestionMatosDataSetTableAdapters.BatimentTableAdapter batimentTableAdapter;
     }

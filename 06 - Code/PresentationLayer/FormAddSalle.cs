@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace GestionMatosApplication
 {
-    public partial class FormAddBatiment : Form
+    public partial class FormAddSalle : Form
     {
-        public FormAddBatiment()
+        public FormAddSalle()
         {
             InitializeComponent();
-        }
-
-        private void FormAddBatiment_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -27,9 +22,9 @@ namespace GestionMatosApplication
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void AddSalleForm_Load(object sender, EventArgs e)
         {
-            this.Close();
+
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -40,6 +35,11 @@ namespace GestionMatosApplication
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

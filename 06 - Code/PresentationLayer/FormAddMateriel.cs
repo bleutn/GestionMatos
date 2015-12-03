@@ -388,7 +388,8 @@ namespace GestionMatosApplication
 
         private void btnAddEtage_Click(object sender, EventArgs e)
         {
-
+            FormAddSite typeWindow = new FormAddSite();
+            typeWindow.Show();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -478,5 +479,23 @@ namespace GestionMatosApplication
 				FetchRooms();
 			}
 		}
+
+        private void btnAddBatiment_Click(object sender, EventArgs e)
+        {
+            FormAddBatiment batimentWindow = new FormAddBatiment();
+            batimentWindow.Show();
+        }
+
+        private void btnAddEtage_Click_1(object sender, EventArgs e)
+        {
+            FormAddEtage EtageWindow = new FormAddEtage();
+            EtageWindow.Show();
+        }
+
+        private void btnAddSalle_Click(object sender, EventArgs e)
+        {
+            FormAddSalle SalleWindow = new FormAddSalle();
+            SalleWindow.Show();
+        }
 	}
 }
