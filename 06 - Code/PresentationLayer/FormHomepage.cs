@@ -8,7 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using GestionMatosApplication.GestionMatosDataSetTableAdapters;
+using GestionMatosApplication;
 
 
 
@@ -22,7 +23,8 @@ namespace GestionMatosApplication
 		private GestionMatosDataSetTableAdapters.EtageTableAdapter m_adapterEtage = new GestionMatosDataSetTableAdapters.EtageTableAdapter();
 		private GestionMatosDataSet.Type_MaterielDataTable m_tblMaterielType = new GestionMatosDataSet.Type_MaterielDataTable();
 		private GestionMatosDataSetTableAdapters.Type_MaterielTableAdapter m_adapterMaterielType = new GestionMatosDataSetTableAdapters.Type_MaterielTableAdapter();
-
+		private GestionMatosDataSet.MaterielDataTable m_tblMaterial = new GestionMatosDataSet.MaterielDataTable();
+		private MaterielTableAdapter m_adapterMaterials = new MaterielTableAdapter();
 
         public FormHomepage()
         {
@@ -126,10 +128,10 @@ namespace GestionMatosApplication
 
         private void Form1_Load(object sender, EventArgs e)
         {
-			// TODO: This line of code loads data into the 'gestionMatosDataSet11.GetMaterials' table. You can move, or remove it, as needed.
-			this.getMaterialsTableAdapter.Fill(this.gestionMatosDataSet11.GetMaterials);
+			// TODO: This line of code loads data into the 'gestionMatosDataSet1.GetMaterials' table. You can move, or remove it, as needed.
+			this.getMaterialsTableAdapter.Fill(this.gestionMatosDataSet1.GetMaterials);
+			// TODO: This line of code loads data into the 'gestionMatosDataSet2.GetMaterials' table. You can move, or remove it, as needed.
             WindowState = FormWindowState.Maximized;
-			
         }
 
         private void ajouterToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -173,7 +175,7 @@ namespace GestionMatosApplication
 
         private void créerToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            FormAddMateriel materiel = new FormAddMateriel();
+            FormAddMateriel materiel = new FormAddMateriel(this);
             materiel.Show();
         }
 
@@ -233,14 +235,14 @@ namespace GestionMatosApplication
 
 		private void add_Click_1(object sender, EventArgs e)
 		{
-			FormAddMateriel materiel = new FormAddMateriel();
+			FormAddMateriel materiel = new FormAddMateriel(this);
 			materiel.Show();
 			materiel.modifying = false;
 		}
 
 		private void update_Click(object sender, EventArgs e)
 		{
-			FormAddMateriel materiel = new FormAddMateriel();
+			FormAddMateriel materiel = new FormAddMateriel(this);
 			materiel.Show();
 			materiel.modifying = true;
 		}
@@ -248,6 +250,16 @@ namespace GestionMatosApplication
 		private void delete_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		public void RebindMaterials()
+		{
+			this.getMaterialsTableAdapter.Fill(this.gestionMatosDataSet1.GetMaterials);
+			this.getMaterialsBindingSource.DataSource = this.gestionMatosDataSet1;
+		}
+
+		private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+		{
 		}
     }
 }

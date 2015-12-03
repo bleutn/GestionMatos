@@ -68,7 +68,6 @@
 			this.aProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.label1 = new System.Windows.Forms.Label();
-			this.GestionMatosDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.add = new System.Windows.Forms.Button();
 			this.delete = new System.Windows.Forms.Button();
@@ -79,34 +78,36 @@
 			this.listClients = new System.Windows.Forms.ListBox();
 			this.Materiel = new System.Windows.Forms.TabPage();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.materialsDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.label3 = new System.Windows.Forms.Label();
 			this.Interventions = new System.Windows.Forms.TabPage();
 			this.Sites = new System.Windows.Forms.TabPage();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tableAdapterManager = new GestionMatosApplication.GestionMatosDataSetTableAdapters.TableAdapterManager();
-			this.gestionMatosDataSet1 = new GestionMatosApplication.GestionMatosDataSet();
-			this.gestionMatosDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.gestionMatosDataSet11 = new GestionMatosApplication.GestionMatosDataSet1();
+			this.gestionMatosDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.gestionMatosDataSet1 = new GestionMatosApplication.GestionMatosDataSet1();
 			this.getMaterialsBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.getMaterialsTableAdapter = new GestionMatosApplication.GestionMatosDataSet1TableAdapters.GetMaterialsTableAdapter();
-			this.idMaterielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.guidMaterielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.nomClientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.idEtageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.idtypeMaterialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.datedernierInterventionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.nomDeMatérielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.numéroDeSérieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clientAssociéDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.siteDeStockageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.batimentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.etageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.salleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.typeDeMatérielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dateDernièreInterventionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.menuStrip1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.GestionMatosDataSetBindingSource)).BeginInit();
 			this.panel2.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.Client.SuspendLayout();
 			this.Materiel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.materialsDataSet1BindingSource)).BeginInit();
 			this.panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSetBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1BindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet11)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.getMaterialsBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -514,18 +515,23 @@
 			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dataGridView1.ColumnHeadersHeight = 20;
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idMaterielDataGridViewTextBoxColumn,
-            this.guidMaterielDataGridViewTextBoxColumn,
-            this.nomClientDataGridViewTextBoxColumn,
-            this.idEtageDataGridViewTextBoxColumn,
-            this.idtypeMaterialDataGridViewTextBoxColumn,
-            this.datedernierInterventionDataGridViewTextBoxColumn});
+            this.nomDeMatérielDataGridViewTextBoxColumn,
+            this.numéroDeSérieDataGridViewTextBoxColumn,
+            this.clientAssociéDataGridViewTextBoxColumn,
+            this.siteDeStockageDataGridViewTextBoxColumn,
+            this.batimentDataGridViewTextBoxColumn,
+            this.etageDataGridViewTextBoxColumn,
+            this.salleDataGridViewTextBoxColumn,
+            this.typeDeMatérielDataGridViewTextBoxColumn,
+            this.dateDernièreInterventionDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn});
 			this.dataGridView1.DataSource = this.getMaterialsBindingSource;
 			this.dataGridView1.Location = new System.Drawing.Point(3, 34);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.Size = new System.Drawing.Size(683, 417);
 			this.dataGridView1.TabIndex = 7;
+			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
 			this.dataGridView1.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValidated);
 			this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
 			this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -581,83 +587,89 @@
 			this.tabPage1.Text = "Site de Stockage";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
-			// tableAdapterManager
-			// 
-			this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-			this.tableAdapterManager.BatimentTableAdapter = null;
-			this.tableAdapterManager.ClientTableAdapter = null;
-			this.tableAdapterManager.EtageTableAdapter = null;
-			this.tableAdapterManager.InterventionTableAdapter = null;
-			this.tableAdapterManager.SalleTableAdapter = null;
-			this.tableAdapterManager.SiteTableAdapter = null;
-			this.tableAdapterManager.Type_MaterielTableAdapter = null;
-			this.tableAdapterManager.UpdateOrder = GestionMatosApplication.GestionMatosDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-			// 
 			// gestionMatosDataSet1
 			// 
-			this.gestionMatosDataSet1.DataSetName = "GestionMatosDataSet";
+			this.gestionMatosDataSet1.DataSetName = "GestionMatosDataSet1";
 			this.gestionMatosDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
-			// gestionMatosDataSet1BindingSource
-			// 
-			this.gestionMatosDataSet1BindingSource.DataSource = this.gestionMatosDataSet1;
-			this.gestionMatosDataSet1BindingSource.Position = 0;
-			// 
-			// gestionMatosDataSet11
-			// 
-			this.gestionMatosDataSet11.DataSetName = "GestionMatosDataSet1";
-			this.gestionMatosDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
 			// getMaterialsBindingSource
 			// 
 			this.getMaterialsBindingSource.DataMember = "GetMaterials";
-			this.getMaterialsBindingSource.DataSource = this.gestionMatosDataSet11;
+			this.getMaterialsBindingSource.DataSource = this.gestionMatosDataSet1;
 			// 
 			// getMaterialsTableAdapter
 			// 
 			this.getMaterialsTableAdapter.ClearBeforeFill = true;
 			// 
-			// idMaterielDataGridViewTextBoxColumn
+			// nomDeMatérielDataGridViewTextBoxColumn
 			// 
-			this.idMaterielDataGridViewTextBoxColumn.DataPropertyName = "id_Materiel";
-			this.idMaterielDataGridViewTextBoxColumn.HeaderText = "Numéro de Matériel";
-			this.idMaterielDataGridViewTextBoxColumn.Name = "idMaterielDataGridViewTextBoxColumn";
-			this.idMaterielDataGridViewTextBoxColumn.ReadOnly = true;
+			this.nomDeMatérielDataGridViewTextBoxColumn.DataPropertyName = "Nom de Matériel";
+			this.nomDeMatérielDataGridViewTextBoxColumn.HeaderText = "Nom de Matériel";
+			this.nomDeMatérielDataGridViewTextBoxColumn.Name = "nomDeMatérielDataGridViewTextBoxColumn";
+			this.nomDeMatérielDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
-			// guidMaterielDataGridViewTextBoxColumn
+			// numéroDeSérieDataGridViewTextBoxColumn
 			// 
-			this.guidMaterielDataGridViewTextBoxColumn.DataPropertyName = "guid_Materiel";
-			this.guidMaterielDataGridViewTextBoxColumn.HeaderText = "Numéro de Série";
-			this.guidMaterielDataGridViewTextBoxColumn.Name = "guidMaterielDataGridViewTextBoxColumn";
-			this.guidMaterielDataGridViewTextBoxColumn.ReadOnly = true;
+			this.numéroDeSérieDataGridViewTextBoxColumn.DataPropertyName = "Numéro de Série";
+			this.numéroDeSérieDataGridViewTextBoxColumn.HeaderText = "Numéro de Série";
+			this.numéroDeSérieDataGridViewTextBoxColumn.Name = "numéroDeSérieDataGridViewTextBoxColumn";
+			this.numéroDeSérieDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
-			// nomClientDataGridViewTextBoxColumn
+			// clientAssociéDataGridViewTextBoxColumn
 			// 
-			this.nomClientDataGridViewTextBoxColumn.DataPropertyName = "nom_Client";
-			this.nomClientDataGridViewTextBoxColumn.HeaderText = "Client associé";
-			this.nomClientDataGridViewTextBoxColumn.Name = "nomClientDataGridViewTextBoxColumn";
-			this.nomClientDataGridViewTextBoxColumn.ReadOnly = true;
+			this.clientAssociéDataGridViewTextBoxColumn.DataPropertyName = "Client associé";
+			this.clientAssociéDataGridViewTextBoxColumn.HeaderText = "Client associé";
+			this.clientAssociéDataGridViewTextBoxColumn.Name = "clientAssociéDataGridViewTextBoxColumn";
+			this.clientAssociéDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
-			// idEtageDataGridViewTextBoxColumn
+			// siteDeStockageDataGridViewTextBoxColumn
 			// 
-			this.idEtageDataGridViewTextBoxColumn.DataPropertyName = "id_Etage";
-			this.idEtageDataGridViewTextBoxColumn.HeaderText = "Etage de stockage";
-			this.idEtageDataGridViewTextBoxColumn.Name = "idEtageDataGridViewTextBoxColumn";
-			this.idEtageDataGridViewTextBoxColumn.ReadOnly = true;
+			this.siteDeStockageDataGridViewTextBoxColumn.DataPropertyName = "Site de stockage";
+			this.siteDeStockageDataGridViewTextBoxColumn.HeaderText = "Site de stockage";
+			this.siteDeStockageDataGridViewTextBoxColumn.Name = "siteDeStockageDataGridViewTextBoxColumn";
+			this.siteDeStockageDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
-			// idtypeMaterialDataGridViewTextBoxColumn
+			// batimentDataGridViewTextBoxColumn
 			// 
-			this.idtypeMaterialDataGridViewTextBoxColumn.DataPropertyName = "id_type_Material";
-			this.idtypeMaterialDataGridViewTextBoxColumn.HeaderText = "Type de matériel";
-			this.idtypeMaterialDataGridViewTextBoxColumn.Name = "idtypeMaterialDataGridViewTextBoxColumn";
-			this.idtypeMaterialDataGridViewTextBoxColumn.ReadOnly = true;
+			this.batimentDataGridViewTextBoxColumn.DataPropertyName = "Batiment";
+			this.batimentDataGridViewTextBoxColumn.HeaderText = "Batiment";
+			this.batimentDataGridViewTextBoxColumn.Name = "batimentDataGridViewTextBoxColumn";
+			this.batimentDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
-			// datedernierInterventionDataGridViewTextBoxColumn
+			// etageDataGridViewTextBoxColumn
 			// 
-			this.datedernierInterventionDataGridViewTextBoxColumn.DataPropertyName = "date_dernier_Intervention";
-			this.datedernierInterventionDataGridViewTextBoxColumn.HeaderText = "Date d\'intervention";
-			this.datedernierInterventionDataGridViewTextBoxColumn.Name = "datedernierInterventionDataGridViewTextBoxColumn";
-			this.datedernierInterventionDataGridViewTextBoxColumn.ReadOnly = true;
+			this.etageDataGridViewTextBoxColumn.DataPropertyName = "Etage";
+			this.etageDataGridViewTextBoxColumn.HeaderText = "Etage";
+			this.etageDataGridViewTextBoxColumn.Name = "etageDataGridViewTextBoxColumn";
+			this.etageDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// salleDataGridViewTextBoxColumn
+			// 
+			this.salleDataGridViewTextBoxColumn.DataPropertyName = "Salle";
+			this.salleDataGridViewTextBoxColumn.HeaderText = "Salle";
+			this.salleDataGridViewTextBoxColumn.Name = "salleDataGridViewTextBoxColumn";
+			this.salleDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// typeDeMatérielDataGridViewTextBoxColumn
+			// 
+			this.typeDeMatérielDataGridViewTextBoxColumn.DataPropertyName = "Type de matériel";
+			this.typeDeMatérielDataGridViewTextBoxColumn.HeaderText = "Type de matériel";
+			this.typeDeMatérielDataGridViewTextBoxColumn.Name = "typeDeMatérielDataGridViewTextBoxColumn";
+			this.typeDeMatérielDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// dateDernièreInterventionDataGridViewTextBoxColumn
+			// 
+			this.dateDernièreInterventionDataGridViewTextBoxColumn.DataPropertyName = "Date dernière Intervention";
+			this.dateDernièreInterventionDataGridViewTextBoxColumn.HeaderText = "Date dernière Intervention";
+			this.dateDernièreInterventionDataGridViewTextBoxColumn.Name = "dateDernièreInterventionDataGridViewTextBoxColumn";
+			this.dateDernièreInterventionDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// descriptionDataGridViewTextBoxColumn
+			// 
+			this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+			this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+			this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+			this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
 			// FormHomepage
 			// 
@@ -673,7 +685,6 @@
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.GestionMatosDataSetBindingSource)).EndInit();
 			this.panel2.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
 			this.Client.ResumeLayout(false);
@@ -681,11 +692,11 @@
 			this.Materiel.ResumeLayout(false);
 			this.Materiel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.materialsDataSet1BindingSource)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSetBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1BindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet11)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.getMaterialsBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -695,9 +706,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.BindingSource GestionMatosDataSetBindingSource;
-        private GestionMatosDataSet GestionMatosDataSet;
+		private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button add;
         private System.Windows.Forms.Button delete;
@@ -747,25 +756,25 @@
         private System.Windows.Forms.ToolStripMenuItem listerToolStripMenuItem3;
 		private System.Windows.Forms.ToolStripMenuItem filtrerToolStripMenuItem3;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.BindingSource gestionMatosDataSet1BindingSource;
-		private GestionMatosDataSet gestionMatosDataSet1;
 		private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage Sites;
 		private System.Windows.Forms.TabPage tabPage1;
-		private GestionMatosDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-		private System.Windows.Forms.DataGridViewTextBoxColumn column1DataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn column2DataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn column3DataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn column4DataGridViewTextBoxColumn;
-		private GestionMatosDataSet1 gestionMatosDataSet11;
+		private System.Windows.Forms.BindingSource materialsDataSet1BindingSource;
+		private GestionMatosDataSet gestionMatosDataSet;
+		private System.Windows.Forms.BindingSource gestionMatosDataSetBindingSource;
+		private GestionMatosDataSet1 gestionMatosDataSet1;
 		private System.Windows.Forms.BindingSource getMaterialsBindingSource;
 		private GestionMatosDataSet1TableAdapters.GetMaterialsTableAdapter getMaterialsTableAdapter;
-		private System.Windows.Forms.DataGridViewTextBoxColumn idMaterielDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn guidMaterielDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn nomClientDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn idEtageDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn idtypeMaterialDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn datedernierInterventionDataGridViewTextBoxColumn;
-    }
+		private System.Windows.Forms.DataGridViewTextBoxColumn nomDeMatérielDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn numéroDeSérieDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clientAssociéDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn siteDeStockageDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn batimentDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn etageDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn salleDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn typeDeMatérielDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dateDernièreInterventionDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+	}
 }
 

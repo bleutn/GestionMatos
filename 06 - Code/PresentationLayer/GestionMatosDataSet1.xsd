@@ -21,12 +21,16 @@
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="id_Materiel" DataSetColumn="id_Materiel" />
-              <Mapping SourceColumn="guid_Materiel" DataSetColumn="guid_Materiel" />
-              <Mapping SourceColumn="nom_Client" DataSetColumn="nom_Client" />
-              <Mapping SourceColumn="id_Etage" DataSetColumn="id_Etage" />
-              <Mapping SourceColumn="id_type_Material" DataSetColumn="id_type_Material" />
-              <Mapping SourceColumn="date_dernier_Intervention" DataSetColumn="date_dernier_Intervention" />
+              <Mapping SourceColumn="Nom de Matériel" DataSetColumn="Nom de Matériel" />
+              <Mapping SourceColumn="Numéro de Série" DataSetColumn="Numéro de Série" />
+              <Mapping SourceColumn="Client associé" DataSetColumn="Client associé" />
+              <Mapping SourceColumn="Site de stockage" DataSetColumn="Site de stockage" />
+              <Mapping SourceColumn="Batiment" DataSetColumn="Batiment" />
+              <Mapping SourceColumn="Etage" DataSetColumn="Etage" />
+              <Mapping SourceColumn="Salle" DataSetColumn="Salle" />
+              <Mapping SourceColumn="Type de matériel" DataSetColumn="Type de matériel" />
+              <Mapping SourceColumn="Date dernière Intervention" DataSetColumn="Date dernière Intervention" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -41,44 +45,74 @@
         <xs:element name="GetMaterials" msprop:Generator_TableClassName="GetMaterialsDataTable" msprop:Generator_TableVarName="tableGetMaterials" msprop:Generator_TablePropName="GetMaterials" msprop:Generator_RowDeletingName="GetMaterialsRowDeleting" msprop:Generator_RowChangingName="GetMaterialsRowChanging" msprop:Generator_RowEvHandlerName="GetMaterialsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetMaterialsRowDeleted" msprop:Generator_UserTableName="GetMaterials" msprop:Generator_RowChangedName="GetMaterialsRowChanged" msprop:Generator_RowEvArgName="GetMaterialsRowChangeEvent" msprop:Generator_RowClassName="GetMaterialsRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="id_Materiel" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnid_Materiel" msprop:Generator_ColumnPropNameInRow="id_Materiel" msprop:Generator_ColumnPropNameInTable="id_MaterielColumn" msprop:Generator_UserColumnName="id_Materiel" type="xs:int" />
-              <xs:element name="guid_Materiel" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnguid_Materiel" msprop:Generator_ColumnPropNameInRow="guid_Materiel" msprop:Generator_ColumnPropNameInTable="guid_MaterielColumn" msprop:Generator_UserColumnName="guid_Materiel" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="36" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="nom_Client" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnnom_Client" msprop:Generator_ColumnPropNameInRow="nom_Client" msprop:Generator_ColumnPropNameInTable="nom_ClientColumn" msprop:Generator_UserColumnName="nom_Client" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="id_Etage" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnid_Etage" msprop:Generator_ColumnPropNameInRow="id_Etage" msprop:Generator_ColumnPropNameInTable="id_EtageColumn" msprop:Generator_UserColumnName="id_Etage" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="38" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="id_type_Material" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnid_type_Material" msprop:Generator_ColumnPropNameInRow="id_type_Material" msprop:Generator_ColumnPropNameInTable="id_type_MaterialColumn" msprop:Generator_UserColumnName="id_type_Material" minOccurs="0">
+              <xs:element name="Nom_x0020_de_x0020_Matériel" msprop:Generator_ColumnVarNameInTable="columnNom_de_Matériel" msprop:Generator_ColumnPropNameInRow="Nom_de_Matériel" msprop:Generator_ColumnPropNameInTable="Nom_de_MatérielColumn" msprop:Generator_UserColumnName="Nom de Matériel">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="date_dernier_Intervention" msprop:Generator_ColumnVarNameInTable="columndate_dernier_Intervention" msprop:Generator_ColumnPropNameInRow="date_dernier_Intervention" msprop:Generator_ColumnPropNameInTable="date_dernier_InterventionColumn" msprop:Generator_UserColumnName="date_dernier_Intervention" type="xs:dateTime" />
+              <xs:element name="Numéro_x0020_de_x0020_Série" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNuméro_de_Série" msprop:Generator_ColumnPropNameInRow="Numéro_de_Série" msprop:Generator_ColumnPropNameInTable="Numéro_de_SérieColumn" msprop:Generator_UserColumnName="Numéro de Série" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="36" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Client_x0020_associé" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnClient_associé" msprop:Generator_ColumnPropNameInRow="Client_associé" msprop:Generator_ColumnPropNameInTable="Client_associéColumn" msprop:Generator_UserColumnName="Client associé" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Site_x0020_de_x0020_stockage" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSite_de_stockage" msprop:Generator_ColumnPropNameInRow="Site_de_stockage" msprop:Generator_ColumnPropNameInTable="Site_de_stockageColumn" msprop:Generator_UserColumnName="Site de stockage" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Batiment" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBatiment" msprop:Generator_ColumnPropNameInRow="Batiment" msprop:Generator_ColumnPropNameInTable="BatimentColumn" msprop:Generator_UserColumnName="Batiment" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="41" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Etage" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnEtage" msprop:Generator_ColumnPropNameInRow="Etage" msprop:Generator_ColumnPropNameInTable="EtageColumn" msprop:Generator_UserColumnName="Etage" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="38" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Salle" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSalle" msprop:Generator_ColumnPropNameInRow="Salle" msprop:Generator_ColumnPropNameInTable="SalleColumn" msprop:Generator_UserColumnName="Salle" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Type_x0020_de_x0020_matériel" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnType_de_matériel" msprop:Generator_ColumnPropNameInRow="Type_de_matériel" msprop:Generator_ColumnPropNameInTable="Type_de_matérielColumn" msprop:Generator_UserColumnName="Type de matériel" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Date_x0020_dernière_x0020_Intervention" msprop:Generator_ColumnVarNameInTable="columnDate_dernière_Intervention" msprop:Generator_ColumnPropNameInRow="Date_dernière_Intervention" msprop:Generator_ColumnPropNameInTable="Date_dernière_InterventionColumn" msprop:Generator_UserColumnName="Date dernière Intervention" type="xs:dateTime" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:GetMaterials" />
-      <xs:field xpath="mstns:id_Materiel" />
-    </xs:unique>
   </xs:element>
 </xs:schema>

@@ -70,11 +70,6 @@
     <Compile Include="FormAddTypeMateriel.Designer.cs">
       <DependentUpon>FormAddTypeMateriel.cs</DependentUpon>
     </Compile>
-    <Compile Include="GestionMatosDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GestionMatosDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="FormHomepage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +81,11 @@
     </Compile>
     <Compile Include="FormAddClient.Designer.cs">
       <DependentUpon>FormAddClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionMatosDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionMatosDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="GestionMatosDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>

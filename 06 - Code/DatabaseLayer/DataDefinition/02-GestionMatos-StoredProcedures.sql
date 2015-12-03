@@ -12,8 +12,8 @@ USE [GestionMatos]
 GO
 
 /****** Object:  StoredProcedure [dbo].[GetMaterials]    Script Date: 02/12/2015 09:19:28 ******/
-DROP PROCEDURE [dbo].[GetMaterials]
-GO
+--DROP PROCEDURE [dbo].[GetMaterials]
+--GO
 
 /****** Object:  StoredProcedure [dbo].[GetMaterials]    Script Date: 02/12/2015 09:19:28 ******/
 SET ANSI_NULLS ON
@@ -36,12 +36,16 @@ BEGIN
 
     -- Insert statements for procedure here
 	SELECT 
-		M.id_Materiel 
-		,UPPER(M.guid_Materiel) AS 'guid_Materiel'
-		,(SELECT nom_Client FROM [dbo].[Client] WHERE id_client=M.id_Client) AS 'nom_Client'
-		,(SELECT 'Etage n°' + CONVERT(varchar, num_Etage) FROM [dbo].[Etage] WHERE id_Etage=M.id_Etage) AS 'id_Etage'
-		,(SELECT nom_type_Materiel FROM [dbo].[Type_Materiel] WHERE id_type_Materiel=M.id_type_Materiel) AS 'id_type_Material'
-		,M.date_dernier_Intervention
+		M.nom_Materiel AS 'Nom de Matériel'
+		,UPPER(M.guid_Materiel) AS 'Numéro de Série'
+		,(SELECT nom_Client FROM [dbo].[Client] WHERE id_client=M.id_Client) AS 'Client associé'
+		,(SELECT nom_Site FROM [dbo].[Site] WHERE id_Site=M.id_Site) AS 'Site de stockage'
+		,(SELECT 'Batiment n°' + CONVERT(varchar, num_Batiment) FROM [dbo].[Batiment] WHERE id_Batiment=M.id_Batiment) AS 'Batiment'
+		,(SELECT 'Etage n°' + CONVERT(varchar, num_Etage) FROM [dbo].[Etage] WHERE id_Etage=M.id_Etage) AS 'Etage'
+		,(SELECT nom_Salle FROM [dbo].[Salle] WHERE id_Salle=M.id_Salle) AS 'Salle'
+		,(SELECT nom_type_Materiel FROM [dbo].[Type_Materiel] WHERE id_type_Materiel=M.id_type_Materiel) AS 'Type de matériel'
+		,M.date_dernier_Intervention AS 'Date dernière Intervention'
+		,M.description As 'Description'
 	FROM	
 		[dbo].[Materiel] AS M
 END

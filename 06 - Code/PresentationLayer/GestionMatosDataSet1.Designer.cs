@@ -279,17 +279,25 @@ namespace GestionMatosApplication {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class GetMaterialsDataTable : global::System.Data.TypedTableBase<GetMaterialsRow> {
             
-            private global::System.Data.DataColumn columnid_Materiel;
+            private global::System.Data.DataColumn columnNom_de_Matériel;
             
-            private global::System.Data.DataColumn columnguid_Materiel;
+            private global::System.Data.DataColumn columnNuméro_de_Série;
             
-            private global::System.Data.DataColumn columnnom_Client;
+            private global::System.Data.DataColumn columnClient_associé;
             
-            private global::System.Data.DataColumn columnid_Etage;
+            private global::System.Data.DataColumn columnSite_de_stockage;
             
-            private global::System.Data.DataColumn columnid_type_Material;
+            private global::System.Data.DataColumn columnBatiment;
             
-            private global::System.Data.DataColumn columndate_dernier_Intervention;
+            private global::System.Data.DataColumn columnEtage;
+            
+            private global::System.Data.DataColumn columnSalle;
+            
+            private global::System.Data.DataColumn columnType_de_matériel;
+            
+            private global::System.Data.DataColumn columnDate_dernière_Intervention;
+            
+            private global::System.Data.DataColumn columnDescription;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -326,49 +334,81 @@ namespace GestionMatosApplication {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_MaterielColumn {
+            public global::System.Data.DataColumn Nom_de_MatérielColumn {
                 get {
-                    return this.columnid_Materiel;
+                    return this.columnNom_de_Matériel;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn guid_MaterielColumn {
+            public global::System.Data.DataColumn Numéro_de_SérieColumn {
                 get {
-                    return this.columnguid_Materiel;
+                    return this.columnNuméro_de_Série;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn nom_ClientColumn {
+            public global::System.Data.DataColumn Client_associéColumn {
                 get {
-                    return this.columnnom_Client;
+                    return this.columnClient_associé;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_EtageColumn {
+            public global::System.Data.DataColumn Site_de_stockageColumn {
                 get {
-                    return this.columnid_Etage;
+                    return this.columnSite_de_stockage;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_type_MaterialColumn {
+            public global::System.Data.DataColumn BatimentColumn {
                 get {
-                    return this.columnid_type_Material;
+                    return this.columnBatiment;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn date_dernier_InterventionColumn {
+            public global::System.Data.DataColumn EtageColumn {
                 get {
-                    return this.columndate_dernier_Intervention;
+                    return this.columnEtage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SalleColumn {
+                get {
+                    return this.columnSalle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Type_de_matérielColumn {
+                get {
+                    return this.columnType_de_matériel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Date_dernière_InterventionColumn {
+                get {
+                    return this.columnDate_dernière_Intervention;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
                 }
             }
             
@@ -409,25 +449,22 @@ namespace GestionMatosApplication {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GetMaterialsRow AddGetMaterialsRow(string guid_Materiel, string nom_Client, string id_Etage, string id_type_Material, System.DateTime date_dernier_Intervention) {
+            public GetMaterialsRow AddGetMaterialsRow(string Nom_de_Matériel, string Numéro_de_Série, string Client_associé, string Site_de_stockage, string Batiment, string Etage, string Salle, string Type_de_matériel, System.DateTime Date_dernière_Intervention, string Description) {
                 GetMaterialsRow rowGetMaterialsRow = ((GetMaterialsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
-                        guid_Materiel,
-                        nom_Client,
-                        id_Etage,
-                        id_type_Material,
-                        date_dernier_Intervention};
+                        Nom_de_Matériel,
+                        Numéro_de_Série,
+                        Client_associé,
+                        Site_de_stockage,
+                        Batiment,
+                        Etage,
+                        Salle,
+                        Type_de_matériel,
+                        Date_dernière_Intervention,
+                        Description};
                 rowGetMaterialsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGetMaterialsRow);
                 return rowGetMaterialsRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GetMaterialsRow FindByid_Materiel(int id_Materiel) {
-                return ((GetMaterialsRow)(this.Rows.Find(new object[] {
-                            id_Materiel})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -447,44 +484,60 @@ namespace GestionMatosApplication {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnid_Materiel = base.Columns["id_Materiel"];
-                this.columnguid_Materiel = base.Columns["guid_Materiel"];
-                this.columnnom_Client = base.Columns["nom_Client"];
-                this.columnid_Etage = base.Columns["id_Etage"];
-                this.columnid_type_Material = base.Columns["id_type_Material"];
-                this.columndate_dernier_Intervention = base.Columns["date_dernier_Intervention"];
+                this.columnNom_de_Matériel = base.Columns["Nom de Matériel"];
+                this.columnNuméro_de_Série = base.Columns["Numéro de Série"];
+                this.columnClient_associé = base.Columns["Client associé"];
+                this.columnSite_de_stockage = base.Columns["Site de stockage"];
+                this.columnBatiment = base.Columns["Batiment"];
+                this.columnEtage = base.Columns["Etage"];
+                this.columnSalle = base.Columns["Salle"];
+                this.columnType_de_matériel = base.Columns["Type de matériel"];
+                this.columnDate_dernière_Intervention = base.Columns["Date dernière Intervention"];
+                this.columnDescription = base.Columns["Description"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnid_Materiel = new global::System.Data.DataColumn("id_Materiel", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_Materiel);
-                this.columnguid_Materiel = new global::System.Data.DataColumn("guid_Materiel", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnguid_Materiel);
-                this.columnnom_Client = new global::System.Data.DataColumn("nom_Client", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnom_Client);
-                this.columnid_Etage = new global::System.Data.DataColumn("id_Etage", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_Etage);
-                this.columnid_type_Material = new global::System.Data.DataColumn("id_type_Material", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_type_Material);
-                this.columndate_dernier_Intervention = new global::System.Data.DataColumn("date_dernier_Intervention", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndate_dernier_Intervention);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid_Materiel}, true));
-                this.columnid_Materiel.AutoIncrement = true;
-                this.columnid_Materiel.AllowDBNull = false;
-                this.columnid_Materiel.ReadOnly = true;
-                this.columnid_Materiel.Unique = true;
-                this.columnguid_Materiel.ReadOnly = true;
-                this.columnguid_Materiel.MaxLength = 36;
-                this.columnnom_Client.ReadOnly = true;
-                this.columnnom_Client.MaxLength = 50;
-                this.columnid_Etage.ReadOnly = true;
-                this.columnid_Etage.MaxLength = 38;
-                this.columnid_type_Material.ReadOnly = true;
-                this.columnid_type_Material.MaxLength = 100;
-                this.columndate_dernier_Intervention.AllowDBNull = false;
+                this.columnNom_de_Matériel = new global::System.Data.DataColumn("Nom de Matériel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNom_de_Matériel);
+                this.columnNuméro_de_Série = new global::System.Data.DataColumn("Numéro de Série", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNuméro_de_Série);
+                this.columnClient_associé = new global::System.Data.DataColumn("Client associé", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClient_associé);
+                this.columnSite_de_stockage = new global::System.Data.DataColumn("Site de stockage", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSite_de_stockage);
+                this.columnBatiment = new global::System.Data.DataColumn("Batiment", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBatiment);
+                this.columnEtage = new global::System.Data.DataColumn("Etage", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEtage);
+                this.columnSalle = new global::System.Data.DataColumn("Salle", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSalle);
+                this.columnType_de_matériel = new global::System.Data.DataColumn("Type de matériel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnType_de_matériel);
+                this.columnDate_dernière_Intervention = new global::System.Data.DataColumn("Date dernière Intervention", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate_dernière_Intervention);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
+                this.columnNom_de_Matériel.AllowDBNull = false;
+                this.columnNom_de_Matériel.MaxLength = 100;
+                this.columnNuméro_de_Série.ReadOnly = true;
+                this.columnNuméro_de_Série.MaxLength = 36;
+                this.columnClient_associé.ReadOnly = true;
+                this.columnClient_associé.MaxLength = 50;
+                this.columnSite_de_stockage.ReadOnly = true;
+                this.columnSite_de_stockage.MaxLength = 50;
+                this.columnBatiment.ReadOnly = true;
+                this.columnBatiment.MaxLength = 41;
+                this.columnEtage.ReadOnly = true;
+                this.columnEtage.MaxLength = 38;
+                this.columnSalle.ReadOnly = true;
+                this.columnSalle.MaxLength = 100;
+                this.columnType_de_matériel.ReadOnly = true;
+                this.columnType_de_matériel.MaxLength = 100;
+                this.columnDate_dernière_Intervention.AllowDBNull = false;
+                this.columnDescription.AllowDBNull = false;
+                this.columnDescription.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -627,136 +680,231 @@ namespace GestionMatosApplication {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int id_Materiel {
+            public string Nom_de_Matériel {
                 get {
-                    return ((int)(this[this.tableGetMaterials.id_MaterielColumn]));
+                    return ((string)(this[this.tableGetMaterials.Nom_de_MatérielColumn]));
                 }
                 set {
-                    this[this.tableGetMaterials.id_MaterielColumn] = value;
+                    this[this.tableGetMaterials.Nom_de_MatérielColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string guid_Materiel {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetMaterials.guid_MaterielColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'guid_Materiel\' in table \'GetMaterials\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetMaterials.guid_MaterielColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string nom_Client {
+            public string Numéro_de_Série {
                 get {
                     try {
-                        return ((string)(this[this.tableGetMaterials.nom_ClientColumn]));
+                        return ((string)(this[this.tableGetMaterials.Numéro_de_SérieColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'nom_Client\' in table \'GetMaterials\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Numéro de Série\' in table \'GetMaterials\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGetMaterials.nom_ClientColumn] = value;
+                    this[this.tableGetMaterials.Numéro_de_SérieColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string id_Etage {
+            public string Client_associé {
                 get {
                     try {
-                        return ((string)(this[this.tableGetMaterials.id_EtageColumn]));
+                        return ((string)(this[this.tableGetMaterials.Client_associéColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'id_Etage\' in table \'GetMaterials\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Client associé\' in table \'GetMaterials\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGetMaterials.id_EtageColumn] = value;
+                    this[this.tableGetMaterials.Client_associéColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string id_type_Material {
+            public string Site_de_stockage {
                 get {
                     try {
-                        return ((string)(this[this.tableGetMaterials.id_type_MaterialColumn]));
+                        return ((string)(this[this.tableGetMaterials.Site_de_stockageColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'id_type_Material\' in table \'GetMaterials\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Site de stockage\' in table \'GetMaterials\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGetMaterials.id_type_MaterialColumn] = value;
+                    this[this.tableGetMaterials.Site_de_stockageColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime date_dernier_Intervention {
+            public string Batiment {
                 get {
-                    return ((global::System.DateTime)(this[this.tableGetMaterials.date_dernier_InterventionColumn]));
+                    try {
+                        return ((string)(this[this.tableGetMaterials.BatimentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Batiment\' in table \'GetMaterials\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableGetMaterials.date_dernier_InterventionColumn] = value;
+                    this[this.tableGetMaterials.BatimentColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isguid_MaterielNull() {
-                return this.IsNull(this.tableGetMaterials.guid_MaterielColumn);
+            public string Etage {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetMaterials.EtageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Etage\' in table \'GetMaterials\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetMaterials.EtageColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setguid_MaterielNull() {
-                this[this.tableGetMaterials.guid_MaterielColumn] = global::System.Convert.DBNull;
+            public string Salle {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetMaterials.SalleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Salle\' in table \'GetMaterials\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetMaterials.SalleColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isnom_ClientNull() {
-                return this.IsNull(this.tableGetMaterials.nom_ClientColumn);
+            public string Type_de_matériel {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetMaterials.Type_de_matérielColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Type de matériel\' in table \'GetMaterials\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetMaterials.Type_de_matérielColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setnom_ClientNull() {
-                this[this.tableGetMaterials.nom_ClientColumn] = global::System.Convert.DBNull;
+            public System.DateTime Date_dernière_Intervention {
+                get {
+                    return ((global::System.DateTime)(this[this.tableGetMaterials.Date_dernière_InterventionColumn]));
+                }
+                set {
+                    this[this.tableGetMaterials.Date_dernière_InterventionColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isid_EtageNull() {
-                return this.IsNull(this.tableGetMaterials.id_EtageColumn);
+            public string Description {
+                get {
+                    return ((string)(this[this.tableGetMaterials.DescriptionColumn]));
+                }
+                set {
+                    this[this.tableGetMaterials.DescriptionColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setid_EtageNull() {
-                this[this.tableGetMaterials.id_EtageColumn] = global::System.Convert.DBNull;
+            public bool IsNuméro_de_SérieNull() {
+                return this.IsNull(this.tableGetMaterials.Numéro_de_SérieColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isid_type_MaterialNull() {
-                return this.IsNull(this.tableGetMaterials.id_type_MaterialColumn);
+            public void SetNuméro_de_SérieNull() {
+                this[this.tableGetMaterials.Numéro_de_SérieColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setid_type_MaterialNull() {
-                this[this.tableGetMaterials.id_type_MaterialColumn] = global::System.Convert.DBNull;
+            public bool IsClient_associéNull() {
+                return this.IsNull(this.tableGetMaterials.Client_associéColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetClient_associéNull() {
+                this[this.tableGetMaterials.Client_associéColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSite_de_stockageNull() {
+                return this.IsNull(this.tableGetMaterials.Site_de_stockageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSite_de_stockageNull() {
+                this[this.tableGetMaterials.Site_de_stockageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBatimentNull() {
+                return this.IsNull(this.tableGetMaterials.BatimentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBatimentNull() {
+                this[this.tableGetMaterials.BatimentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEtageNull() {
+                return this.IsNull(this.tableGetMaterials.EtageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEtageNull() {
+                this[this.tableGetMaterials.EtageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSalleNull() {
+                return this.IsNull(this.tableGetMaterials.SalleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSalleNull() {
+                this[this.tableGetMaterials.SalleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsType_de_matérielNull() {
+                return this.IsNull(this.tableGetMaterials.Type_de_matérielColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetType_de_matérielNull() {
+                this[this.tableGetMaterials.Type_de_matérielColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -919,12 +1067,16 @@ namespace GestionMatosApplication.GestionMatosDataSet1TableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "GetMaterials";
-            tableMapping.ColumnMappings.Add("id_Materiel", "id_Materiel");
-            tableMapping.ColumnMappings.Add("guid_Materiel", "guid_Materiel");
-            tableMapping.ColumnMappings.Add("nom_Client", "nom_Client");
-            tableMapping.ColumnMappings.Add("id_Etage", "id_Etage");
-            tableMapping.ColumnMappings.Add("id_type_Material", "id_type_Material");
-            tableMapping.ColumnMappings.Add("date_dernier_Intervention", "date_dernier_Intervention");
+            tableMapping.ColumnMappings.Add("Nom de Matériel", "Nom de Matériel");
+            tableMapping.ColumnMappings.Add("Numéro de Série", "Numéro de Série");
+            tableMapping.ColumnMappings.Add("Client associé", "Client associé");
+            tableMapping.ColumnMappings.Add("Site de stockage", "Site de stockage");
+            tableMapping.ColumnMappings.Add("Batiment", "Batiment");
+            tableMapping.ColumnMappings.Add("Etage", "Etage");
+            tableMapping.ColumnMappings.Add("Salle", "Salle");
+            tableMapping.ColumnMappings.Add("Type de matériel", "Type de matériel");
+            tableMapping.ColumnMappings.Add("Date dernière Intervention", "Date dernière Intervention");
+            tableMapping.ColumnMappings.Add("Description", "Description");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

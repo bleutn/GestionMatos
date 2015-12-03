@@ -39,6 +39,8 @@ namespace GestionMatosApplication
 		private List<ListItem> m_sallesList = new List<ListItem>();
 		private List<ListItem> m_etagesList = new List<ListItem>();
 
+		private static FormHomepage s_formHomepage;
+
 		public bool modifying = false;
 
         private string m_materialName;
@@ -49,7 +51,6 @@ namespace GestionMatosApplication
         private string  m_description;
         private DateTime  m_intervention;
         private int m_mtbf;
-
 		private int m_selectedSiteID = -1;
 		private int m_selectedBatimentID = -1; 
 		private int m_selectedEtageID = -1;
@@ -57,8 +58,9 @@ namespace GestionMatosApplication
 		private int m_selectedClientID = -1;
 		private int m_selectedTypeMtlID = -1;
 
-		public FormAddMateriel()
+		public FormAddMateriel(FormHomepage form)
 		{
+			s_formHomepage = form;
 			InitializeComponent();
 		}
 
@@ -182,42 +184,6 @@ namespace GestionMatosApplication
 			FillTable<SalleTableAdapter, GestionMatosDataSet.SalleDataTable>(m_adapterSalle, m_tblSalle);
 		}
 
-		protected void SelectClient()
-		{
-			m_selectedClientID = m_clientsList.Count > cmbClientName.SelectedIndex ? 
-				m_clientsList[cmbClientName.SelectedIndex].ID : -1;
-		}
-
-		protected void SelectMtlType()
-		{
-			m_selectedTypeMtlID = m_materialtypesList.Count > cmbMaterialType.SelectedIndex ? 
-				m_materialtypesList[cmbMaterialType.SelectedIndex].ID : -1; 
-		}
-
-		protected void SelectBuilding()
-		{
-			m_selectedBatimentID = m_batimentsList.Count > cmbBatiment.SelectedIndex ?
-				m_batimentsList[cmbBatiment.SelectedIndex].ID : -1;
-		}
-
-		protected void SelectSite()
-		{
-			m_selectedSiteID = m_sitesList.Count >cmbSite.SelectedIndex ?
-				m_sitesList[cmbSite.SelectedIndex].ID : -1;
-		}
-
-		protected void SelectFloor()
-		{
-			m_selectedEtageID = m_etagesList.Count > cmbEtage.SelectedIndex ?
-				m_etagesList[cmbEtage.SelectedIndex].ID : -1;
-		}
-
-		protected void SelectRoom()
-		{
-			m_selectedSalleID = m_sallesList.Count > cmbSalle.SelectedIndex? 
-				m_sallesList[cmbSalle.SelectedIndex].ID : -1;
-		}
-
 		protected void FetchClient()
 		{
 			m_clientsList.Clear();
@@ -226,75 +192,123 @@ namespace GestionMatosApplication
 			{
 				m_clientsList.Add(new ListItem(row.nom_Client, row.id_Client));
 			}
-			cmbClientName.DataSource = m_clientsList;
-			cmbClientName.SelectedIndex = 0;
-			m_selectedClientID = m_clientsList[cmbClientName.SelectedIndex].ID;
+			if (m_clientsList.Count > 0)
+			{
+				cmbClientName.DataSource = m_clientsList;
+				cmbClientName.SelectedIndex = 0;
+				m_selectedClientID = m_clientsList[cmbClientName.SelectedIndex].ID;
+				return;
+			}
+			m_selectedClientID = -1;
 		}
 
 		protected void FetchMaterialTypes()
 		{
-			FillListItem<GestionMatosDataSet.Type_MaterielDataTable, GestionMatosDataSet.Type_MaterielRow, ComboBox>(m_tblMaterielType, m_materialtypesList, cmbMaterialType, "nom_Type_Materiel", "id_Type_Materiel", Item.MATERIELTYPE);
-			cmbMaterialType.SelectedIndex = 0;
-			SelectMtlType();
+			m_materialtypesList.Clear();
+			m_materialtypesList = new List<ListItem>();
+			foreach (GestionMatosDataSet.Type_MaterielRow row in m_tblMaterielType.Rows)
+			{
+				m_materialtypesList.Add(new ListItem(row.nom_Type_Materiel, row.id_Type_Materiel));
+			}
+			if (m_materialtypesList.Count > 0)
+			{
+				cmbMaterialType.DataSource = m_materialtypesList;
+				cmbMaterialType.SelectedIndex = 0;
+				m_selectedTypeMtlID = m_materialtypesList[cmbMaterialType.SelectedIndex].ID;
+				return;
+			}
+			m_selectedTypeMtlID = -1;
 		}
 
 		protected void FetchBuildings()
 		{
 			m_batimentsList.Clear();
 			m_batimentsList = new List<ListItem>();
-			EnumerableRowCollection batimentRows = m_tblBatiments.Where(e => e.id_Site == m_selectedSiteID);
-			foreach (GestionMatosDataSet.BatimentRow row in batimentRows)
+			if (m_selectedSiteID != -1)
 			{
-				m_batimentsList.Add(new ListItem("Batiment n°" + Convert.ToInt32(row.num_Batiment), row.id_Batiment));
+				EnumerableRowCollection batimentRows = m_tblBatiments.Where(e => e.id_Site == m_selectedSiteID);
+				foreach (GestionMatosDataSet.BatimentRow row in batimentRows)
+				{
+					m_batimentsList.Add(new ListItem("Batiment n°" + Convert.ToInt32(row.num_Batiment), row.id_Batiment));
+				}
+				if (m_batimentsList.Count > 0)
+				{
+					cmbBatiment.DataSource = m_batimentsList;
+					cmbBatiment.SelectedIndex = 0;
+					m_selectedBatimentID = m_batimentsList[cmbBatiment.SelectedIndex].ID;
+					return;
+				}
+				m_selectedBatimentID = -1;
 			}
-			cmbBatiment.DataSource = m_batimentsList;
-			cmbBatiment.SelectedIndex = 0;
-			m_selectedBatimentID = m_batimentsList[cmbBatiment.SelectedIndex].ID;
 		}
 
 		protected void FetchSite()
 		{
 			m_sitesList.Clear();
 			m_sitesList = new List<ListItem>();
-			EnumerableRowCollection sitesByClientID = m_tblBatiments.Where(b => b.id_Client == m_selectedClientID);
-
-			foreach (GestionMatosDataSet.BatimentRow row in sitesByClientID)
+			if (m_selectedClientID != -1)
 			{
-				GestionMatosDataSet.SiteRow siteRow = m_tblSites.Where(s => s.id_Site == row.id_Site).Single();
-				m_sitesList.Add(new ListItem(siteRow.nom_Site, siteRow.id_Site));
+				EnumerableRowCollection sitesByClientID = m_tblBatiments.Where(b => b.id_Client == m_selectedClientID);
+
+				foreach (GestionMatosDataSet.BatimentRow row in sitesByClientID)
+				{
+					GestionMatosDataSet.SiteRow siteRow = m_tblSites.Where(s => s.id_Site == row.id_Site).Single();
+					m_sitesList.Add(new ListItem(siteRow.nom_Site, siteRow.id_Site));
+				}
+				if (m_sitesList.Count > 0)
+				{
+					m_sitesList.GroupBy(s => s.ID);
+					cmbSite.DataSource = m_sitesList;
+					cmbSite.SelectedIndex = 0;
+					m_selectedSiteID = m_sitesList[cmbSite.SelectedIndex].ID;
+					return;
+				}
+				m_selectedSiteID = -1;
 			}
-			m_sitesList.GroupBy(s => s.ID);
-			cmbSite.DataSource = m_sitesList;
-			cmbSite.SelectedIndex = 0;
-			m_selectedSiteID = m_sitesList[cmbSite.SelectedIndex].ID;
 		}
 
 		protected void FetchFloors()
 		{
 			m_etagesList.Clear();
 			m_etagesList = new List<ListItem>();
-			EnumerableRowCollection etageRows = m_tblEtage.Where(e => e.id_Batiment == m_selectedBatimentID);
-			foreach (GestionMatosDataSet.EtageRow row in etageRows)
+			if (m_selectedBatimentID != -1)
 			{
-				m_etagesList.Add(new ListItem("Etage n°" + Convert.ToInt32(row.num_Etage), row.id_Etage));
+				EnumerableRowCollection etageRows = m_tblEtage.Where(e => e.id_Batiment == m_selectedBatimentID);
+				foreach (GestionMatosDataSet.EtageRow row in etageRows)
+				{
+					m_etagesList.Add(new ListItem("Etage n°" + Convert.ToInt32(row.num_Etage), row.id_Etage));
+				}
+				if (m_etagesList.Count > 0)
+				{
+					cmbEtage.DataSource = m_etagesList;
+					cmbEtage.SelectedIndex = 0;
+					m_selectedEtageID = m_etagesList[cmbEtage.SelectedIndex].ID;
+					return;
+				}
+				m_selectedEtageID = -1;
 			}
-			cmbEtage.DataSource = m_etagesList;
-			cmbEtage.SelectedIndex = 0;
-			m_selectedEtageID = m_etagesList[cmbEtage.SelectedIndex].ID;
 		}
 
 		protected void FetchRooms()
 		{
 			m_sallesList.Clear();
 			m_sallesList = new List<ListItem>();
-			EnumerableRowCollection salleRows = m_tblSalle.Where(e => e.id_Etage == m_selectedEtageID);
-			foreach (GestionMatosDataSet.SalleRow row in salleRows)
+			if (m_selectedEtageID != -1)
 			{
-				m_sallesList.Add(new ListItem(row.nom_Salle, row.id_Salle));
+				EnumerableRowCollection salleRows = m_tblSalle.Where(e => e.id_Etage == m_selectedEtageID);
+				foreach (GestionMatosDataSet.SalleRow row in salleRows)
+				{
+					m_sallesList.Add(new ListItem(row.nom_Salle, row.id_Salle));
+				}
+				if (m_sallesList.Count > 0)
+				{
+					cmbSalle.DataSource = m_sallesList;
+					cmbSalle.SelectedIndex = 0;
+					m_selectedSalleID = m_sallesList[cmbSalle.SelectedIndex].ID;
+					return;
+				}
+				m_selectedSalleID = -1;
 			}
-			cmbSalle.DataSource = m_sallesList;
-			cmbSalle.SelectedIndex = 0;
-			m_selectedSalleID = m_sallesList[cmbSalle.SelectedIndex].ID;
 		}
 
 		protected void FillAddingIHM()
@@ -336,8 +350,18 @@ namespace GestionMatosApplication
 
         private void cmbClientName_SelectedIndexChanged(object sender, EventArgs e)
         {
-			m_selectedClientID = ((ListItem)cmbClientName.SelectedItem).ID;
-			FetchSite();
+			if ((ListItem)cmbClientName.SelectedItem != null)
+			{
+				try
+				{
+					m_selectedClientID = ((ListItem)cmbClientName.SelectedItem).ID;
+					FetchSite();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
+			}
         }
 
         private void cmbMaterialType_SelectedValueChanged(object sender, EventArgs e)
@@ -379,15 +403,26 @@ namespace GestionMatosApplication
                 m_description = txbDesc.Text;
                 m_mtbf = Convert.ToInt32(txbMTBF.Text);
 				m_intervention = dateIntervention.Value;
+				m_description = txbDesc.Text;
 
 				m_adapterMaterials.Insert(
+					m_materialName,
 					m_materialSerial.ToString(),
 					m_materialtype_id,
 					m_client_id,
-					m_etage_id,
-					m_intervention);
+					m_selectedSiteID,
+					m_selectedBatimentID,
+					m_selectedEtageID,
+					m_selectedSalleID,
+					m_intervention,
+					m_description);
 
+				if (s_formHomepage != null)
+				{
+					s_formHomepage.RebindMaterials();
+				}
 				Close();
+
 			}
             catch (SqlException sqlex)
             {
@@ -419,20 +454,29 @@ namespace GestionMatosApplication
 
 		private void cmbSite_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			m_selectedSiteID = ((ListItem)cmbSite.SelectedItem).ID;
-			FetchBuildings();
+			if ((ListItem)cmbSite.SelectedItem != null)
+			{
+				m_selectedSiteID = ((ListItem)cmbSite.SelectedItem).ID;
+				FetchBuildings();
+			}
 		}
 
 		private void cmbBatiment_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			m_selectedBatimentID = ((ListItem)cmbBatiment.SelectedItem).ID;
-			FetchFloors();
+			if ((ListItem)cmbBatiment.SelectedItem != null)
+			{
+				m_selectedBatimentID = ((ListItem)cmbBatiment.SelectedItem).ID;
+				FetchFloors();
+			}
 		}
 
 		private void cmbEtage_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			m_selectedEtageID = ((ListItem)cmbEtage.SelectedItem).ID;
-			FetchRooms();
+			if ((ListItem)cmbEtage.SelectedItem != null)
+			{
+				m_selectedEtageID = ((ListItem)cmbEtage.SelectedItem).ID;
+				FetchRooms();
+			}
 		}
 	}
 }
