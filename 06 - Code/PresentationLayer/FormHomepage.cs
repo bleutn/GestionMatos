@@ -26,6 +26,11 @@ namespace GestionMatosApplication
 		private GestionMatosDataSet.MaterielDataTable m_tblMaterial = new GestionMatosDataSet.MaterielDataTable();
 		private MaterielTableAdapter m_adapterMaterials = new MaterielTableAdapter();
 
+		private bool addingMaterial = false;
+		private bool updatingMaterial = false;
+
+		private GestionMatosDataSet1.GetMaterialsRow m_selectedMaterial;
+
         public FormHomepage()
         {
             InitializeComponent();
@@ -235,16 +240,25 @@ namespace GestionMatosApplication
 
 		private void add_Click_1(object sender, EventArgs e)
 		{
-			FormAddMateriel materiel = new FormAddMateriel(this);
-			materiel.Show();
-			materiel.modifying = false;
+			if (!addingMaterial && !updatingMaterial)
+			{
+				FormAddMateriel materiel = new FormAddMateriel(this);
+				materiel.Show();
+				materiel.modifying = false;
+				addingMaterial = true;
+			}
+
 		}
 
 		private void update_Click(object sender, EventArgs e)
 		{
-			FormAddMateriel materiel = new FormAddMateriel(this);
-			materiel.Show();
-			materiel.modifying = true;
+			if (!updatingMaterial)
+			{
+				FormUpdateMateriel materiel = new FormUpdateMateriel(this);
+				materiel.Show();
+				materiel.modifying = true;
+				updatingMaterial = true;
+			}
 		}
 
 		private void delete_Click(object sender, EventArgs e)
@@ -260,6 +274,11 @@ namespace GestionMatosApplication
 
 		private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
 		{
+			GestionMatosDataSet1.GetMaterialsRow materialData = dataGridView1.Rows[e.RowIndex].DataBoundItem as GestionMatosDataSet1.GetMaterialsRow;
+			if (e.ColumnIndex == 0 && materialData != null)
+			{
+				m_selectedMaterial = materialData;
+			}
 		}
     }
 }

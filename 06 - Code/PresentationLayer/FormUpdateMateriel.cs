@@ -14,7 +14,7 @@ using GestionMatosApplication;
 
 namespace GestionMatosApplication
 {
-	public partial class FormAddMateriel : Form
+	public partial class FormUpdateMateriel : Form
 	{
 		private GestionMatosDataSet.ClientDataTable m_tblClient = new GestionMatosDataSet.ClientDataTable();
 		private GestionMatosDataSet.Type_MaterielDataTable m_tblMaterielType = new GestionMatosDataSet.Type_MaterielDataTable();
@@ -58,10 +58,15 @@ namespace GestionMatosApplication
 		private int m_selectedClientID = -1;
 		private int m_selectedTypeMtlID = -1;
 
-		public FormAddMateriel(FormHomepage form)
+		public FormUpdateMateriel(FormHomepage form)
 		{
 			s_formHomepage = form;
 			InitializeComponent();
+		}
+
+		private void MyClosingForm(object sender, FormClosingEventArgs e)
+		{
+			
 		}
 
         private void FillMTBF()

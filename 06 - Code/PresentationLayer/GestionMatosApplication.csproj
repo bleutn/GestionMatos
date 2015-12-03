@@ -46,6 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="FormUpdateMateriel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateMateriel.Designer.cs">
+      <DependentUpon>FormUpdateMateriel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAddBatiment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,27 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlAlert.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAlert.Designer.cs">
+      <DependentUpon>UserControlAlert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlIntervention.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlIntervention.Designer.cs">
+      <DependentUpon>UserControlIntervention.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlMaterial.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlMaterial.Designer.cs">
+      <DependentUpon>UserControlMaterial.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormUpdateMateriel.resx">
+      <DependentUpon>FormUpdateMateriel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormHomepage.resx">
       <DependentUpon>FormHomepage.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +157,12 @@
     </Compile>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAlert.resx">
+      <DependentUpon>UserControlAlert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlMaterial.resx">
+      <DependentUpon>UserControlMaterial.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GestionMatosDataSet.xsc">
       <DependentUpon>GestionMatosDataSet.xsd</DependentUpon>
