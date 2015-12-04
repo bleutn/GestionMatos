@@ -41,8 +41,6 @@ namespace GestionMatosApplication
 
 		private static FormHomepage s_formHomepage;
 
-		public bool modifying = false;
-
         private string m_materialName;
         private Guid m_materialSerial;
         private int m_client_id;
@@ -360,26 +358,12 @@ namespace GestionMatosApplication
 			FetchMaterialTypes();
 			FetchClient();
 		}
-		
-		protected void FillModifyingIHM()
-		{ 
-			
-		}
 
 		private void FormAddMateriel_Load(object sender, EventArgs e)
 		{
 			try
 			{
-				if (modifying)
-				{
-					FillModifyingIHM();
-				}
-				else
-				{
-					FillAddingIHM();
-				}
-
-				
+				FillAddingIHM();
 			}
 			catch (SqlException sqlex)
 			{
@@ -496,7 +480,7 @@ namespace GestionMatosApplication
 					m_materialtype_id = ((ListItem)cmbMaterialType.SelectedItem).ID;
 					m_description = txbDesc.Text;
 					m_mtbf = Convert.ToInt32(txbMTBF.Text);
-					m_intervention = dateIntervention.Value;
+					m_intervention = dateLimitIntervention.Value;
 					m_description = txbDesc.Text;
 
 					m_adapterMaterials.Insert(
@@ -515,6 +499,8 @@ namespace GestionMatosApplication
 					{
 						s_formHomepage.RebindMaterials();
 					}
+
+					MessageBox.Show("Le matériel a bien été ajouté");
 
 					Close();
 				}
@@ -577,6 +563,11 @@ namespace GestionMatosApplication
 		private void btnAddSalle_Click_1(object sender, EventArgs e)
 		{
 
+		}
+
+		private void FormAddMateriel_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			s_formHomepage.addingMaterial = false;
 		}
 	}
 }

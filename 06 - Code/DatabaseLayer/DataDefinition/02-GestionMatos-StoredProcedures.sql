@@ -36,7 +36,8 @@ BEGIN
 
     -- Insert statements for procedure here
 	SELECT 
-		M.nom_Materiel AS 'Nom de Matériel'
+		M.id_Materiel
+		,M.nom_Materiel AS 'Nom de Matériel'
 		,UPPER(M.guid_Materiel) AS 'Numéro de Série'
 		,(SELECT nom_Client FROM [dbo].[Client] WHERE id_client=M.id_Client) AS 'Client associé'
 		,(SELECT nom_Site FROM [dbo].[Site] WHERE id_Site=M.id_Site) AS 'Site de stockage'

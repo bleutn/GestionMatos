@@ -40,6 +40,8 @@ namespace GestionMatosApplication
 		private List<ListItem> m_etagesList = new List<ListItem>();
 
 		private static FormHomepage s_formHomepage;
+		private GestionMatosDataSet1.GetMaterialsRow m_updatedMaterial = null;
+		private GestionMatosDataSet.MaterielRow m_material = null;
 
 		public bool modifying = false;
 
@@ -62,6 +64,30 @@ namespace GestionMatosApplication
 		{
 			s_formHomepage = form;
 			InitializeComponent();
+		}
+
+		public FormUpdateMateriel(FormHomepage form, GestionMatosDataSet1.GetMaterialsRow material)
+		{
+			try
+			{
+				if (material == null)
+				{ 
+					string warningCaption = "Warning: modification de matériel";
+					string warningMsg = "le matériel est invalide";
+					MessageBox.Show(warningMsg, warningCaption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				}
+				else 
+				{
+					m_updatedMaterial = material;
+				}
+				s_formHomepage = form;
+				InitializeComponent();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+
 		}
 
 		private void MyClosingForm(object sender, FormClosingEventArgs e)
@@ -197,6 +223,8 @@ namespace GestionMatosApplication
 			FillTable<BatimentTableAdapter, GestionMatosDataSet.BatimentDataTable>(m_adapterBatiment, m_tblBatiments);
 			FillTable<EtageTableAdapter, GestionMatosDataSet.EtageDataTable>(m_adapterEtage, m_tblEtage);
 			FillTable<SalleTableAdapter, GestionMatosDataSet.SalleDataTable>(m_adapterSalle, m_tblSalle);
+			FillTable<MaterielTableAdapter, GestionMatosDataSet.MaterielDataTable>(m_adapterMaterials, m_tblMaterial);
+			m_material = m_tblMaterial.FindByid_Materiel(m_updatedMaterial.id_Materiel);
 		}
 
 		protected void FetchClient()
@@ -359,32 +387,47 @@ namespace GestionMatosApplication
 			}
 		}
 
-		protected void FillAddingIHM()
+		protected void FillModifyingIHM()
 		{
 			FillTables();
 			FetchMaterialTypes();
 			FetchClient();
+			BoundData();
 		}
-		
-		protected void FillModifyingIHM()
-		{ 
-			
+
+		protected void BoundComboBox(ComboBox cmb, int index)
+		{
+			if (cmb.Items.Count > 0)
+			{
+				foreach (ListItem item in cmb.Items)
+				{
+					if (item.ID == index)
+					{
+						cmb.SelectedItem = item;
+						return;
+					}
+				}
+			}
+		}
+
+		protected void BoundData()
+		{
+			txbMaterialName.Text = m_updatedMaterial.Nom_de_Matériel;
+			txbDesc.Text = m_updatedMaterial.Description;
+			BoundComboBox(cmbClientName, m_material.id_Client);
+			BoundComboBox(cmbMaterialType, m_material.id_type_Materiel);
+			BoundComboBox(cmbSite, m_material.id_Site);
+			BoundComboBox(cmbBatiment, m_material.id_Batiment);
+			BoundComboBox(cmbEtage, m_material.id_Etage);
+			BoundComboBox(cmbSalle, m_material.id_Salle);
+			FillMTBF();
 		}
 
 		private void FormAddMateriel_Load(object sender, EventArgs e)
 		{
 			try
 			{
-				if (modifying)
-				{
-					FillModifyingIHM();
-				}
-				else
-				{
-					FillAddingIHM();
-				}
-
-				
+				FillModifyingIHM();
 			}
 			catch (SqlException sqlex)
 			{
@@ -442,7 +485,7 @@ namespace GestionMatosApplication
 		private bool ValidateMaterial()
 		{
 			bool CanValidate = true;
-			string warningCaption = "Warning: ajout de matériel";
+			string warningCaption = "Warning: modification de matériel";
 			string warningMsg = "";
 
 			if (txbMaterialName.Text == null || txbMaterialName.Text == "")
@@ -501,25 +544,30 @@ namespace GestionMatosApplication
 					m_materialtype_id = ((ListItem)cmbMaterialType.SelectedItem).ID;
 					m_description = txbDesc.Text;
 					m_mtbf = Convert.ToInt32(txbMTBF.Text);
-					m_intervention = dateIntervention.Value;
+					m_intervention = dateLimitIntervention.Value;
 					m_description = txbDesc.Text;
+					
+					//m_adapterMaterials.Fill(m_tblMaterial);
+					//GestionMatosDataSet.MaterielRow material = m_tblMaterial.FindByid_Materiel(m_updatedMaterial.id_Materiel);
 
-					m_adapterMaterials.Insert(
-						m_materialName,
-						m_materialSerial.ToString(),
-						m_materialtype_id,
-						m_client_id,
-						m_selectedSiteID,
-						m_selectedBatimentID,
-						m_selectedEtageID,
-						m_selectedSalleID,
-						m_intervention,
-						m_description);
+					m_material.nom_Materiel = m_materialName;
+					m_material.id_Client = m_client_id;
+					m_material.id_Etage = m_etage_id;
+					m_material.id_type_Materiel = m_materialtype_id;
+					m_material.description = m_description;
+					m_material.id_Site = m_selectedSiteID;
+					m_material.id_Batiment = m_selectedBatimentID;
+					m_material.id_Salle = m_selectedSalleID;
+					m_material.date_dernier_Intervention = m_intervention;
+
+					m_adapterMaterials.Update(m_material);
 
 					if (s_formHomepage != null)
 					{
 						s_formHomepage.RebindMaterials();
 					}
+
+					MessageBox.Show("Le matériel a bien été modifié");
 
 					Close();
 				}
@@ -582,6 +630,15 @@ namespace GestionMatosApplication
 		private void btnAddSalle_Click_1(object sender, EventArgs e)
 		{
 
+		}
+
+		private void FormUpdateMateriel_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			s_formHomepage.updatingMaterial = false;
+		}
+
+		private void cmbSalle_SelectedIndexChanged(object sender, EventArgs e)
+		{
 		}
 	}
 }

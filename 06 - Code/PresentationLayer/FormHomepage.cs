@@ -26,8 +26,8 @@ namespace GestionMatosApplication
 		private GestionMatosDataSet.MaterielDataTable m_tblMaterial = new GestionMatosDataSet.MaterielDataTable();
 		private MaterielTableAdapter m_adapterMaterials = new MaterielTableAdapter();
 
-		private bool addingMaterial = false;
-		private bool updatingMaterial = false;
+		public bool addingMaterial = false;
+		public bool updatingMaterial = false;
 
 		private GestionMatosDataSet1.GetMaterialsRow m_selectedMaterial;
 
@@ -244,7 +244,6 @@ namespace GestionMatosApplication
 			{
 				FormAddMateriel materiel = new FormAddMateriel(this);
 				materiel.Show();
-				materiel.modifying = false;
 				addingMaterial = true;
 			}
 
@@ -252,11 +251,10 @@ namespace GestionMatosApplication
 
 		private void update_Click(object sender, EventArgs e)
 		{
-			if (!updatingMaterial)
+			//if (!updatingMaterial)
 			{
-				FormUpdateMateriel materiel = new FormUpdateMateriel(this);
+				FormUpdateMateriel materiel = new FormUpdateMateriel(this, m_selectedMaterial);
 				materiel.Show();
-				materiel.modifying = true;
 				updatingMaterial = true;
 			}
 		}
@@ -274,10 +272,25 @@ namespace GestionMatosApplication
 
 		private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
 		{
-			GestionMatosDataSet1.GetMaterialsRow materialData = dataGridView1.Rows[e.RowIndex].DataBoundItem as GestionMatosDataSet1.GetMaterialsRow;
-			if (e.ColumnIndex == 0 && materialData != null)
+			
+		}
+
+		private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			foreach (DataGridViewRow row in dataGridView1.SelectedRows)
 			{
-				m_selectedMaterial = materialData;
+				if (row != null)
+				{
+					DataRowView dataRowView = row.DataBoundItem as DataRowView;
+					if (dataRowView != null)
+					{
+						GestionMatosDataSet1.GetMaterialsRow dataRow = (GestionMatosDataSet1.GetMaterialsRow)dataRowView.Row;
+						if (dataRow != null)
+						{
+							m_selectedMaterial = dataRow;
+						}
+					}
+				}
 			}
 		}
     }

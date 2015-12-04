@@ -299,6 +299,8 @@ namespace GestionMatosApplication {
             
             private global::System.Data.DataColumn columnDescription;
             
+            private global::System.Data.DataColumn columnid_Materiel;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public GetMaterialsDataTable() {
@@ -414,6 +416,14 @@ namespace GestionMatosApplication {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn id_MaterielColumn {
+                get {
+                    return this.columnid_Materiel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -461,10 +471,18 @@ namespace GestionMatosApplication {
                         Salle,
                         Type_de_matériel,
                         Date_dernière_Intervention,
-                        Description};
+                        Description,
+                        null};
                 rowGetMaterialsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGetMaterialsRow);
                 return rowGetMaterialsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GetMaterialsRow FindByid_Materiel(int id_Materiel) {
+                return ((GetMaterialsRow)(this.Rows.Find(new object[] {
+                            id_Materiel})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -494,6 +512,7 @@ namespace GestionMatosApplication {
                 this.columnType_de_matériel = base.Columns["Type de matériel"];
                 this.columnDate_dernière_Intervention = base.Columns["Date dernière Intervention"];
                 this.columnDescription = base.Columns["Description"];
+                this.columnid_Materiel = base.Columns["id_Materiel"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -519,6 +538,10 @@ namespace GestionMatosApplication {
                 base.Columns.Add(this.columnDate_dernière_Intervention);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
+                this.columnid_Materiel = new global::System.Data.DataColumn("id_Materiel", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_Materiel);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnid_Materiel}, true));
                 this.columnNom_de_Matériel.AllowDBNull = false;
                 this.columnNom_de_Matériel.MaxLength = 100;
                 this.columnNuméro_de_Série.ReadOnly = true;
@@ -538,6 +561,12 @@ namespace GestionMatosApplication {
                 this.columnDate_dernière_Intervention.AllowDBNull = false;
                 this.columnDescription.AllowDBNull = false;
                 this.columnDescription.MaxLength = 100;
+                this.columnid_Materiel.AutoIncrement = true;
+                this.columnid_Materiel.AutoIncrementSeed = -1;
+                this.columnid_Materiel.AutoIncrementStep = -1;
+                this.columnid_Materiel.AllowDBNull = false;
+                this.columnid_Materiel.ReadOnly = true;
+                this.columnid_Materiel.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -825,6 +854,17 @@ namespace GestionMatosApplication {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int id_Materiel {
+                get {
+                    return ((int)(this[this.tableGetMaterials.id_MaterielColumn]));
+                }
+                set {
+                    this[this.tableGetMaterials.id_MaterielColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNuméro_de_SérieNull() {
                 return this.IsNull(this.tableGetMaterials.Numéro_de_SérieColumn);
             }
@@ -1077,6 +1117,7 @@ namespace GestionMatosApplication.GestionMatosDataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("Type de matériel", "Type de matériel");
             tableMapping.ColumnMappings.Add("Date dernière Intervention", "Date dernière Intervention");
             tableMapping.ColumnMappings.Add("Description", "Description");
+            tableMapping.ColumnMappings.Add("id_Materiel", "id_Materiel");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

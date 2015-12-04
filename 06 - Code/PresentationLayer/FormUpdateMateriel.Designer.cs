@@ -146,6 +146,7 @@
 			this.cmbSalle.Name = "cmbSalle";
 			this.cmbSalle.Size = new System.Drawing.Size(310, 21);
 			this.cmbSalle.TabIndex = 32;
+			this.cmbSalle.SelectedIndexChanged += new System.EventHandler(this.cmbSalle_SelectedIndexChanged);
 			// 
 			// label4
 			// 
@@ -440,6 +441,7 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "FormUpdateMateriel";
 			this.Text = "Modification de Matériel";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormUpdateMateriel_FormClosed);
 			this.Load += new System.EventHandler(this.FormAddMateriel_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();

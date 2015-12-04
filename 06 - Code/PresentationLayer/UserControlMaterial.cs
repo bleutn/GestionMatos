@@ -29,7 +29,7 @@ namespace GestionMatosApplication
 			// UserControlMaterial
 			// 
 			this.Name = "UserControlMaterial";
-			this.Size = new System.Drawing.Size(735, 482);
+			this.Size = new System.Drawing.Size(733, 483);
 			this.ResumeLayout(false);
 
 		}

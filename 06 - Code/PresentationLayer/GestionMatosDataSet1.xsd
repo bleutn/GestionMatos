@@ -9,7 +9,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GetMaterialsTableAdapter" GeneratorDataComponentClassName="GetMaterialsTableAdapter" Name="GetMaterials" UserDataComponentName="GetMaterialsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="GestionMatosConnectionString (Settings)" DbObjectName="GestionMatos.dbo.GetMaterials" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="GestionMatosConnectionString (Settings)" DbObjectName="GestionMatos.dbo.GetMaterials" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.GetMaterials</CommandText>
@@ -31,6 +31,7 @@
               <Mapping SourceColumn="Type de matériel" DataSetColumn="Type de matériel" />
               <Mapping SourceColumn="Date dernière Intervention" DataSetColumn="Date dernière Intervention" />
               <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="id_Materiel" DataSetColumn="id_Materiel" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -42,7 +43,7 @@
   <xs:element name="GestionMatosDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="GestionMatosDataSet1" msprop:Generator_UserDSName="GestionMatosDataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="GetMaterials" msprop:Generator_TableClassName="GetMaterialsDataTable" msprop:Generator_TableVarName="tableGetMaterials" msprop:Generator_TablePropName="GetMaterials" msprop:Generator_RowDeletingName="GetMaterialsRowDeleting" msprop:Generator_RowChangingName="GetMaterialsRowChanging" msprop:Generator_RowEvHandlerName="GetMaterialsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetMaterialsRowDeleted" msprop:Generator_UserTableName="GetMaterials" msprop:Generator_RowChangedName="GetMaterialsRowChanged" msprop:Generator_RowEvArgName="GetMaterialsRowChangeEvent" msprop:Generator_RowClassName="GetMaterialsRow">
+        <xs:element name="GetMaterials" msprop:Generator_TableClassName="GetMaterialsDataTable" msprop:Generator_TableVarName="tableGetMaterials" msprop:Generator_RowChangedName="GetMaterialsRowChanged" msprop:Generator_TablePropName="GetMaterials" msprop:Generator_RowDeletingName="GetMaterialsRowDeleting" msprop:Generator_RowChangingName="GetMaterialsRowChanging" msprop:Generator_RowEvHandlerName="GetMaterialsRowChangeEventHandler" msprop:Generator_RowDeletedName="GetMaterialsRowDeleted" msprop:Generator_RowClassName="GetMaterialsRow" msprop:Generator_UserTableName="GetMaterials" msprop:Generator_RowEvArgName="GetMaterialsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Nom_x0020_de_x0020_Matériel" msprop:Generator_ColumnVarNameInTable="columnNom_de_Matériel" msprop:Generator_ColumnPropNameInRow="Nom_de_Matériel" msprop:Generator_ColumnPropNameInTable="Nom_de_MatérielColumn" msprop:Generator_UserColumnName="Nom de Matériel">
@@ -109,10 +110,15 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="id_Materiel" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_Materiel" msprop:Generator_ColumnPropNameInRow="id_Materiel" msprop:Generator_ColumnPropNameInTable="id_MaterielColumn" msprop:Generator_UserColumnName="id_Materiel" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:GetMaterials" />
+      <xs:field xpath="mstns:id_Materiel" />
+    </xs:unique>
   </xs:element>
 </xs:schema>

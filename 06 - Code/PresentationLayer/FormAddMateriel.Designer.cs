@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnAddSalle = new System.Windows.Forms.Button();
+			this.label11 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
 			this.cmbSalle = new System.Windows.Forms.ComboBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.btnAddEtage = new System.Windows.Forms.Button();
@@ -61,9 +64,6 @@
 			this.cmbClientName = new System.Windows.Forms.ComboBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
-			this.btnAddSalle = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -109,6 +109,34 @@
 			this.panel1.Size = new System.Drawing.Size(577, 527);
 			this.panel1.TabIndex = 0;
 			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+			// 
+			// btnAddSalle
+			// 
+			this.btnAddSalle.Location = new System.Drawing.Point(437, 224);
+			this.btnAddSalle.Name = "btnAddSalle";
+			this.btnAddSalle.Size = new System.Drawing.Size(137, 23);
+			this.btnAddSalle.TabIndex = 36;
+			this.btnAddSalle.Text = "Ajout Salle";
+			this.btnAddSalle.UseVisualStyleBackColor = true;
+			this.btnAddSalle.Click += new System.EventHandler(this.btnAddSalle_Click_1);
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(4, 318);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(33, 13);
+			this.label11.TabIndex = 35;
+			this.label11.Text = "limite:";
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(4, 290);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(55, 13);
+			this.label8.TabIndex = 34;
+			this.label8.Text = "plannifiée:";
 			// 
 			// cmbSalle
 			// 
@@ -402,34 +430,6 @@
 			this.testToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
 			this.testToolStripMenuItem.Text = "Test";
 			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(4, 290);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(55, 13);
-			this.label8.TabIndex = 34;
-			this.label8.Text = "plannifiée:";
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(4, 318);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(33, 13);
-			this.label11.TabIndex = 35;
-			this.label11.Text = "limite:";
-			// 
-			// btnAddSalle
-			// 
-			this.btnAddSalle.Location = new System.Drawing.Point(437, 224);
-			this.btnAddSalle.Name = "btnAddSalle";
-			this.btnAddSalle.Size = new System.Drawing.Size(137, 23);
-			this.btnAddSalle.TabIndex = 36;
-			this.btnAddSalle.Text = "Ajout Salle";
-			this.btnAddSalle.UseVisualStyleBackColor = true;
-			this.btnAddSalle.Click += new System.EventHandler(this.btnAddSalle_Click_1);
-			// 
 			// FormAddMateriel
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,6 +440,7 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "FormAddMateriel";
 			this.Text = "Ajout de Matériel";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAddMateriel_FormClosed);
 			this.Load += new System.EventHandler(this.FormAddMateriel_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
