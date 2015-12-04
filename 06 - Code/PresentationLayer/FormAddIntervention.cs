@@ -22,6 +22,11 @@ namespace GestionMatosApplication
 		private GestionMatosDataSet.EtageDataTable m_tblEtage = new GestionMatosDataSet.EtageDataTable();
 		private GestionMatosDataSet.SalleDataTable m_tblSalle = new GestionMatosDataSet.SalleDataTable();
 		private GestionMatosDataSet.MaterielDataTable m_tblMaterial = new GestionMatosDataSet.MaterielDataTable();
+		private GestionMatosDataSet.InterventionDataTable m_tblInterventions = new GestionMatosDataSet.InterventionDataTable();
+		private GestionMatosDataSetTableAdapters.InterventionTableAdapter m_adapterIntervention = new InterventionTableAdapter();
+		private GestionMatosDataSet3TableAdapters.GetInterventionsTableAdapter m_adapterInterventionView = new GestionMatosDataSet3TableAdapters.GetInterventionsTableAdapter();
+		private GestionMatosDataSet3.GetInterventionsDataTable m_tblInterventionsView = new GestionMatosDataSet3.GetInterventionsDataTable();
+
 
 		private ClientTableAdapter m_adapterClient = new ClientTableAdapter();
 		private Type_MaterielTableAdapter m_adapterMaterielType = new Type_MaterielTableAdapter();
@@ -40,20 +45,15 @@ namespace GestionMatosApplication
 
 		private static FormHomepage s_formHomepage;
 
-        private string m_materialName;
         private Guid m_materialSerial;
         private int m_client_id;
-        private int m_etage_id;
         private int m_materialtype_id;
         private string  m_description;
         private DateTime  m_intervention;
         private int m_mtbf;
-		private int m_selectedSiteID = -1;
-		private int m_selectedBatimentID = -1; 
-		private int m_selectedEtageID = -1;
-		private int m_selectedSalleID = -1;
 		private int m_selectedClientID = -1;
 		private int m_selectedTypeMtlID = -1;
+		private int m_selectedMaterialID = -1;
 
 		public FormAddIntervention(FormHomepage form)
 		{
@@ -185,10 +185,8 @@ namespace GestionMatosApplication
 			//fetch all entities data
 			FillTable<ClientTableAdapter, GestionMatosDataSet.ClientDataTable>(m_adapterClient, m_tblClient);
 			FillTable<Type_MaterielTableAdapter, GestionMatosDataSet.Type_MaterielDataTable>(m_adapterMaterielType, m_tblMaterielType);
-			FillTable<SiteTableAdapter, GestionMatosDataSet.SiteDataTable>(m_adapterSite, m_tblSites);
-			FillTable<BatimentTableAdapter, GestionMatosDataSet.BatimentDataTable>(m_adapterBatiment, m_tblBatiments);
-			FillTable<EtageTableAdapter, GestionMatosDataSet.EtageDataTable>(m_adapterEtage, m_tblEtage);
-			FillTable<SalleTableAdapter, GestionMatosDataSet.SalleDataTable>(m_adapterSalle, m_tblSalle);
+			FillTable<MaterielTableAdapter, GestionMatosDataSet.MaterielDataTable>(m_adapterMaterials, m_tblMaterial);
+
 		}
 
 		protected void FetchClient()
@@ -214,6 +212,7 @@ namespace GestionMatosApplication
 		{
 			m_materialtypesList.Clear();
 			m_materialtypesList = new List<ListItem>();
+
 			foreach (GestionMatosDataSet.Type_MaterielRow row in m_tblMaterielType.Rows)
 			{
 				m_materialtypesList.Add(new ListItem(row.nom_Type_Materiel, row.id_Type_Materiel));
@@ -229,14 +228,39 @@ namespace GestionMatosApplication
 			cmbMaterialType.DataSource = null;
 		}
 
+		protected void FetchMaterials()
+		{
+			EnumerableRowCollection materials = 
+			m_tblMaterial.Where(m => m.id_Client == m_selectedClientID &&
+				m.id_type_Materiel == m_selectedTypeMtlID);
+
+			List<ListItem> listMaterials = new List<ListItem>();
+			listMaterials.Clear();
+
+			foreach (GestionMatosDataSet.MaterielRow row in materials)
+			{
+				listMaterials.Add(new ListItem(row.nom_Materiel, row.id_Materiel));
+			}
+			if (listMaterials.Count > 0)
+			{
+				cmbMaterial.DataSource = listMaterials;
+				cmbMaterial.SelectedIndex = 0;
+				m_selectedMaterialID = listMaterials[cmbMaterial.SelectedIndex].ID;
+				return;
+			}
+			m_selectedMaterialID = -1;
+			cmbMaterial.DataSource = null;
+		}
+
 		protected void FillAddingIHM()
 		{
 			FillTables();
-			FetchMaterialTypes();
 			FetchClient();
+			FetchMaterialTypes();
+			FetchMaterials();
 		}
 
-		private void FormAddMateriel_Load(object sender, EventArgs e)
+		private void FormAddIntervention_Load(object sender, EventArgs e)
 		{
 			try
 			{
@@ -282,32 +306,15 @@ namespace GestionMatosApplication
             {
 				if (ValidateIntervention())
 				{
+					m_adapterIntervention.Insert(m_selectedMaterialID,
+						this.dateIntervention.Value,
+						this.dateLimitIntervention.Value,
+						this.txbDesc.Text,
+						false);
 
-					m_materialSerial = Guid.NewGuid();
-					m_client_id = ((ListItem)cmbClientName.SelectedItem).ID;
-					m_materialtype_id = ((ListItem)cmbMaterialType.SelectedItem).ID;
-					m_description = txbDesc.Text;
-					m_mtbf = Convert.ToInt32(txbMTBF.Text);
-					m_intervention = dateLimitIntervention.Value;
-					m_description = txbDesc.Text;
-
-					m_adapterMaterials.Insert(
-						m_materialName,
-						m_materialSerial.ToString(),
-						m_materialtype_id,
-						m_client_id,
-						m_selectedSiteID,
-						m_selectedBatimentID,
-						m_selectedEtageID,
-						m_selectedSalleID,
-						m_intervention,
-						m_description);
 
 					if (s_formHomepage != null)
 					{
-						m_adapterMaterials.Fill(m_tblMaterial);
-						s_formHomepage.RebindMaterials();
-						s_formHomepage.AddIntervention(m_tblMaterial.FindByid_Materiel(m_tblMaterial.Last().id_Materiel));
 						s_formHomepage.RebindInterventions();
 					}
 
@@ -341,6 +348,40 @@ namespace GestionMatosApplication
 
 		private void panel1_Paint(object sender, PaintEventArgs e)
 		{ 
+		}
+
+		private void cmbClientName_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if ((ListItem)cmbClientName.SelectedItem != null)
+			{
+				try
+				{
+					m_selectedClientID = ((ListItem)cmbClientName.SelectedItem).ID;
+					FetchMaterials();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
+			}
+		}
+
+		private void cmbMaterialType_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if ((ListItem)cmbMaterialType.SelectedItem != null)
+			{
+				m_selectedTypeMtlID = ((ListItem)cmbMaterialType.SelectedItem).ID;
+				FetchMaterials();
+				FillMTBF();
+			}
+		}
+
+		private void cmbMaterial_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if ((ListItem)cmbMaterial.SelectedItem != null)
+			{
+				m_selectedMaterialID = ((ListItem)cmbMaterial.SelectedItem).ID;
+			}
 		}
 	}
 }

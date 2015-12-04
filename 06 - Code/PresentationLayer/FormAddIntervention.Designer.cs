@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.cmbMaterial = new System.Windows.Forms.ComboBox();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.dateLimitIntervention = new System.Windows.Forms.DateTimePicker();
@@ -47,14 +48,13 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.cmbMaterialType = new System.Windows.Forms.ComboBox();
 			this.cmbClientName = new System.Windows.Forms.ComboBox();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
 			// 
 			this.panel1.AutoSize = true;
-			this.panel1.Controls.Add(this.comboBox1);
+			this.panel1.Controls.Add(this.cmbMaterial);
 			this.panel1.Controls.Add(this.label11);
 			this.panel1.Controls.Add(this.label8);
 			this.panel1.Controls.Add(this.dateLimitIntervention);
@@ -77,6 +77,16 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(443, 384);
 			this.panel1.TabIndex = 1;
+			// 
+			// cmbMaterial
+			// 
+			this.cmbMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cmbMaterial.FormattingEnabled = true;
+			this.cmbMaterial.Location = new System.Drawing.Point(121, 108);
+			this.cmbMaterial.Name = "cmbMaterial";
+			this.cmbMaterial.Size = new System.Drawing.Size(310, 21);
+			this.cmbMaterial.TabIndex = 36;
+			this.cmbMaterial.SelectedIndexChanged += new System.EventHandler(this.cmbMaterial_SelectedIndexChanged);
 			// 
 			// label11
 			// 
@@ -227,6 +237,7 @@
 			this.cmbMaterialType.Name = "cmbMaterialType";
 			this.cmbMaterialType.Size = new System.Drawing.Size(310, 21);
 			this.cmbMaterialType.TabIndex = 1;
+			this.cmbMaterialType.SelectedIndexChanged += new System.EventHandler(this.cmbMaterialType_SelectedIndexChanged);
 			// 
 			// cmbClientName
 			// 
@@ -236,15 +247,7 @@
 			this.cmbClientName.Name = "cmbClientName";
 			this.cmbClientName.Size = new System.Drawing.Size(310, 21);
 			this.cmbClientName.TabIndex = 0;
-			// 
-			// comboBox1
-			// 
-			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(121, 108);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(310, 21);
-			this.comboBox1.TabIndex = 36;
+			this.cmbClientName.SelectedIndexChanged += new System.EventHandler(this.cmbClientName_SelectedIndexChanged);
 			// 
 			// FormAddIntervention
 			// 
@@ -254,6 +257,7 @@
 			this.Controls.Add(this.panel1);
 			this.Name = "FormAddIntervention";
 			this.Text = "FormAddIntervention";
+			this.Load += new System.EventHandler(this.FormAddIntervention_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
@@ -264,7 +268,7 @@
 		#endregion
 
 		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox cmbMaterial;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.DateTimePicker dateLimitIntervention;

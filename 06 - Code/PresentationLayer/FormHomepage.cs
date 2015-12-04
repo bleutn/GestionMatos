@@ -229,8 +229,8 @@ namespace GestionMatosApplication
 			switch (tabControl1.SelectedIndex)
 			{ 
 				case 0:	AddMaterial();					break;
-				case 1: AddSite(); break;
-				case 2: AddIntervention(); break;
+				case 4: AddSite(); break;
+				case 1: AddIntervention(); break;
 				case 3: AddClient(); break;
 				default: break;
 			
@@ -242,8 +242,8 @@ namespace GestionMatosApplication
 			switch (tabControl1.SelectedIndex)
 			{
 				case 0: UpdateMaterial(); break;
-				case 1: UpdateSite(); break;
-				case 2: UpdateIntervention(); break;
+				case 4: UpdateSite(); break;
+				case 1: UpdateIntervention(); break;
 				case 3: UpdateClient(); break;
 				default: break;
 			}
