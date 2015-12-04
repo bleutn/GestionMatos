@@ -75,12 +75,6 @@
     <Compile Include="FormAddIntervention.Designer.cs">
       <DependentUpon>FormAddIntervention.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddMateriel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAddMateriel.Designer.cs">
-      <DependentUpon>FormAddMateriel.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormAddSalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +110,12 @@
     </Compile>
     <Compile Include="FormUpdateMateriel.Designer.cs">
       <DependentUpon>FormUpdateMateriel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddMateriel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddMateriel.Designer.cs">
+      <DependentUpon>FormAddMateriel.cs</DependentUpon>
     </Compile>
     <Compile Include="GestionMatosDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -166,10 +166,13 @@
     <Compile Include="UserControlClientHomepage.Designer.cs">
       <DependentUpon>UserControlClientHomepage.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormAddEtage.resx" />
     <EmbeddedResource Include="FormAddIntervention.resx">
       <DependentUpon>FormAddIntervention.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAddMateriel.resx">
+      <DependentUpon>FormAddMateriel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddEtage.resx" />
     <EmbeddedResource Include="FormAddSalle.resx" />
     <EmbeddedResource Include="FormHomepage.resx">
       <DependentUpon>FormHomepage.cs</DependentUpon>
@@ -179,9 +182,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddClient.resx">
       <DependentUpon>FormAddClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormAddMateriel.resx">
-      <DependentUpon>FormAddMateriel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddSite.resx">
       <DependentUpon>FormAddSite.cs</DependentUpon>

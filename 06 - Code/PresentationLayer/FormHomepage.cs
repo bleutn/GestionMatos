@@ -118,7 +118,7 @@ namespace GestionMatosApplication
 
         private void créerToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            FormAddMateriel materiel = new FormAddMateriel(this);
+            FormAddIntervention materiel = new FormAddIntervention(this);
             materiel.Show();
         }
 
@@ -187,7 +187,7 @@ namespace GestionMatosApplication
 
 		private void AddIntervention()
 		{
-			(new FormAddIntervention()).Show();
+			(new FormAddIntervention(this)).Show();
 		}
 
 		private void AddClient()

@@ -1,7 +1,7 @@
 ﻿namespace GestionMatosApplication
 {
     partial class FormAddMateriel
-    {
+	{
         /// <summary>
         /// Required designer variable.
         /// </summary>

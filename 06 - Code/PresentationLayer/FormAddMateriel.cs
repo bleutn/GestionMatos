@@ -14,7 +14,7 @@ using GestionMatosApplication;
 
 namespace GestionMatosApplication
 {
-	public partial class FormAddMateriel : Form
+	public partial class FormAddMateriel: Form
 	{
 		private GestionMatosDataSet.ClientDataTable m_tblClient = new GestionMatosDataSet.ClientDataTable();
 		private GestionMatosDataSet.Type_MaterielDataTable m_tblMaterielType = new GestionMatosDataSet.Type_MaterielDataTable();
