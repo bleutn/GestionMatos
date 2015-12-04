@@ -468,7 +468,7 @@ namespace GestionMatosApplication
 			return CanValidate;
 		}
 
-        private void btnAdd_Click(object sender, EventArgs e)
+		private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {

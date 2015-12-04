@@ -654,5 +654,10 @@ namespace GestionMatosApplication
 			FormAddSite form = new FormAddSite();
 			form.Show();
 		}
+
+		private void label3_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

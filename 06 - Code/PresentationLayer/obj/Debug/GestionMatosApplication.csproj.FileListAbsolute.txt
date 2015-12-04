@@ -66,3 +66,5 @@ C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Deb
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormUpdateMateriel.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControlMaterial.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControlIntervention.resources
+C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.ClientHomepage.resources
+C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControlClientHomepage.resources

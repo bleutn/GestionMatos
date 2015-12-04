@@ -53,74 +53,6 @@ namespace GestionMatosApplication
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ClientSelect();
-        }
-
-        private void ClientSelect()
-        {
-            SqlConnection cnSQL = null;
-            SqlCommand cmSQL = null;
-            SqlDataReader drSQL = null;
-            string strSQL;
-            ListBox objListItem;
-            string strID;
-
-            try
-            {
-
-                objListItem = (ListBox)listClients.SelectedItem;
-                if (objListItem == null)
-                    return;
-
-                strSQL = "SELECT id_Client, " +
-                         "       nom_Client, " +
-                         "FROM Client " +
-                         "WHERE id_Client = " + objListItem.Name;
-
-                cnSQL = new SqlConnection(FormHomepage.connString);
-                cnSQL.Open();
-                cmSQL = new SqlCommand(strSQL, cnSQL);
-                drSQL = cmSQL.ExecuteReader();
-
-               /* if (drSQL.Read())
-                {
-                    // Populate form with the data
-
-                    tbProductID.Text = drSQL["ProductID"].ToString();
-                    tbProdName.Text = drSQL["ProductName"].ToString();
-                    tbQtyPerUnit.Text = drSQL["QuantityPerUnit"].ToString();
-                    tbUPrice.Text = drSQL["UnitPrice"].ToString();
-                    tbStock.Text = drSQL["UnitsInStock"].ToString();
-                    tbUOnOrder.Text = drSQL["UnitsOnOrder"].ToString();
-                    tbReOrder.Text = drSQL["ReorderLevel"].ToString();
-                    cbDiscontinued.IsChecked = (bool)drSQL["Discontinued"];
-                    strID = drSQL["SupplierID"].ToString();
-                    FindItemByID(cbSuppliers, strID);
-                    strID = drSQL["CategoryID"].ToString();
-                    FindItemByID(cbCategories, strID);
-                }*/
-
-            }
-            catch (SqlException e)
-            {
-                MessageBox.Show(e.Message, "SQL Error");
-
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "General Error");
-            }
-            finally
-            {
-                if (drSQL != null)
-                    drSQL.Close();
-                if (cnSQL != null)
-                    cnSQL.Close();
-                if (cmSQL != null)
-                    cmSQL.Dispose();
-                if (cnSQL != null)
-                    cnSQL.Dispose();
-            }
         }
 
         public static string connString { get; set; }
@@ -306,6 +238,16 @@ namespace GestionMatosApplication
 					}
 				}
 			}
+		}
+
+		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void Client_Click(object sender, EventArgs e)
+		{
+
 		}
     }
 }

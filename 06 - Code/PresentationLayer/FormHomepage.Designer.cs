@@ -72,10 +72,8 @@
 			this.add = new System.Windows.Forms.Button();
 			this.delete = new System.Windows.Forms.Button();
 			this.update = new System.Windows.Forms.Button();
-			this.label2 = new System.Windows.Forms.Label();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.Client = new System.Windows.Forms.TabPage();
-			this.listClients = new System.Windows.Forms.ListBox();
 			this.Materiel = new System.Windows.Forms.TabPage();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.nomDeMatérielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,6 +96,8 @@
 			this.getMaterialsTableAdapter = new GestionMatosApplication.GestionMatosDataSet1TableAdapters.GetMaterialsTableAdapter();
 			this.materialsDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.gestionMatosDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.userControlIntervention1 = new GestionMatosApplication.UserControlIntervention();
+			this.userControlClientHomepage1 = new GestionMatosApplication.UserControlClientHomepage();
 			this.menuStrip1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -106,6 +106,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.getMaterialsBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1)).BeginInit();
+			this.Interventions.SuspendLayout();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.materialsDataSet1BindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSetBindingSource)).BeginInit();
@@ -440,17 +441,6 @@
 			this.update.UseVisualStyleBackColor = true;
 			this.update.Click += new System.EventHandler(this.update_Click);
 			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(6, 6);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(195, 25);
-			this.label2.TabIndex = 5;
-			this.label2.Text = "Liste des Clients:";
-			this.label2.Click += new System.EventHandler(this.label2_Click);
-			// 
 			// tabControl1
 			// 
 			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -468,8 +458,7 @@
 			// 
 			// Client
 			// 
-			this.Client.Controls.Add(this.label2);
-			this.Client.Controls.Add(this.listClients);
+			this.Client.Controls.Add(this.userControlClientHomepage1);
 			this.Client.Location = new System.Drawing.Point(4, 22);
 			this.Client.Name = "Client";
 			this.Client.Padding = new System.Windows.Forms.Padding(3);
@@ -477,21 +466,7 @@
 			this.Client.TabIndex = 0;
 			this.Client.Text = "Client";
 			this.Client.UseVisualStyleBackColor = true;
-			// 
-			// listClients
-			// 
-			this.listClients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.listClients.BackColor = System.Drawing.SystemColors.ScrollBar;
-			this.listClients.DisplayMember = "ID";
-			this.listClients.FormattingEnabled = true;
-			this.listClients.Location = new System.Drawing.Point(3, 37);
-			this.listClients.Name = "listClients";
-			this.listClients.Size = new System.Drawing.Size(691, 407);
-			this.listClients.Sorted = true;
-			this.listClients.TabIndex = 2;
-			this.listClients.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+			this.Client.Click += new System.EventHandler(this.Client_Click);
 			// 
 			// Materiel
 			// 
@@ -629,6 +604,7 @@
 			// 
 			// Interventions
 			// 
+			this.Interventions.Controls.Add(this.userControlIntervention1);
 			this.Interventions.Location = new System.Drawing.Point(4, 22);
 			this.Interventions.Name = "Interventions";
 			this.Interventions.Size = new System.Drawing.Size(697, 462);
@@ -672,6 +648,23 @@
 			// 
 			this.getMaterialsTableAdapter.ClearBeforeFill = true;
 			// 
+			// userControlIntervention1
+			// 
+			this.userControlIntervention1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.userControlIntervention1.Location = new System.Drawing.Point(0, 3);
+			this.userControlIntervention1.Name = "userControlIntervention1";
+			this.userControlIntervention1.Size = new System.Drawing.Size(694, 456);
+			this.userControlIntervention1.TabIndex = 0;
+			// 
+			// userControlClientHomepage1
+			// 
+			this.userControlClientHomepage1.Location = new System.Drawing.Point(0, 0);
+			this.userControlClientHomepage1.Name = "userControlClientHomepage1";
+			this.userControlClientHomepage1.Size = new System.Drawing.Size(691, 456);
+			this.userControlClientHomepage1.TabIndex = 0;
+			// 
 			// FormHomepage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -689,12 +682,12 @@
 			this.panel2.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
 			this.Client.ResumeLayout(false);
-			this.Client.PerformLayout();
 			this.Materiel.ResumeLayout(false);
 			this.Materiel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.getMaterialsBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1)).EndInit();
+			this.Interventions.ResumeLayout(false);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.materialsDataSet1BindingSource)).EndInit();
@@ -711,11 +704,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button add;
         private System.Windows.Forms.Button delete;
-        private System.Windows.Forms.Button update;
-        private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Button update;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage Client;
-        private System.Windows.Forms.ListBox listClients;
+		private System.Windows.Forms.TabPage Client;
         private System.Windows.Forms.TabPage Materiel;
         private System.Windows.Forms.TabPage Interventions;
         private System.Windows.Forms.Panel panel1;
@@ -776,6 +767,8 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn typeDeMatérielDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dateDernièreInterventionDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+		private UserControlIntervention userControlIntervention1;
+		private UserControlClientHomepage userControlClientHomepage1;
 	}
 }
 

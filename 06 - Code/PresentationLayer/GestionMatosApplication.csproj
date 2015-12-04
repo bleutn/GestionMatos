@@ -126,6 +126,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GestionMatosDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="GestionMatosIntervention.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionMatosIntervention.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ListItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -144,11 +149,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TypeMaterial.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ClientHomepage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ClientHomepage.Designer.cs">
+      <DependentUpon>ClientHomepage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlClientHomepage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlClientHomepage.Designer.cs">
+      <DependentUpon>UserControlClientHomepage.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlIntervention.cs">
       <SubType>UserControl</SubType>
@@ -159,6 +176,7 @@
     <Compile Include="UserControlMaterial.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <EmbeddedResource Include="ClientHomepage.resx" />
     <EmbeddedResource Include="FormAddEtage.resx" />
     <EmbeddedResource Include="FormAddSalle.resx" />
     <EmbeddedResource Include="FormHomepage.resx">
@@ -193,6 +211,9 @@
     </Compile>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlClientHomepage.resx">
+      <DependentUpon>UserControlClientHomepage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlIntervention.resx">
       <DependentUpon>UserControlIntervention.cs</DependentUpon>
@@ -243,6 +264,17 @@
     </None>
     <None Include="GestionMatosDataSet2.xss">
       <DependentUpon>GestionMatosDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="GestionMatosIntervention.xsc">
+      <DependentUpon>GestionMatosIntervention.xsd</DependentUpon>
+    </None>
+    <None Include="GestionMatosIntervention.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GestionMatosIntervention.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GestionMatosIntervention.xss">
+      <DependentUpon>GestionMatosIntervention.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
