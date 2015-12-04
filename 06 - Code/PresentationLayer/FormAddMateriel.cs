@@ -415,7 +415,8 @@ namespace GestionMatosApplication
 
         private void btnAddEtage_Click(object sender, EventArgs e)
         {
-
+			FormAddSite form = new FormAddSite();
+			form.Show();
         }
 
 		private bool ValidateMaterial()
@@ -562,12 +563,26 @@ namespace GestionMatosApplication
 
 		private void btnAddSalle_Click_1(object sender, EventArgs e)
 		{
-
+			FormAddSalle form = new FormAddSalle();
+			form.Show();
 		}
 
 		private void FormAddMateriel_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			s_formHomepage.addingMaterial = false;
 		}
+
+		private void btnAddBatiment_Click(object sender, EventArgs e)
+		{
+			FormAddBatiment form = new FormAddBatiment();
+			form.Show();
+		}
+
+		private void btnAddEtage_Click_1(object sender, EventArgs e)
+		{
+			FormAddEtage form = new FormAddEtage();
+			form.Show();
+		}
+
 	}
 }

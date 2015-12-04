@@ -150,6 +150,12 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlIntervention.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlIntervention.Designer.cs">
+      <DependentUpon>UserControlIntervention.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlMaterial.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </Compile>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlIntervention.resx">
+      <DependentUpon>UserControlIntervention.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlMaterial.resx">
       <DependentUpon>UserControlMaterial.cs</DependentUpon>

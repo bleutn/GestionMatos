@@ -465,23 +465,6 @@ namespace GestionMatosApplication
 			FillMTBF();
         }
 
-        private void btnAddClient_Click(object sender, EventArgs e)
-        {
-            FormAddClient clientWindow = new FormAddClient();
-            clientWindow.Show();
-        }
-
-        private void btnMaterialType_Click(object sender, EventArgs e)
-        {
-            FormAddTypeMateriel typeWindow = new FormAddTypeMateriel();
-            typeWindow.Show();
-        }
-
-        private void btnAddEtage_Click(object sender, EventArgs e)
-        {
-
-        }
-
 		private bool ValidateMaterial()
 		{
 			bool CanValidate = true;
@@ -629,7 +612,8 @@ namespace GestionMatosApplication
 
 		private void btnAddSalle_Click_1(object sender, EventArgs e)
 		{
-
+			FormAddSalle form = new FormAddSalle();
+			form.Show();
 		}
 
 		private void FormUpdateMateriel_FormClosed(object sender, FormClosedEventArgs e)
@@ -639,6 +623,36 @@ namespace GestionMatosApplication
 
 		private void cmbSalle_SelectedIndexChanged(object sender, EventArgs e)
 		{
+		}
+
+		private void btnAddBatiment_Click(object sender, EventArgs e)
+		{
+			FormAddBatiment form = new FormAddBatiment();
+			form.Show();
+		}
+
+		private void btnAddEtage_Click_1(object sender, EventArgs e)
+		{
+			FormAddEtage form = new FormAddEtage();
+			form.Show();
+		}
+
+		private void btnAddClient_Click(object sender, EventArgs e)
+		{
+			FormAddClient form = new FormAddClient();
+			form.Show();
+		}
+
+		private void btnMaterialType_Click(object sender, EventArgs e)
+		{
+			FormAddTypeMateriel form = new FormAddTypeMateriel();
+			form.Show();
+		}
+
+		private void btnAddEtage_Click(object sender, EventArgs e)
+		{
+			FormAddSite form = new FormAddSite();
+			form.Show();
 		}
 	}
 }

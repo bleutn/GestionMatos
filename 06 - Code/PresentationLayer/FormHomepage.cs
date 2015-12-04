@@ -261,7 +261,21 @@ namespace GestionMatosApplication
 
 		private void delete_Click(object sender, EventArgs e)
 		{
+			m_adapterMaterials.Fill(m_tblMaterial);
+			GestionMatosDataSet.MaterielRow material = m_tblMaterial.FindByid_Materiel(m_selectedMaterial.id_Materiel);
+			m_adapterMaterials.Delete(material.id_Materiel,
+				material.nom_Materiel,
+				material.guid_Materiel,
+				material.id_type_Materiel,
+				material.id_Client,
+				material.id_Site,
+				material.id_Batiment,
+				material.id_Etage,
+				material.id_Salle,
+				material.date_dernier_Intervention,
+				material.description);
 
+			RebindMaterials();
 		}
 
 		public void RebindMaterials()

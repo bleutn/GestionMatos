@@ -165,6 +165,7 @@
 			this.btnAddEtage.TabIndex = 30;
 			this.btnAddEtage.Text = "Ajout Etage";
 			this.btnAddEtage.UseVisualStyleBackColor = true;
+			this.btnAddEtage.Click += new System.EventHandler(this.btnAddEtage_Click_1);
 			// 
 			// cmbEtage
 			// 
@@ -193,6 +194,7 @@
 			this.btnAddBatiment.TabIndex = 27;
 			this.btnAddBatiment.Text = "Ajout Batiment";
 			this.btnAddBatiment.UseVisualStyleBackColor = true;
+			this.btnAddBatiment.Click += new System.EventHandler(this.btnAddBatiment_Click);
 			// 
 			// cmbBatiment
 			// 
