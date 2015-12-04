@@ -25,6 +25,10 @@ namespace GestionMatosApplication
 		private GestionMatosDataSetTableAdapters.Type_MaterielTableAdapter m_adapterMaterielType = new GestionMatosDataSetTableAdapters.Type_MaterielTableAdapter();
 		private GestionMatosDataSet.MaterielDataTable m_tblMaterial = new GestionMatosDataSet.MaterielDataTable();
 		private MaterielTableAdapter m_adapterMaterials = new MaterielTableAdapter();
+		private GestionMatosDataSet.InterventionDataTable m_tblInterventions = new GestionMatosDataSet.InterventionDataTable();
+		private GestionMatosDataSetTableAdapters.InterventionTableAdapter m_adapterIntervention = new InterventionTableAdapter();
+		private GestionMatosDataSet3TableAdapters.GetInterventionsTableAdapter m_adapterInterventionView = new GestionMatosDataSet3TableAdapters.GetInterventionsTableAdapter();
+		private GestionMatosDataSet3.GetInterventionsDataTable m_tblInterventionsView = new GestionMatosDataSet3.GetInterventionsDataTable();
 
 		public bool addingMaterial = false;
 		public bool updatingMaterial = false;
@@ -65,10 +69,12 @@ namespace GestionMatosApplication
 
         private void Form1_Load(object sender, EventArgs e)
         {
+			// TODO: This line of code loads data into the 'gestionMatosDataSet3.GetInterventions' table. You can move, or remove it, as needed.
+			this.getInterventionsTableAdapter.Fill(this.gestionMatosDataSet3.GetInterventions);
 			// TODO: This line of code loads data into the 'gestionMatosDataSet1.GetMaterials' table. You can move, or remove it, as needed.
 			this.getMaterialsTableAdapter.Fill(this.gestionMatosDataSet1.GetMaterials);
-			// TODO: This line of code loads data into the 'gestionMatosDataSet2.GetMaterials' table. You can move, or remove it, as needed.
-            WindowState = FormWindowState.Maximized;
+			// TODO: This line of code loads data into the 'gestionMatosDataSet2.GetMaterials' table. You can move, or remove it, as needed.		
+			WindowState = FormWindowState.Maximized;
         }
 
         private void ajouterToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -170,24 +176,76 @@ namespace GestionMatosApplication
 
 		}
 
-		private void add_Click_1(object sender, EventArgs e)
+		private void AddMaterial()
 		{
-			if (!addingMaterial && !updatingMaterial)
+			if (!addingMaterial)
 			{
-				FormAddMateriel materiel = new FormAddMateriel(this);
-				materiel.Show();
+				(new FormAddMateriel(this)).Show();
 				addingMaterial = true;
 			}
+		}
 
+		private void AddIntervention()
+		{
+			(new FormAddIntervention()).Show();
+		}
+
+		private void AddClient()
+		{
+			(new FormAddClient()).Show();
+		}
+
+		private void AddSite()
+		{
+			(new FormAddSite()).Show();
+		}
+
+		private void UpdateMaterial()
+		{
+			if (!updatingMaterial && m_selectedMaterial!= null)
+			{
+				(new FormUpdateMateriel(this, m_selectedMaterial)).Show();
+				updatingMaterial = true;
+			}
+		}
+
+		private void UpdateIntervention()
+		{
+			//(new FormUpdateIntervention()).Show();
+		}
+
+		private void UpdateClient()
+		{
+			//(new FormUpdateClient()).Show();
+		}
+
+		private void UpdateSite()
+		{
+			//(new FormUpdateSite()).Show();
+		}
+
+		private void add_Click_1(object sender, EventArgs e)
+		{
+			switch (tabControl1.SelectedIndex)
+			{ 
+				case 0:	AddMaterial();					break;
+				case 1: AddSite(); break;
+				case 2: AddIntervention(); break;
+				case 3: AddClient(); break;
+				default: break;
+			
+			}
 		}
 
 		private void update_Click(object sender, EventArgs e)
 		{
-			//if (!updatingMaterial)
+			switch (tabControl1.SelectedIndex)
 			{
-				FormUpdateMateriel materiel = new FormUpdateMateriel(this, m_selectedMaterial);
-				materiel.Show();
-				updatingMaterial = true;
+				case 0: UpdateMaterial(); break;
+				case 1: UpdateSite(); break;
+				case 2: UpdateIntervention(); break;
+				case 3: UpdateClient(); break;
+				default: break;
 			}
 		}
 
@@ -248,6 +306,29 @@ namespace GestionMatosApplication
 		private void Client_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		public void AddIntervention(GestionMatosDataSet.MaterielRow material)
+		{
+			try
+			{
+				m_adapterIntervention.Insert(material.id_Materiel,
+					material.date_dernier_Intervention,
+					null,
+					"Prochaine intervention prévue le " + material.date_dernier_Intervention.ToString() +
+					" sur matériel " + material.nom_Materiel + "(" + material.guid_Materiel + ")",
+					false);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+		}
+
+		public void RebindInterventions()
+		{
+			this.getInterventionsTableAdapter.Fill(this.gestionMatosDataSet3.GetInterventions);
+			this.getInterventionsBindingSource.DataSource = this.gestionMatosDataSet3;
 		}
     }
 }

@@ -498,7 +498,10 @@ namespace GestionMatosApplication
 
 					if (s_formHomepage != null)
 					{
+						m_adapterMaterials.Fill(m_tblMaterial);
 						s_formHomepage.RebindMaterials();
+						s_formHomepage.AddIntervention(m_tblMaterial.FindByid_Materiel(m_tblMaterial.Last().id_Materiel));
+						s_formHomepage.RebindInterventions();
 					}
 
 					MessageBox.Show("Le matériel a bien été ajouté");

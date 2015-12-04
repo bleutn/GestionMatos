@@ -38,7 +38,6 @@ C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Deb
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddSite.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddTypeMateriel.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.Properties.Resources.resources
-C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControl1.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.csproj.GenerateResource.Cache
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.exe
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.pdb
@@ -64,7 +63,5 @@ C:\Users\Aissam\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\De
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddEtage.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddSalle.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormUpdateMateriel.resources
-C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControlMaterial.resources
-C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControlIntervention.resources
-C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.ClientHomepage.resources
 C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.UserControlClientHomepage.resources
+C:\Users\GARRY\Documents\GitHub\GestionMatos\06 - Code\PresentationLayer\obj\Debug\GestionMatosApplication.FormAddIntervention.resources

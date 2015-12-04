@@ -52,3 +52,30 @@ BEGIN
 END
 
 GO
+
+CREATE PROCEDURE [dbo].[GetInterventions] 
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+	SELECT 
+		I.id_Intervention
+		,(SELECT nom_materiel FROM Materiel WHERE id_Materiel=I.id_Materiel) AS 'Nom de Matériel'
+		,UPPER((SELECT guid_Materiel FROM Materiel WHERE id_Materiel=I.id_Materiel)) AS 'Numéro de Série'
+		,I.date_InterventionPlanifie AS 'Date limite d''Intervention'
+		,I.date_InterventionRealisee AS 'Date dernière intervention'
+		,I.commentaire_Intervention AS 'Commentaire'
+		,(SELECT
+		(CASE I.status_Intervention
+		WHEN 1 THEN	'Réalisée'
+		WHEN 0 THEN	'Non Réalisée' END) AS 'Statut'
+	FROM [dbo].[Intervention] AS I) AS 'Statut'
+	FROM	
+		[dbo].[Intervention] AS I
+END
+
+GO
+
+EXEC [dbo].[GetInterventions] 

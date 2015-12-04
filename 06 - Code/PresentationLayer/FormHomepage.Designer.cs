@@ -72,8 +72,10 @@
 			this.add = new System.Windows.Forms.Button();
 			this.delete = new System.Windows.Forms.Button();
 			this.update = new System.Windows.Forms.Button();
+			this.getMaterialsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.gestionMatosDataSet1 = new GestionMatosApplication.GestionMatosDataSet1();
+			this.panel1 = new System.Windows.Forms.Panel();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.Client = new System.Windows.Forms.TabPage();
 			this.Materiel = new System.Windows.Forms.TabPage();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.nomDeMatérielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,30 +88,44 @@
 			this.typeDeMatérielDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dateDernièreInterventionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.getMaterialsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.gestionMatosDataSet1 = new GestionMatosApplication.GestionMatosDataSet1();
 			this.label3 = new System.Windows.Forms.Label();
-			this.Interventions = new System.Windows.Forms.TabPage();
 			this.Sites = new System.Windows.Forms.TabPage();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.getMaterialsTableAdapter = new GestionMatosApplication.GestionMatosDataSet1TableAdapters.GetMaterialsTableAdapter();
 			this.materialsDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.gestionMatosDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.userControlIntervention1 = new GestionMatosApplication.UserControlIntervention();
-			this.userControlClientHomepage1 = new GestionMatosApplication.UserControlClientHomepage();
+			this.label2 = new System.Windows.Forms.Label();
+			this.panel3 = new System.Windows.Forms.Panel();
+			this.label4 = new System.Windows.Forms.Label();
+			this.dataGridView2 = new System.Windows.Forms.DataGridView();
+			this.getInterventionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.gestionMatosDataSet3 = new GestionMatosApplication.GestionMatosDataSet3();
+			this.getInterventionsTableAdapter = new GestionMatosApplication.GestionMatosDataSet3TableAdapters.GetInterventionsTableAdapter();
+			this.nomDeMatérielDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.numéroDeSérieDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dateLimiteDInterventionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dateDernièreInterventionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.commentaireDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.statutDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.menuStrip1.SuspendLayout();
 			this.panel2.SuspendLayout();
-			this.tabControl1.SuspendLayout();
-			this.Client.SuspendLayout();
-			this.Materiel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.getMaterialsBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1)).BeginInit();
-			this.Interventions.SuspendLayout();
 			this.panel1.SuspendLayout();
+			this.tabControl1.SuspendLayout();
+			this.Materiel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.Sites.SuspendLayout();
+			this.tabPage2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.materialsDataSet1BindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSetBindingSource)).BeginInit();
+			this.panel3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.getInterventionsBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet3)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -441,32 +457,43 @@
 			this.update.UseVisualStyleBackColor = true;
 			this.update.Click += new System.EventHandler(this.update_Click);
 			// 
+			// getMaterialsBindingSource
+			// 
+			this.getMaterialsBindingSource.DataMember = "GetMaterials";
+			this.getMaterialsBindingSource.DataSource = this.gestionMatosDataSet1;
+			// 
+			// gestionMatosDataSet1
+			// 
+			this.gestionMatosDataSet1.DataSetName = "GestionMatosDataSet1";
+			this.gestionMatosDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// panel1
+			// 
+			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panel1.Controls.Add(this.tabControl1);
+			this.panel1.Controls.Add(this.label1);
+			this.panel1.Location = new System.Drawing.Point(12, 27);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(716, 525);
+			this.panel1.TabIndex = 9;
+			// 
 			// tabControl1
 			// 
 			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl1.Controls.Add(this.Client);
 			this.tabControl1.Controls.Add(this.Materiel);
-			this.tabControl1.Controls.Add(this.Interventions);
 			this.tabControl1.Controls.Add(this.Sites);
+			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Controls.Add(this.tabPage3);
+			this.tabControl1.Controls.Add(this.tabPage4);
 			this.tabControl1.Location = new System.Drawing.Point(8, 34);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(705, 488);
 			this.tabControl1.TabIndex = 5;
-			// 
-			// Client
-			// 
-			this.Client.Controls.Add(this.userControlClientHomepage1);
-			this.Client.Location = new System.Drawing.Point(4, 22);
-			this.Client.Name = "Client";
-			this.Client.Padding = new System.Windows.Forms.Padding(3);
-			this.Client.Size = new System.Drawing.Size(697, 462);
-			this.Client.TabIndex = 0;
-			this.Client.Text = "Client";
-			this.Client.UseVisualStyleBackColor = true;
-			this.Client.Click += new System.EventHandler(this.Client_Click);
 			// 
 			// Materiel
 			// 
@@ -582,16 +609,6 @@
 			this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
 			this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
-			// getMaterialsBindingSource
-			// 
-			this.getMaterialsBindingSource.DataMember = "GetMaterials";
-			this.getMaterialsBindingSource.DataSource = this.gestionMatosDataSet1;
-			// 
-			// gestionMatosDataSet1
-			// 
-			this.gestionMatosDataSet1.DataSetName = "GestionMatosDataSet1";
-			this.gestionMatosDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
@@ -602,18 +619,9 @@
 			this.label3.TabIndex = 6;
 			this.label3.Text = "Liste des Matériels:";
 			// 
-			// Interventions
-			// 
-			this.Interventions.Controls.Add(this.userControlIntervention1);
-			this.Interventions.Location = new System.Drawing.Point(4, 22);
-			this.Interventions.Name = "Interventions";
-			this.Interventions.Size = new System.Drawing.Size(697, 462);
-			this.Interventions.TabIndex = 2;
-			this.Interventions.Text = "Interventions";
-			this.Interventions.UseVisualStyleBackColor = true;
-			// 
 			// Sites
 			// 
+			this.Sites.Controls.Add(this.label2);
 			this.Sites.Location = new System.Drawing.Point(4, 22);
 			this.Sites.Name = "Sites";
 			this.Sites.Padding = new System.Windows.Forms.Padding(3);
@@ -622,17 +630,36 @@
 			this.Sites.Text = "Sites";
 			this.Sites.UseVisualStyleBackColor = true;
 			// 
-			// panel1
+			// tabPage2
 			// 
-			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.panel1.Controls.Add(this.tabControl1);
-			this.panel1.Controls.Add(this.label1);
-			this.panel1.Location = new System.Drawing.Point(12, 27);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(716, 525);
-			this.panel1.TabIndex = 9;
+			this.tabPage2.Controls.Add(this.panel3);
+			this.tabPage2.Location = new System.Drawing.Point(4, 22);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage2.Size = new System.Drawing.Size(697, 462);
+			this.tabPage2.TabIndex = 4;
+			this.tabPage2.Text = "Interventions";
+			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// tabPage3
+			// 
+			this.tabPage3.Location = new System.Drawing.Point(4, 22);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage3.Size = new System.Drawing.Size(697, 462);
+			this.tabPage3.TabIndex = 5;
+			this.tabPage3.Text = "Clients";
+			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
+			// tabPage4
+			// 
+			this.tabPage4.Location = new System.Drawing.Point(4, 22);
+			this.tabPage4.Name = "tabPage4";
+			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage4.Size = new System.Drawing.Size(697, 462);
+			this.tabPage4.TabIndex = 6;
+			this.tabPage4.Text = "Alertes";
+			this.tabPage4.UseVisualStyleBackColor = true;
 			// 
 			// tabPage1
 			// 
@@ -648,22 +675,112 @@
 			// 
 			this.getMaterialsTableAdapter.ClearBeforeFill = true;
 			// 
-			// userControlIntervention1
+			// label2
 			// 
-			this.userControlIntervention1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.label2.AutoSize = true;
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.Location = new System.Drawing.Point(3, 3);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(175, 25);
+			this.label2.TabIndex = 7;
+			this.label2.Text = "Liste des Sites:";
+			// 
+			// panel3
+			// 
+			this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.userControlIntervention1.Location = new System.Drawing.Point(0, 3);
-			this.userControlIntervention1.Name = "userControlIntervention1";
-			this.userControlIntervention1.Size = new System.Drawing.Size(694, 456);
-			this.userControlIntervention1.TabIndex = 0;
+			this.panel3.Controls.Add(this.dataGridView2);
+			this.panel3.Controls.Add(this.label4);
+			this.panel3.Location = new System.Drawing.Point(6, 6);
+			this.panel3.Name = "panel3";
+			this.panel3.Size = new System.Drawing.Size(685, 450);
+			this.panel3.TabIndex = 0;
 			// 
-			// userControlClientHomepage1
+			// label4
 			// 
-			this.userControlClientHomepage1.Location = new System.Drawing.Point(0, 0);
-			this.userControlClientHomepage1.Name = "userControlClientHomepage1";
-			this.userControlClientHomepage1.Size = new System.Drawing.Size(691, 456);
-			this.userControlClientHomepage1.TabIndex = 0;
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.Location = new System.Drawing.Point(0, 0);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(258, 25);
+			this.label4.TabIndex = 8;
+			this.label4.Text = "Liste des Interventions:";
+			// 
+			// dataGridView2
+			// 
+			this.dataGridView2.AllowUserToAddRows = false;
+			this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dataGridView2.AutoGenerateColumns = false;
+			this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nomDeMatérielDataGridViewTextBoxColumn1,
+            this.numéroDeSérieDataGridViewTextBoxColumn1,
+            this.dateLimiteDInterventionDataGridViewTextBoxColumn,
+            this.dateDernièreInterventionDataGridViewTextBoxColumn1,
+            this.commentaireDataGridViewTextBoxColumn,
+            this.statutDataGridViewTextBoxColumn});
+			this.dataGridView2.DataSource = this.getInterventionsBindingSource;
+			this.dataGridView2.Location = new System.Drawing.Point(-3, 28);
+			this.dataGridView2.Name = "dataGridView2";
+			this.dataGridView2.Size = new System.Drawing.Size(685, 422);
+			this.dataGridView2.TabIndex = 9;
+			// 
+			// getInterventionsBindingSource
+			// 
+			this.getInterventionsBindingSource.DataMember = "GetInterventions";
+			this.getInterventionsBindingSource.DataSource = this.gestionMatosDataSet3;
+			// 
+			// gestionMatosDataSet3
+			// 
+			this.gestionMatosDataSet3.DataSetName = "GestionMatosDataSet3";
+			this.gestionMatosDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// getInterventionsTableAdapter
+			// 
+			this.getInterventionsTableAdapter.ClearBeforeFill = true;
+			// 
+			// nomDeMatérielDataGridViewTextBoxColumn1
+			// 
+			this.nomDeMatérielDataGridViewTextBoxColumn1.DataPropertyName = "Nom de Matériel";
+			this.nomDeMatérielDataGridViewTextBoxColumn1.HeaderText = "Nom de Matériel";
+			this.nomDeMatérielDataGridViewTextBoxColumn1.Name = "nomDeMatérielDataGridViewTextBoxColumn1";
+			this.nomDeMatérielDataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// numéroDeSérieDataGridViewTextBoxColumn1
+			// 
+			this.numéroDeSérieDataGridViewTextBoxColumn1.DataPropertyName = "Numéro de Série";
+			this.numéroDeSérieDataGridViewTextBoxColumn1.HeaderText = "Numéro de Série";
+			this.numéroDeSérieDataGridViewTextBoxColumn1.Name = "numéroDeSérieDataGridViewTextBoxColumn1";
+			this.numéroDeSérieDataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// dateLimiteDInterventionDataGridViewTextBoxColumn
+			// 
+			this.dateLimiteDInterventionDataGridViewTextBoxColumn.DataPropertyName = "Date limite d\'Intervention";
+			this.dateLimiteDInterventionDataGridViewTextBoxColumn.HeaderText = "Date limite d\'Intervention";
+			this.dateLimiteDInterventionDataGridViewTextBoxColumn.Name = "dateLimiteDInterventionDataGridViewTextBoxColumn";
+			// 
+			// dateDernièreInterventionDataGridViewTextBoxColumn1
+			// 
+			this.dateDernièreInterventionDataGridViewTextBoxColumn1.DataPropertyName = "Date dernière intervention";
+			this.dateDernièreInterventionDataGridViewTextBoxColumn1.HeaderText = "Date dernière intervention";
+			this.dateDernièreInterventionDataGridViewTextBoxColumn1.Name = "dateDernièreInterventionDataGridViewTextBoxColumn1";
+			// 
+			// commentaireDataGridViewTextBoxColumn
+			// 
+			this.commentaireDataGridViewTextBoxColumn.DataPropertyName = "Commentaire";
+			this.commentaireDataGridViewTextBoxColumn.HeaderText = "Commentaire";
+			this.commentaireDataGridViewTextBoxColumn.Name = "commentaireDataGridViewTextBoxColumn";
+			// 
+			// statutDataGridViewTextBoxColumn
+			// 
+			this.statutDataGridViewTextBoxColumn.DataPropertyName = "Statut";
+			this.statutDataGridViewTextBoxColumn.HeaderText = "Statut";
+			this.statutDataGridViewTextBoxColumn.Name = "statutDataGridViewTextBoxColumn";
+			this.statutDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
 			// FormHomepage
 			// 
@@ -680,18 +797,24 @@
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.getMaterialsBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1)).EndInit();
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.tabControl1.ResumeLayout(false);
-			this.Client.ResumeLayout(false);
 			this.Materiel.ResumeLayout(false);
 			this.Materiel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.getMaterialsBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet1)).EndInit();
-			this.Interventions.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
+			this.Sites.ResumeLayout(false);
+			this.Sites.PerformLayout();
+			this.tabPage2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.materialsDataSet1BindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSetBindingSource)).EndInit();
+			this.panel3.ResumeLayout(false);
+			this.panel3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.getInterventionsBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.gestionMatosDataSet3)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -705,10 +828,6 @@
         private System.Windows.Forms.Button add;
         private System.Windows.Forms.Button delete;
 		private System.Windows.Forms.Button update;
-        private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage Client;
-        private System.Windows.Forms.TabPage Materiel;
-        private System.Windows.Forms.TabPage Interventions;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem Utilisateur;
         private System.Windows.Forms.ToolStripMenuItem seConnecterToolStripMenuItem;
@@ -747,9 +866,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem listerToolStripMenuItem3;
 		private System.Windows.Forms.ToolStripMenuItem filtrerToolStripMenuItem3;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TabPage Sites;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.BindingSource materialsDataSet1BindingSource;
 		private GestionMatosDataSet gestionMatosDataSet;
@@ -757,6 +873,9 @@
 		private GestionMatosDataSet1 gestionMatosDataSet1;
 		private System.Windows.Forms.BindingSource getMaterialsBindingSource;
 		private GestionMatosDataSet1TableAdapters.GetMaterialsTableAdapter getMaterialsTableAdapter;
+		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabPage Materiel;
+		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn nomDeMatérielDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn numéroDeSérieDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn clientAssociéDataGridViewTextBoxColumn;
@@ -767,8 +886,24 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn typeDeMatérielDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dateDernièreInterventionDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-		private UserControlIntervention userControlIntervention1;
-		private UserControlClientHomepage userControlClientHomepage1;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.TabPage Sites;
+		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.TabPage tabPage3;
+		private System.Windows.Forms.TabPage tabPage4;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Panel panel3;
+		private System.Windows.Forms.DataGridView dataGridView2;
+		private System.Windows.Forms.Label label4;
+		private GestionMatosDataSet3 gestionMatosDataSet3;
+		private System.Windows.Forms.BindingSource getInterventionsBindingSource;
+		private GestionMatosDataSet3TableAdapters.GetInterventionsTableAdapter getInterventionsTableAdapter;
+		private System.Windows.Forms.DataGridViewTextBoxColumn nomDeMatérielDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn numéroDeSérieDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dateLimiteDInterventionDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dateDernièreInterventionDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn commentaireDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn statutDataGridViewTextBoxColumn;
 	}
 }
 

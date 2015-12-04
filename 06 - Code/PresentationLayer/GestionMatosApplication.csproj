@@ -69,6 +69,12 @@
     <Compile Include="FormAddEtage.Designer.cs">
       <DependentUpon>FormAddEtage.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAddIntervention.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddIntervention.Designer.cs">
+      <DependentUpon>FormAddIntervention.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAddMateriel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GestionMatosDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="GestionMatosDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionMatosDataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="GestionMatosIntervention.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -149,35 +160,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TypeMaterial.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ClientHomepage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ClientHomepage.Designer.cs">
-      <DependentUpon>ClientHomepage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControlClientHomepage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControlClientHomepage.Designer.cs">
       <DependentUpon>UserControlClientHomepage.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlIntervention.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlIntervention.Designer.cs">
-      <DependentUpon>UserControlIntervention.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlMaterial.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <EmbeddedResource Include="ClientHomepage.resx" />
     <EmbeddedResource Include="FormAddEtage.resx" />
+    <EmbeddedResource Include="FormAddIntervention.resx">
+      <DependentUpon>FormAddIntervention.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAddSalle.resx" />
     <EmbeddedResource Include="FormHomepage.resx">
       <DependentUpon>FormHomepage.cs</DependentUpon>
@@ -209,17 +201,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControlClientHomepage.resx">
       <DependentUpon>UserControlClientHomepage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlIntervention.resx">
-      <DependentUpon>UserControlIntervention.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlMaterial.resx">
-      <DependentUpon>UserControlMaterial.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Client.xsc">
       <DependentUpon>Client.xsd</DependentUpon>
@@ -264,6 +247,17 @@
     </None>
     <None Include="GestionMatosDataSet2.xss">
       <DependentUpon>GestionMatosDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="GestionMatosDataSet3.xsc">
+      <DependentUpon>GestionMatosDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="GestionMatosDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GestionMatosDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GestionMatosDataSet3.xss">
+      <DependentUpon>GestionMatosDataSet3.xsd</DependentUpon>
     </None>
     <None Include="GestionMatosIntervention.xsc">
       <DependentUpon>GestionMatosIntervention.xsd</DependentUpon>
